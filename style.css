@@ -31,7 +31,7 @@
 
 }
 
-input[type=submit] {
+input[type=submit], .bouton {
   background-color: #31363B;
   border: 2px #616569 solid;
   color: white;
