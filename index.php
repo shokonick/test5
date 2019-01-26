@@ -10,6 +10,10 @@
   </head>
 
   <body lang="fr">
+    <header>
+      <h1>Générateur de codes QR</h1>
+      <a href="https://code.antopie.org/miraty/qr">Code source</a>
+    </header>
     <form method="post" action="index.php">
 
       <div class="param">
@@ -85,8 +89,9 @@
 
         </select>
       </div>
+      <br/>
 
-        <input type="submit" class="bouton" value="Générer" />
+      <input type="submit" value="Générer" />
 
 
 
@@ -108,8 +113,5 @@
     <?php
   }
     ?>
-
-
-
 
   </body>

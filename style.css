@@ -31,13 +31,13 @@
 
 }
 
-.bouton {
+input[type=submit] {
   background-color: #31363B;
   border: 2px #616569 solid;
   color: white;
   padding: 3px 10px 3px 10px;
   border-radius: 3px;
-  font-size: 1em;
+  font-size: 1.2em;
   text-decoration: none;
   display: inline;
 }
@@ -54,6 +54,8 @@ form {
   display: flex;
   flex-direction: column;
   display: inline;
+  padding: 0px;
+  margin: 0px;
 }
 
 body {
@@ -72,12 +74,32 @@ label {
   margin-bottom: 100px;
 }
 
-a[href] {
-  color: white;
+
+header a {
+  color: #868686;
+  font-size: 12px;
+  margin-bottom: -20px;
+  text-align: right;
+
+}
+
+header {
+  text-align: right;
+}
+
+h1 {
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  font-size: 40px;
 }
 
 .param {
   padding: 10px;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
 
 }
 
