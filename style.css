@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "ubuntu-dl";
+  src: url('ubuntu-dl.ttf');
+}
+
+.ubuntu {
+  font-family: ubuntu-dl;
+}
+
+#redondance, #marge, #texte, #taille {
+  appearance: none;
+  border: 2px #5f5f5f solid;
+  border-radius: 7px;
+  font-size: 20px;
+  padding-left: 10px;
+  font-weight: normal;
+  color: white;
+  margin-top: 8px;
+  transition: border 0.2s linear;
+}
+
+#redondance, #taille, #marge {
+  background-color: #31363B;
+  width: 250px;
+  height: 40px;
+}
+
+#texte {
+  background-color: #232629;
+  padding-top: 6px;
+
+}
+
+.bouton {
+  background-color: #31363B;
+  border: 2px #616569 solid;
+  color: white;
+  padding: 3px 10px 3px 10px;
+  border-radius: 3px;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline;
+}
+
+#redondance:hover, #marge:hover, #texte:hover, #taille:hover, input[type=submit]:hover {
+  border: 2px #808080 solid;
+}
+
+#texte:focus, input[type=submit]:focus {
+  border: 2px #b6b6b6 solid;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  display: inline;
+}
+
+body {
+  background-color: #2D2F34;
+  color: white;
+  font-family: "ubuntu", "ubuntu-dl";
+  font-weight: normal;
+  font-size: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 100px;
+}
+
+a[href] {
+  color: white;
+}
+
+.param {
+  padding: 10px;
+
+}
+
+@media (max-width: 719px) {
+  body {
+    margin-right: 0%;
+    margin-left: 0%;
+  }
+}
+
+/* Infobulle */
+
+.conteneurAide {
+  color: #ccc;
+  text-shadow: 0 -1px 0 black;
+}
+
+.conteneurAide:hover, .conteneurAide:focus {
+  background: rgba(0,0,0,.4);
+}
+
+.conteneurAide .contenuAide {
+  position: absolute;
+  transform: scale(0) rotate(-12deg);
+  color: #FFFFFF;
+  background: rgba(0,0,0,.9);
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0,0,0,.5);
+  margin-top: 23px;
+  margin-left: -35px;
+  transition: all .25s;
+  opacity: 0;
+}
+
+.conteneurAide:hover .contenuAide, .conteneurAide:focus .contenuAide {
+  transform: scale(1) rotate(0);
+}
+
+.conteneurAide:hover .contenuAide, .conteneurAide:focus .contenuAide {
+  opacity: 1;
+}
+
+.conteneurAide {
+  background-color: #2D2F34;
+  text-decoration: none;
+}
+
+.contenuAide {
+  background-color: #2D2F34;
+  text-decoration: none;
+}
+
+.conteneurAide:hover {
+  background-color: #2D2F34;
+  text-decoration: none;
+}
+
+.contenuAide:hover {
+  background-color: #2D2F34;
+  text-decoration: none;
+}
