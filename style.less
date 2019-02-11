@@ -1,0 +1,214 @@
+// Thème par défaut
+
+@fond: #2D2F34;
+@fondChamp: #31363B;
+@fondChampTexte : #232629;
+@bordure: #5f5f5f;
+@bordureHover: #808080;
+@bordureFocus: #b6b6b6;
+@afficherLogoParinux: none;
+@texte: white;
+@texteForm: white;
+@texteLienCodeSource: #868686;
+
+
+// Thème Parinux
+/*
+@fond: #157097;
+@fondChamp: #2794c2;
+@fondChampTexte : #2794c2;
+@bordure: #48aed9;
+@bordureHover: #87d1f1;
+@bordureFocus: #e2f6ff;
+@afficherLogoParinux: inline;
+@texte: #B4EAFF;
+@texteForm: #e2f6ff;
+@texteLienCodeSource: #3da3cf;
+*/
+
+@font-face {
+  font-family: "ubuntu-dl";
+  src: url('ubuntu-dl.ttf');
+}
+
+#redondance, #marge, #texte, #taille {
+  appearance: none;
+  border: 2px @bordure solid;
+  border-radius: 7px;
+  font-size: 20px;
+  padding-left: 10px;
+  font-weight: normal;
+  color: @texteForm;
+  margin-top: 8px;
+  transition: border 0.2s linear;
+}
+
+#redondance, #taille, #marge {
+  background-color: @fondChamp;
+  width: 250px;
+  height: 40px;
+}
+
+#texte {
+  background-color: @fondChampTexte;
+  color: @texteForm;
+  padding-top: 6px;
+  width: 500px;
+}
+
+#menusDeroulants {
+  text-align: center;
+}
+
+#codeQR {
+  max-width: 500px;
+}
+
+#lienCodeQR {
+  text-align: center;
+}
+
+.centrer {
+  text-align: center;
+}
+
+footer {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+input[type=submit], .bouton {
+  background-color: @fondChamp;
+  border: 2px @bordure solid;
+  color: @texteForm;
+  padding: 3px 10px 3px 10px;
+  border-radius: 3px;
+  font-size: 1.2em;
+  text-decoration: none;
+  display: inline;
+  transition: border 0.2s linear;
+}
+
+#redondance:hover, #marge:hover, #texte:hover, #taille:hover, input[type=submit]:hover, .bouton:hover {
+  border: 2px @bordureHover solid;
+}
+
+#texte:focus, input[type=submit]:focus, .bouton:focus {
+  border: 2px @bordureFocus solid;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  display: inline;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: @fond;
+  color: @texte;
+  font-family: "ubuntu", "ubuntu-dl";
+  font-weight: normal;
+  font-size: 1em;
+
+  & a {
+    color: @texte;
+    text-decoration: none;
+  }
+
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 100px;
+}
+
+
+.lienCodeSource {
+  color: @texteLienCodeSource;
+  font-size: 12px;
+  margin-bottom: -20px;
+  text-align: right;
+}
+
+header {
+  text-align: right;
+}
+
+h1 {
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  font-size: 35px;
+}
+
+
+.param {
+  padding: 10px;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+@media (max-width: 640px) { // Version mobile
+
+  html {
+    margin: 10px;
+    width: 400px;
+  }
+
+  #texte {
+    width: 400px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+}
+
+#logo {
+  width: 60px;
+  display: @afficherLogoParinux;
+}
+
+/* Infobulle */
+
+.conteneurAide {
+  color: #ccc;
+  text-shadow: 0 -1px 0 black;
+}
+
+.conteneurAide:hover, .conteneurAide:focus {
+  background: rgba(0,0,0,.4);
+}
+
+.conteneurAide .contenuAide {
+  position: absolute;
+  transform: scale(0) rotate(-12deg);
+  color: #FFFFFF;
+  background: rgba(0,0,0,.9);
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0,0,0,.5);
+  margin-top: 23px;
+  margin-left: -35px;
+  transition: all .25s;
+  opacity: 0;
+}
+
+.conteneurAide:hover .contenuAide, .conteneurAide:focus .contenuAide {
+  transform: scale(1) rotate(0);
+  opacity: 1;
+}
+
+.conteneurAide, .conteneurAide:hover {
+  background-color: @fond;
+  text-decoration: none;
+}
