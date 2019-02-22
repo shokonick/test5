@@ -1,6 +1,19 @@
+<!--
+  Code publié sous licence Apache 2.0
+  https://code.antopie.org/miraty/qr
+-->
 <?php
-
   supprimerVieuxQR(60 * 60 * 24 * 7); // Indique le temps en secondes après lequel le code qr sera supprimé quand qq chargera la page
+  $theme = "defaut"; // defaut ou parinux
+
+  if ($theme == "defaut") {
+    $couleurPrincipale = "#2D2F34";
+  } else if ($theme == "parinux") {
+    $couleurPrincipale = "#157097";
+  }
+
+  require("lessphp/lessc.inc.php");
+  $less = new lessc;
 
 ?>
 
@@ -9,17 +22,29 @@
   <head>
     <meta charset="UTF-8" />
     <title>Générateur de codes QR</title>
-    <meta name="description" content="Générateur de codes QR"/>
-    <link rel="icon" type="image/png" href="favicon.png"/>
-    <link rel="stylesheet/less" type="text/css" href="style.less" />
-    <script src="less.min.js" ></script>
+    <meta name="description" content="Générez des codes QR scannables avec ce générateur de codes QR"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-16.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-48.png" sizes="48x48"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-64.png" sizes="64x64"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-96.png" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-128.png" sizes="128x128"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-192.png" sizes="192x192"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-256.png" sizes="256x256"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-384.png" sizes="384x384"/>
+    <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-512.png" sizes="512x512"/>
+    <meta name="theme-color" content="<?php echo $couleurPrincipale; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    <?php echo $less->compileFile("themes/" . $theme . ".less"); ?>
+    </style>
   </head>
 
   <body lang="fr">
     <header>
       <h1><a href=""><img id="logo" src="parinux.png" alt="Logo de Parinux"> Générateur de codes QR</a></h1>
     </header>
+
     <form method="post">
 
       <div class="param">
@@ -84,7 +109,7 @@
           <select id="marge" name="marge">
             <option <?php if (isset($_POST['marge']) AND ($_POST['marge'] == "0")) {echo 'selected="" ';} ?>value="0">0</option>
             <option <?php if (isset($_POST['marge']) AND ($_POST['marge'] == "1")) {echo 'selected="" ';} ?>value="1">1</option>
-            <option <?php if ((isset($_POST['marge']) AND ($_POST['marge'] == "2")) OR (!isset($_POST['marge']))) {echo 'selected="" ';} ?>selected="" value="2">2 - par défaut</option>
+            <option <?php if ((isset($_POST['marge']) AND ($_POST['marge'] == "2")) OR (!isset($_POST['marge']))) {echo 'selected="" ';} ?>value="2">2 - par défaut</option>
             <option <?php if (isset($_POST['marge']) AND ($_POST['marge'] == "3")) {echo 'selected="" ';} ?>value="3">3</option>
             <option <?php if (isset($_POST['marge']) AND ($_POST['marge'] == "5")) {echo 'selected="" ';} ?>value="5">5</option>
             <option <?php if (isset($_POST['marge']) AND ($_POST['marge'] == "10")) {echo 'selected="" ';} ?>value="10">10</option>
