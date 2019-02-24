@@ -109,10 +109,19 @@ label {
   text-align: right;
 }
 
-h1 {
-  text-align: left;
+header {
+  text-align: center;
   padding: 0px;
   margin: 0px;
+
+}
+
+header > a {
+  display: flex;
+}
+
+h1, #logo {
+  margin: auto;
   font-size: 35px;
 }
 
@@ -143,8 +152,7 @@ h1 {
 }
 
 #logo {
-  width: 60px;
-  display: @afficherLogoParinux;
+  width: 64px;
 }
 
 ::placeholder {

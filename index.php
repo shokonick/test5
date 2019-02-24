@@ -12,8 +12,7 @@
     $couleurPrincipale = "#157097";
   }
 
-  require("lessphp/lessc.inc.php");
-  $less = new lessc;
+
 
 ?>
 
@@ -36,15 +35,16 @@
     <meta name="theme-color" content="<?php echo $couleurPrincipale; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-    <?php echo $less->compileFile("themes/" . $theme . ".less"); ?>
+    <?php require("lessphp/lessc.inc.php");
+      $less = new lessc;
+      echo $less->compileFile("themes/" . $theme . ".less"); ?>
     </style>
   </head>
 
   <body lang="fr">
     <header>
-      <h1><a href=""><img id="logo" src="parinux.png" alt="Logo de Parinux"> Générateur de codes QR</a></h1>
+      <a href=""><img id="logo" src="<?php echo $theme; ?>.png" alt="Logo <?php echo $theme; ?>"> <h1>Générateur de codes QR</h1></a>
     </header>
-
     <form method="post">
 
       <div class="param">
