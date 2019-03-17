@@ -1,11 +1,13 @@
-
+/*
+  Code publié sous licence Apache 2.0
+  https://code.antopie.org/miraty/qr
+*/
 @font-face {
   font-family: "ubuntu-dl";
   src: url('ubuntu-dl.ttf');
 }
 
 #redondance, #marge, #texte, #taille {
-  appearance: none;
   border: 2px @bordure solid;
   border-radius: 7px;
   font-size: 20px;
@@ -138,11 +140,11 @@ h1, #logo {
 
   html {
     margin: 10px;
-    width: 400px;
+    width: 100%;
   }
 
   #texte {
-    width: 400px;
+    width: 90%;
   }
 
   h1 {
@@ -156,8 +158,8 @@ h1, #logo {
 }
 
 ::placeholder {
-  color: @texte;
-  opacity: 0.6;
+  color: fadeout(@texte, 50%);
+  opacity: 1;
 }
 
 /* Infobulle */
@@ -175,7 +177,7 @@ h1, #logo {
   position: absolute;
   transform: scale(0) rotate(-12deg);
   color: #FFFFFF;
-  background: rgba(0,0,0,.9);
+  background: rgba(0,0,0,1);
   padding: 15px;
   border-radius: 3px;
   box-shadow: 0 0 2px rgba(0,0,0,.5);
