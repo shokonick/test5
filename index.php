@@ -27,6 +27,7 @@
     <link rel="icon" type="image/png" href="favicons/<?php echo $theme; ?>-512.png" sizes="512x512"/>
     <meta name="theme-color" content="<?php echo $couleurPrincipale; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="manifest.php">
     <link rel="search" type="application/opensearchdescription+xml" title="Générer un code QR" href="opensearch.php" />
     <style>
     <?php require "lessphp/lessc.inc.php";
@@ -39,9 +40,8 @@
 
   <?php if (!isset($_GET["texte"])) { // Si OpenSearch n'a pas été utilisé ?>
 
-
       <header>
-        <a href=""><img id="logo" src="<?php echo $theme; ?>.png" alt="Logo <?php echo $theme; ?>"> <h1>Générateur de codes QR</h1></a>
+        <a href="<?php echo $cheminInstall; ?>"><img id="logo" src="favicons/<?php echo $theme; ?>-48.png" alt="Logo de code QR"> <h1>Générateur de codes QR</h1></a>
       </header>
       <form method="post">
 
@@ -168,6 +168,12 @@
 
       QRcode::png($_GET['texte'], $cheminImage, "H", 4, 2); ?>
 
+      <header>
+        <a href="<?php echo $cheminInstall; ?>"><img id="logo" src="favicons/<?php echo $theme; ?>-48.png" alt="Logo <?php echo $theme; ?>"> <h1>Générateur de codes QR</h1></a>
+      </header>
+
+      <br>
+
       <div class="centrer">
         <a href="<?php echo $cheminImage; ?>" class="bouton" download="<?php echo htmlspecialchars($_GET['texte']); ?>.png">Télécharger ce code QR</a>
       </div>
@@ -175,6 +181,10 @@
       <div class="centrer">
         <a href="<?php echo $cheminImage; ?>"><img alt='Un code QR contenant "<?php echo htmlspecialchars($_GET['texte']); ?>"' id="codeQR" src="<?php echo $cheminImage; ?>"/></a>
       </div>
+
+      <footer>
+        <a class="lienCodeSource" href="https://code.antopie.org/miraty/qr">Code source</a>
+      </footer>
 
 
     <?php } } ?>
