@@ -3,7 +3,7 @@
 // Paramètres :
 supprimerVieuxQR(60 * 60 * 24 * 7); // Indique le temps en secondes après lequel le code qr sera supprimé quand qq chargera la page
 $theme = "defaut"; // defaut ou parinux
-$cheminInstall = "https://example.org"; // L'adresse racine depuis laquelle le générateur sera accessible (avec le slash final)
+$cheminInstall = "https://example.org/"; // L'adresse racine complète depuis laquelle le générateur sera accessible (avec le slash final)
 
 
 
