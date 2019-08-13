@@ -1,34 +1,9 @@
-/*
-  Code publié sous licence Apache 2.0
-  https://code.antopie.org/miraty/qr
-*/
-@font-face {
-  font-family: "ubuntu-dl";
-  src: url('ubuntu-dl.ttf');
+* {
+  font-family: "Ubuntu", sans-serif;
 }
 
-#redondance, #marge, #texte, #taille {
-  border: 2px @bordure solid;
-  border-radius: 7px;
-  font-size: 20px;
-  padding-left: 10px;
-  font-weight: normal;
-  color: @texteForm;
-  margin-top: 8px;
-  transition: border 0.2s linear;
-}
-
-#redondance, #taille, #marge {
-  background-color: @fondChamp;
-  width: 250px;
-  height: 40px;
-}
-
-#texte {
-  background-color: @fondChampTexte;
-  color: @texteForm;
-  padding-top: 6px;
-  width: 500px;
+h1 {
+  font-weight: 700;
 }
 
 #menusDeroulants {
@@ -47,30 +22,14 @@
   text-align: center;
 }
 
-footer {
-  position: absolute;
+.topRight {
+  position: fixed;
   top: 5px;
   right: 5px;
 }
 
-input[type=submit], .bouton {
-  background-color: @fondChamp;
-  border: 2px @bordure solid;
-  color: @texteForm;
+.bouton {
   padding: 3px 10px 3px 10px;
-  border-radius: 3px;
-  font-size: 1.2em;
-  text-decoration: none;
-  display: inline;
-  transition: border 0.2s linear;
-}
-
-#redondance:hover, #marge:hover, #texte:hover, #taille:hover, input[type=submit]:hover, .bouton:hover {
-  border: 2px @bordureHover solid;
-}
-
-#texte:focus, input[type=submit]:focus, .bouton:focus {
-  border: 2px @bordureFocus solid;
 }
 
 form {
@@ -81,17 +40,16 @@ form {
   margin: 0px;
 }
 
-html {
+html, body {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
   background-color: @fond;
   color: @texte;
-  font-family: "ubuntu", "ubuntu-dl";
   font-weight: normal;
   font-size: 1em;
 
-  & a {
+  & h1 {
     color: @texte;
     text-decoration: none;
   }
@@ -100,33 +58,37 @@ html {
 
 label {
   font-size: 20px;
-  margin-bottom: 100px;
+  height: 60px;
 }
 
-
-.lienCodeSource {
+.topRight {
   color: @texteLienCodeSource;
   font-size: 12px;
   margin-bottom: -20px;
   text-align: right;
+  transition: color 0.2s;
+
+  &:hover {
+    color: lighten(@texteLienCodeSource, 10%);
+  }
 }
 
 header {
   text-align: center;
   padding: 0px;
   margin: 0px;
-
+  height: 48px;
 }
 
 header > a {
   display: flex;
+  flex-direction: row;
 }
 
 h1, #logo {
   margin: auto;
   font-size: 35px;
 }
-
 
 .param {
   padding: 10px;
@@ -155,21 +117,136 @@ h1, #logo {
 
 #logo {
   width: 48px;
+  height: 48px;
 }
 
-::placeholder {
-  color: fadeout(@texte, 50%);
+.conteneurInputColor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 250px;
+}
+
+::selection {
+  color: @fond;
+  background-color: @texte;
+}
+
+:link {
+  text-decoration: none;
+}
+
+#couleurs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.info {
+  color: grey;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+
+  & a {
+    color: grey;
+  }
+
+  &:hover, &:hover a {
+    color: @texte;
+  }
+
+}
+
+/* Inputs */
+
+#redondance, #marge, #texte, #taille, input[type=color], input[type=submit], .bouton {
+  border: 2px @bordure solid;
+  border-radius: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+  font-weight: normal;
+  color: @texteForm;
+  transition: border 0.1s linear;
+  background-color: @fondChamp;
+  margin-top: 8px;
+
+  &:hover {
+    border: 2px @bordureHover solid;
+  }
+
+  &:focus {
+    border: 2px @bordureFocus solid;
+  }
+}
+
+#redondance, #taille, #marge {
+  background-color: @fondChamp;
+  width: 250px;
+  height: 40px;
+}
+
+#texte {
+  background-color: @fondChampTexte;
+  color: @texteForm;
+  padding-top: 6px;
+  width: 500px;
+}
+
+#redondance:hover, #marge:hover, #texte:hover, #taille:hover, input[type=submit]:hover, .bouton:hover {
+
+}
+
+#texte:focus, input[type=submit]:focus, .bouton:focus {
+
+}
+
+#texte::placeholder {
+  color: lighten(@fondChampTexte, 40%);
   opacity: 1;
-  font-family: "ubuntu", "ubuntu-dl";
+  font-family: "Ubuntu";
   font-weight: normal;
   font-size: 1em;
 }
 
+input[type=color] {
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+  background-color: @fondChamp;
+  border: 2px @bordure solid;
+}
+
+input[type=color]:hover {
+  border: 2px @bordureHover solid;
+}
+
+input[type=color]:focus {
+  border: 2px @bordureFocus solid;
+}
+
 /* Infobulle */
+
+svg {
+  width: 18px;
+  height: 18px;
+}
+
+.boutonAide {
+  height: 18px;
+  width: 18px;
+  color: @texte;
+  cursor: help;
+}
+
+.contenuAide {
+  max-width: 500px;
+}
 
 .conteneurAide {
   color: #ccc;
-  text-shadow: 0 -1px 0 black;
 }
 
 .conteneurAide:hover, .conteneurAide:focus {
