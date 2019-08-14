@@ -1,4 +1,4 @@
-# ![Logo](favicons/defaut-32.png) Générateur de codes QR
+# ![Logo](themes/defaut/favicons/32.png) Générateur de codes QR
 
 ## Présentation
 
@@ -8,11 +8,29 @@ Une interface Web pour générer des codes QR en PHP.
 
 Une instance de ce service est disponible à l'adresse [https://qr.antopie.org](https://qr.antopie.org).
 
+## Fonctionnement
+
+Le Générateur de codes QR inclus un plugin [OpenSearch](https://developer.mozilla.org/docs/Web/OpenSearch), ce qui permet de l'ajouter comme moteur de recherche dans Firefox.
+Vous pouvez ainsi générer un code QR directement depuis la barre de recherche.
+
+Un [WebManifest](https://developer.mozilla.org/docs/Web/Manifest) est également inclus, ce qui permet de mieux l'intégrer au système via Fennec (Firefox Android) ou Chromium.
+
+
 ## Installation
 
-Je développe directement dans master, donc en production téléchargez plutôt une version stable dans [l'onglet Versions](https://code.antopie.org/miraty/qr/releases) ou avec le tag.
+### Générique
+
+Je développe directement dans master, donc en production téléchargez plutôt une version stable dans [l'onglet Versions](https://code.antopie.org/miraty/qr/releases).
 
 Placez ce code source dans un serveur Web avec PHP, tout simplement.
+
+### YunoHost
+
+J'ai créé un [paquet](https://code.antopie.org/miraty/qr_ynh/) [YunoHost](https://yunohost.org/).
+
+```
+sudo yunohost app install https://code.antopie.org/miraty/qr_ynh/
+```
 
 ## Thèmes
 
@@ -29,7 +47,7 @@ Par défaut, deux thèmes sont proposés :
 
 * Copiez themes/defaut vers themes/[nom de votre thème]
 * Depuis ce nouveau dossier, créez les icônes dans favicons/[longueur du côté de l'icone].png
-* Complétez theme.php en fonctions des favicons créees précédemment et des couleurs CSS voulues dans l'interface 
+* Complétez theme.php en fonctions des favicons créées précédemment et des couleurs CSS voulues dans l'interface
 
 ## Bibliothèques tierces
 
