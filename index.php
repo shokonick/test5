@@ -1,17 +1,4 @@
-<?php require "options.inc.php";
-$locale = "fr_FR";
-
-    if (defined('LC_MESSAGES')) {
-        setlocale(LC_MESSAGES, $locale); // Linux
-        bindtextdomain("messages", "./locale");
-    } else {
-        putenv("LC_ALL={$locale}"); // windows
-        bindtextdomain("messages", "./locale");
-    }
-
-
-    textdomain("messages");
-?>
+<?php require "options.inc.php"; ?>
 <!--
    _____                                  _                              _                            _                _____ ______
   |  __ \   //           //              | |                            | |                          | |              |  _  || ___ \
@@ -46,7 +33,7 @@ $locale = "fr_FR";
         $less->checkedCompile("style.less", "style.css");
         echo file_get_contents("ubuntu/ubuntu.min.css") . file_get_contents("style.css"); // Inclus toutes les CSS dans le document HTML (= moins de requêtes HTTP)
 
-      } else if ($env == "dev") { // En développement : compile style.less a chaque chargement de page
+      } else if ($env == "dev") { // En développement : compile style.less à chaque chargement de page
         echo file_get_contents("ubuntu/ubuntu.min.css") . $less->compileFile("style.less");
 
       } else {
@@ -64,7 +51,7 @@ $locale = "fr_FR";
     <body lang="fr">
 
       <header>
-        <a href="<?php echo $cheminInstall; ?>"><img id="logo" src="themes/<?php echo $theme; ?>/favicons/48.png" alt="Logo de code QR"> <h1><?php echo gettext("thisisatest"); ?>Générateur de codes QR</h1></a>
+        <a href="<?php echo $cheminInstall; ?>"><img id="logo" src="themes/<?php echo $theme; ?>/favicons/48.png" alt="Logo de code QR"> <h1>Générateur de codes QR</h1></a>
       </header>
 
   <?php if (!isset($_GET["texte"])) { // Si OpenSearch n'a pas été utilisé ?>
@@ -72,7 +59,7 @@ $locale = "fr_FR";
       <form method="post">
 
         <div class="param">
-          <label for="texte"><?php echo gettext("ieatbanana"); ?>Texte à encoder</label>
+          <label for="texte">Texte à encoder</label>
           <span class="conteneurAide">
             <span class="boutonAide"><?php include "aide.svg"; ?></span>
             <span class="contenuAide">Vous pouvez encoder ce que vous voulez sous forme de texte.</span>
