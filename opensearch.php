@@ -10,6 +10,6 @@
   ?>
   <Language>fr</Language>
   <InputEncoding>UTF-8</InputEncoding>
-  <Url type="text/html" template="<?php echo $cheminInstall; ?>?texte={searchTerms}"/>
+  <Url type="text/html" template="<?php echo $cheminInstall; ?>&#63;text={searchTerms}&amp;redondancy=<?= if (isset())$_GET['redondancy'] ?>&amp;margin=<?= $_GET['margin'] ?>&amp;size=<?= $_GET['size'] ?>&amp;bgColor=<?= urlencode($_GET['bgColor']) ?>&amp;mainColor=<?= urlencode($_GET['mainColor']) ?>"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="<?php echo $cheminInstall; ?>opensearch.php" />
 </OpenSearchDescription>

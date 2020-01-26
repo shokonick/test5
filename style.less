@@ -1,13 +1,50 @@
+/*
+
+Ce fichier fait partie de LibreQR.
+
+  LibreQR est un logiciel libre ; vous pouvez le redistribuer ou le modifier
+  suivant les termes de la GNU Affero General Public License
+  telle que publiée par la Free Software Foundation ; soit la version 3
+  de la licence, soit (à votre gré) toute version ultérieure.
+
+  LibreQR est distribué dans l'espoir qu'il sera utile,
+  mais SANS AUCUNE GARANTIE ; sans même la garantie tacite de
+  QUALITÉ MARCHANDE ou d'ADÉQUATION à UN BUT PARTICULIER.
+  Consultez la GNU Affero General Public License pour plus de détails.
+
+  Vous devez avoir reçu une copie de la GNU Affero General Public License
+  en même temps que LibreQR ; si ce n'est pas le cas,
+  consultez <https://www.gnu.org/licenses/>.
+
+*/
+
 * {
   font-family: "Ubuntu", sans-serif;
+  scrollbar-color: @text @bg;
+  scrollbar-width: auto;
+}
+
+a {
+  color: @text;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 h1 {
-  font-weight: 700;
+  font-weight: 500;
+}
+
+#firstWrapper {
+  display: flex;
+  flex-direction: row;
 }
 
 #menusDeroulants {
   text-align: center;
+  margin-left: 20px;
 }
 
 #codeQR {
@@ -22,35 +59,35 @@ h1 {
   text-align: center;
 }
 
-.topRight {
-  position: fixed;
-  top: 5px;
-  right: 5px;
-}
-
 .bouton {
   padding: 3px 10px 3px 10px;
+  text-decoration: none;
 }
 
 form {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.center {
   display: flex;
   flex-direction: column;
-  display: inline;
-  padding: 0px;
-  margin: 0px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 814px;
 }
 
 html, body {
-  width: 500px;
   margin-left: auto;
   margin-right: auto;
-  background-color: @fond;
-  color: @texte;
+  background-color: @bg;
+  color: @text;
   font-weight: normal;
   font-size: 1em;
 
   & h1 {
-    color: @texte;
+    color: @text;
     text-decoration: none;
   }
 
@@ -58,19 +95,6 @@ html, body {
 
 label {
   font-size: 20px;
-  height: 60px;
-}
-
-.topRight {
-  color: @texteLienCodeSource;
-  font-size: 12px;
-  margin-bottom: -20px;
-  text-align: right;
-  transition: color 0.2s;
-
-  &:hover {
-    color: lighten(@texteLienCodeSource, 10%);
-  }
 }
 
 header {
@@ -81,13 +105,24 @@ header {
 }
 
 header > a {
+  text-decoration: none;
   display: flex;
   flex-direction: row;
 }
 
 h1, #logo {
-  margin: auto;
+  margin: 0px;
   font-size: 35px;
+}
+
+h1 {
+  padding: auto;
+  margin-left: 10px;
+}
+
+#titre {
+  text-align: center;
+  justify-content: center;
 }
 
 .param {
@@ -96,23 +131,6 @@ h1, #logo {
   margin-left: 0px;
   padding-right: 0px;
   margin-right: 0px;
-}
-
-@media (max-width: 640px) { // Version mobile
-
-  html {
-    margin: 10px;
-    width: 100%;
-  }
-
-  #texte {
-    width: 90%;
-  }
-
-  h1 {
-    font-size: 25px;
-  }
-
 }
 
 #logo {
@@ -124,16 +142,11 @@ h1, #logo {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 250px;
 }
 
 ::selection {
-  color: @fond;
-  background-color: @texte;
-}
-
-:link {
-  text-decoration: none;
+  color: @bg;
+  background-color: @text;
 }
 
 #couleurs {
@@ -141,90 +154,171 @@ h1, #logo {
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
+
+  & .param {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+footer, .info {
+  color: @secondaryText;
+  text-align: left;
+  transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
+  position: fixed;
+  width: 400px;
+
+  & a:link {
+    transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
+    color: @secondaryText;
+    text-decoration: underline;
+  }
+
+  &:hover, &:hover a:link {
+    color: @text;
+  }
+
+}
+
+footer {
+  font-size: 14px;
+  bottom: 20px;
+  left: 20px;
 }
 
 .info {
-  color: grey;
-  position: absolute;
+  font-size: 16px;
   bottom: 20px;
   right: 20px;
-  width: 300px;
 
-  & a {
-    color: grey;
+  & strong {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 850px) { // Version écran moyen
+
+  footer, .info {
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    margin: 0px;
+    font-size: 20px;
   }
 
-  &:hover, &:hover a {
-    color: @texte;
+  .info {
+    color: @text;
+    margin-bottom: 20px;
+
+    & a:link {
+      color: @text;
+    }
+  }
+
+  #firstWrapper {
+    flex-direction: column;
   }
 
 }
 
+@media (max-width: 500px) { // Version mobile
+
+  #couleurs {
+    flex-direction: column;
+  }
+
+  .center {
+    width: auto;
+  }
+
+  html, body {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 28px;
+    padding-top: 6px;
+  }
+
+}
+
+@media (max-width: 415px) {
+
+  h1 {
+    padding: 0px;
+  }
+
+
+}
 /* Inputs */
 
-#redondance, #marge, #texte, #taille, input[type=color], input[type=submit], .bouton {
-  border: 2px @bordure solid;
+#redondancy, #margin, #text, #size, input[type=color], input[type=submit], .bouton {
+  border: 2px @border solid;
   border-radius: 10px;
   font-size: 20px;
   padding-left: 10px;
   font-weight: normal;
-  color: @texteForm;
+  color: @text;
   transition: border 0.1s linear;
-  background-color: @fondChamp;
+  background-color: @bgField;
   margin-top: 8px;
 
   &:hover {
-    border: 2px @bordureHover solid;
+    border: 2px @borderHover solid;
   }
 
   &:focus {
-    border: 2px @bordureFocus solid;
+    border: 2px @borderFocus solid;
+    outline: none;
   }
 }
 
-#redondance, #taille, #marge {
-  background-color: @fondChamp;
+#redondancy, #size, #margin {
+  background-color: @bgField;
   width: 250px;
   height: 40px;
 }
 
-#texte {
-  background-color: @fondChampTexte;
-  color: @texteForm;
-  padding-top: 6px;
+#text {
+  background-color: @bgTextField;
+  color: @text;
+  padding: 10px;
+  margin: 10px;
   width: 500px;
+  scrollbar-color: @text @bgTextField;
+  scrollbar-width: auto;
+
+  @media (max-width: 500px) {
+    width: 85%;
+  }
 }
 
-#redondance:hover, #marge:hover, #texte:hover, #taille:hover, input[type=submit]:hover, .bouton:hover {
-
+input[type=submit] {
+  font-size: 34px;
+  padding: 10px;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
-#texte:focus, input[type=submit]:focus, .bouton:focus {
-
-}
-
-#texte::placeholder {
-  color: lighten(@fondChampTexte, 40%);
+#text::placeholder {
+  color: lighten(@bgTextField, 40%);
   opacity: 1;
-  font-family: "Ubuntu";
+  font-family: "Ubuntu", sans-serif;
   font-weight: normal;
   font-size: 1em;
 }
 
 input[type=color] {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 84px;
   padding: 5px;
-  background-color: @fondChamp;
-  border: 2px @bordure solid;
-}
-
-input[type=color]:hover {
-  border: 2px @bordureHover solid;
-}
-
-input[type=color]:focus {
-  border: 2px @bordureFocus solid;
+  border: 2px @border solid;
 }
 
 /* Infobulle */
@@ -235,44 +329,36 @@ svg {
 }
 
 .boutonAide {
-  height: 18px;
-  width: 18px;
-  color: @texte;
+  height: 0px;
+  width: 0px;
+  color: @text;
   cursor: help;
 }
 
 .contenuAide {
   max-width: 500px;
-}
 
-.conteneurAide {
-  color: #ccc;
-}
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 
-.conteneurAide:hover, .conteneurAide:focus {
-  background: rgba(0,0,0,.4);
 }
 
 .conteneurAide .contenuAide {
   position: absolute;
   transform: scale(0) rotate(-12deg);
-  color: #FFFFFF;
-  background: rgba(0,0,0,1);
+  color: @text;
+  background: @bgHelp;
   padding: 15px;
   border-radius: 3px;
-  box-shadow: 0 0 2px rgba(0,0,0,.5);
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
   margin-top: 23px;
   margin-left: -35px;
   transition: all .25s;
   opacity: 0;
 }
 
-.conteneurAide:hover .contenuAide, .conteneurAide:focus .contenuAide {
+.conteneurAide:hover .contenuAide, .conteneurAide:focus-within .contenuAide {
   transform: scale(1) rotate(0);
   opacity: 1;
-}
-
-.conteneurAide, .conteneurAide:hover {
-  background-color: @fond;
-  text-decoration: none;
 }

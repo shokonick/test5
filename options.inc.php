@@ -1,9 +1,10 @@
 <?php
 
 // ----- Paramètres -----
+
 supprimerVieuxQR(60 * 60 * 24 * 7); // Indique le temps en secondes après lequel le code qr sera supprimé quand quelqu'un chargera la page
-$theme = "defaut"; // defaut ou parinux
-$env = "dev"; // dev ou prod
+
+$theme = "dark"; // dark ou parinux
 
 // ----- Trucs nécessaires partout -----
 
@@ -14,11 +15,10 @@ $env = "dev"; // dev ou prod
     $protocole = "http://";
   }
 
-  $cheminInstall = $protocole . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // L'adresse racine complète depuis laquelle le générateur sera accessible (avec le slash final)
+  $cheminInstall = $protocole . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-
-  $cheminInstall = preg_replace('#(manifest|opensearch|index).php$#i', '', $cheminInstall);
   $cheminInstall = preg_replace('#\?.*$#', '', $cheminInstall);
+  $cheminInstall = preg_replace('#(manifest|opensearch|index).php$#i', '', $cheminInstall);
 }
 
 require "lessphp/lessc.inc.php";
@@ -48,6 +48,3 @@ function supprimerVieuxQR($tempsDeSuppression) {
     }
   }
 }
-
-
-?>
