@@ -57,7 +57,7 @@ Par défaut, trois thèmes sont proposés :
 php themes/resize.php [nom de votre thème]
 ```
 
-Cela nécessitera d'avoir installé [ImageMagick](https://imagemagick.org)  et 
+Cela nécessitera d'avoir installé [ImageMagick](https://imagemagick.org)  et
 [pngquant](https://pngquant.org).
 
 ## Bibliothèques tierces

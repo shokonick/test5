@@ -4,7 +4,7 @@
 
 deleteOldQR(60 * 60 * 24 * 7); // Temps en secondes après lequel le code QR sera supprimé lors du chargement d'un page
 
-$theme = "parinux"; // dark, light ou parinux
+$theme = "dark"; // dark, light ou parinux
 
 $fileNameLenght = 32; // Longueur du nom du fichier du code QR
 
