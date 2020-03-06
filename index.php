@@ -264,24 +264,8 @@ if (badQuery()) {
 
     if (!empty($_GET['txt']) AND !empty($_GET['size']) AND !empty($_GET['redondancy']) AND !empty($_GET['margin']) AND !empty($_GET['bgColor']) AND !empty($_GET['mainColor'])) {
       if (isset($_GET['txt']) AND isset($_GET['size']) AND isset($_GET['redondancy']) AND isset($_GET['margin']) AND isset($_GET['bgColor']) AND isset($_GET['mainColor'])) {
-        require "phpqrcode.php"; ?>
 
-                    <div class="param">
-                      <label for="margin">Taille de la marge</label>
-                      <span class="conteneurAide">
-                        <span class="boutonAide" tabindex="0"><?php include "aide.svg"; ?></span>
-                        <span class="contenuAide">Nombre de pixels des bandes blanches autour du code QR.</span>
-                      </span>
-                      <br>
-                      <select id="margin" name="margin">
-                        <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "0")) {echo 'selected="" ';} ?>value="0">0</option>
-                        <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "1")) {echo 'selected="" ';} ?>value="1">1</option>
-                        <option <?php if ((isset($_GET['margin']) AND ($_GET['margin'] == "2")) OR (!isset($_GET['margin']) OR empty($_GET['margin']))) {echo 'selected="" ';} ?>value="2">2 - par défaut</option>
-                        <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "3")) {echo 'selected="" ';} ?>value="3">3</option>
-                        <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "5")) {echo 'selected="" ';} ?>value="5">5</option>
-                        <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "10")) {echo 'selected="" ';} ?>value="10">10</option>
-                      </select>
-                    </div>
+        require "phpqrcode.php";
 
         $cheminImage = "temp/" . generateRandomString($fileNameLenght) . ".png";
         QRcode::png($_GET['txt'], $cheminImage, $_GET['redondancy'], $_GET['size'], $_GET['margin'], false, hexdec($_GET['bgColor']), hexdec($_GET['mainColor']));
