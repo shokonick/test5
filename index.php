@@ -112,7 +112,7 @@ if (badQuery()) {
     // If style.min.css exists
     if (file_exists("style.min.css"))
       // And if it's older than the theme config
-      if (filemtime("themes/" . $theme . "/theme.php") > filemtime("style.min.css"))
+      if (filemtime("themes/" . $theme . "/theme.php") < filemtime("style.min.css"))
         // Then delete it
         unlink("style.min.css");
 
