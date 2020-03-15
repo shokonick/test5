@@ -151,7 +151,7 @@ if (badQuery()) {
           <div class="param">
             <label for="txt">Texte à encoder</label>
             <span class="conteneurAide">
-              <span class="boutonAide" tabindex="0"><?php include "aide.svg"; ?></span>
+              <span class="boutonAide" tabindex="0"><?php include "help.svg.php"; ?></span>
               <span class="contenuAide">
                 Vous pouvez encoder ce que vous voulez sous forme de texte.<br>
                 Les logiciels qui décodent ces codes QR pourraient proposer de les ouvrir avec un logiciel dédié, en fonction de leur <a href="https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI">schéma d'URI</a>.<br><br>
@@ -180,7 +180,7 @@ if (badQuery()) {
             <div class="param">
               <label for="redondancy">Taux de redondance</label>
               <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><?php include "aide.svg"; ?></span>
+                <span class="boutonAide" tabindex="0"><?php include "help.svg.php"; ?></span>
                 <span class="contenuAide">La redondance est le "doublement" des informations dans le code QR afin de corriger les erreurs lors du décodage. Un taux plus élevé produira un code QR plus grand, mais aura plus de chance d'être décodé correctement.</span>
               </span>
               <br>
@@ -195,7 +195,7 @@ if (badQuery()) {
             <div class="param">
               <label for="margin">Taille de la marge</label>
               <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><?php include "aide.svg"; ?></span>
+                <span class="boutonAide" tabindex="0"><?php include "help.svg.php"; ?></span>
                 <span class="contenuAide">Nombre de pixels des bandes blanches autour du code QR.</span>
               </span>
               <br>
@@ -214,7 +214,7 @@ if (badQuery()) {
             <div class="param">
               <label for="size">Taille de l'image</label>
               <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><?php include "aide.svg"; ?></span>
+                <span class="boutonAide" tabindex="0"><?php include "help.svg.php"; ?></span>
                 <span class="contenuAide">Par combien les dimensions de l'image seront-elles multipliées ?</span>
               </span>
               <br>
