@@ -136,7 +136,7 @@ if (badQuery()) {
 
       <header>
         <a id="lienTitres" href="./">
-          <img id="logo" src="themes/<?php echo $theme; ?>/icons/64.png" alt="Code QR stylisé">
+          <img id="logo" src="themes/<?php echo $theme; ?>/icons/128.png" alt="Code QR stylisé">
           <div id="titres">
             <h1>LibreQR</h1>
             <h2>Générateur de codes QR</h2>

@@ -4,7 +4,7 @@
 	"lang": "fr",
 	"name": "LibreQR",
 	"short_name": "LibreQR",
-	"description": "Générer un code QR rapidement",
+	"description": "Générer un code QR",
 	"start_url": "<?php echo $instPath; ?>",
 	"scope": "<?php echo $instPath; ?>",
 	"display": "standalone",

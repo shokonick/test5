@@ -110,7 +110,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  padding: auto;
   font-size: 33px;
 }
 
@@ -128,11 +127,6 @@ h2 {
 
 #showOnlyQR {
   margin-top: 30px;
-}
-
-h1 {
-  padding: auto;
-  margin-left: 10px;
 }
 
 #titre {
@@ -215,7 +209,6 @@ footer {
     padding-bottom: 10px;
   }
 }
-
 
 /* Inputs */
 
@@ -311,9 +304,11 @@ svg {
   text-align: left;
 
   @media (max-width: 500px) {
-    width: 300px;
+    position: fixed;
+    margin: 5px;
+    left: 0px;
+    top: 0px;
   }
-
 }
 
 .conteneurAide:hover .contenuAide, .conteneurAide:focus-within .contenuAide {
@@ -342,14 +337,11 @@ svg {
     font-size: 20px;
   }
 
-  footer {
-    margin-top: 50px;
-  }
-
   #info {
     color: @text;
     margin-bottom: 20px;
     padding-top: 30px;
+    font-size: 20px;
 
     & a:link {
       color: @text;
