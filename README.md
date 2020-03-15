@@ -1,4 +1,4 @@
-# ![](themes/dark/icons/64.png) LibreQR
+# ![](themes/dark/icons/32.png) LibreQR
 
 ## Présentation
 
