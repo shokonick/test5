@@ -253,7 +253,6 @@ if (badQuery()) {
           </div>
         </div>
 
-        <br>
         <div class="centrer">
           <input class="bouton" type="submit" value="Générer" />
         </div>

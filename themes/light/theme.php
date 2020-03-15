@@ -9,9 +9,7 @@ $variablesTheme = array(
   "bgHelp" => "#ececec",
   "border" => "#65666b",
   "borderHover" => "#46484e",
-  "borderFocus" => "#2D2F34",
-  "text" => "#2D2F34",
+  "borderFocus" => "#2a2a2a",
+  "text" => "#2a2a2a",
   "secondaryText" => "#868686"
 ); // Définit les couleurs du thème
-
-?>

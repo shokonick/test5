@@ -13,5 +13,3 @@ $variablesTheme = array(
   "text" => "white",
   "secondaryText" => "#868686"
 ); // Définit les couleurs du thème
-
-?>
