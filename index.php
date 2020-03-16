@@ -8,7 +8,7 @@
 
 LibreQR version 1.2.0
 Créé par Miraty et diffusé sous AGPLv3+
-Code source : https://code.antopie.org/miraty/qr
+Code source : https://code.antopie.org/miraty/libreqr
 
 Ce fichier fait partie de LibreQR.
 
@@ -292,7 +292,7 @@ if (badQuery()) {
       </section>
 
       <footer class="metaText">
-        LibreQR 1.2.0 est un logiciel libre dont le <a href="https://code.antopie.org/miraty/qr/">code source</a> est disponible
+        LibreQR 1.2.0 est un logiciel libre dont le <a href="https://code.antopie.org/miraty/libreqr/">code source</a> est disponible
         selon les termes de l'<abbr title="GNU Affero General Public License version 3 ou toute version ultérieure"><a href="LICENSE.html">AGPLv3</a>+</abbr>.
       </footer>
 
