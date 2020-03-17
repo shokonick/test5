@@ -27,5 +27,5 @@ if (php_sapi_name() == "cli") {
   }
 
 } else {
-  echo "Available only via CLI for security reasons. Use 'php themes/resize.php'";
+  echo "Available only via CLI for security reasons. Use 'php themes/resize.php <theme name>'";
 }
