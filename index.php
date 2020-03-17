@@ -105,20 +105,18 @@ if (badQuery()) {
     <link rel="manifest" href="manifest.php">
     <link rel="search" type="application/opensearchdescription+xml" title="Générer un code QR" href="opensearch.php&#63;redondancy=<?= $_GET['redondancy'] ?>&amp;margin=<?= $_GET['margin'] ?>&amp;size=<?= $_GET['size'] ?>&amp;bgColor=<?= urlencode($_GET['bgColor']) ?>&amp;mainColor=<?= urlencode($_GET['mainColor']) ?>">
     <?php
-    require "lessphp/lessc.inc.php";
-    $less = new lessc;
-    $less->setVariables($variablesTheme); // Rends ces couleurs utilisables dans style.less
-
     // If style.min.css exists
     if (file_exists("style.min.css"))
-      // And if it's older than the theme config
-      if (filemtime("themes/" . $theme . "/theme.php") < filemtime("style.min.css"))
+      // And if it's older than theme.php or config.inc.php (so not up to date)
+      if (filemtime("themes/" . $theme . "/theme.php") > filemtime("style.min.css") OR filemtime("config.inc.php") > filemtime("style.min.css"))
         // Then delete it
         unlink("style.min.css");
 
-    // Compile, minimise et met en cache style.less dans style.min.css
+    require "lessphp/lessc.inc.php";
+    $less = new lessc;
+    $less->setVariables($variablesTheme); // Rends ces couleurs utilisables dans style.less
     $less->setFormatter("compressed");
-    $less->checkedCompile("style.less", "style.min.css");
+    $less->checkedCompile("style.less", "style.min.css"); // Compile, minimise et met en cache style.less dans style.min.css
     ?>
     <link type="text/css" rel="stylesheet" href="style.min.css">
     <link type="text/css" rel="stylesheet" href="ubuntu/ubuntu.min.css">
