@@ -25,12 +25,12 @@ Placez ce code source dans un serveur Web avec PHP, tout simplement.
 
 ### YunoHost
 
-J'ai créé un [paquet](https://code.antopie.org/miraty/qr_ynh/) pour [YunoHost](https://yunohost.org/).
+J'ai créé [un paquet](https://code.antopie.org/miraty/qr_ynh/) pour [YunoHost](https://yunohost.org/).
 
-Vous pouvez l'installer depuis l'interface d'administration ou avec cette commande :
+Vous pouvez l'installer depuis l'interface Web d'administration ou avec cette commande :
 
 ```
-sudo yunohost app install https://code.antopie.org/miraty/qr_ynh/
+sudo yunohost app install qr
 ```
 
 ## Thèmes
@@ -43,7 +43,7 @@ Par défaut, trois thèmes sont proposés :
 
 * dark, le thème par défaut, sombre. Il est utilisé ici : <https://qr.antopie.org>
 * light, thème clair
-* parinux, un thème bleu, créé pour [Bastet](https://bastet.parinux.org/), le CHATON de [Parinux](https://parinux.org/). Il est utilisé ici : <https://codeqr.parinux.org>
+* parinux, un thème bleu, créé pour [Bastet](https://bastet.parinux.org), le CHATON de [Parinux](https://parinux.org). Il est utilisé ici : <https://codeqr.parinux.org>
 
 ### Créer un thème
 
@@ -60,13 +60,25 @@ php themes/resize.php [nom de votre thème]
 Cela nécessitera d'avoir installé [ImageMagick](https://imagemagick.org)  et
 [pngquant](https://pngquant.org).
 
+## Contribuer
+
+Si vous souhaitez rapporter un bug, vous pouvez ouvrir un ticket sur <https://code.antopie.org/miraty/libreqr/issues> après vous être créé un compte (méthode préférée) ou me contacter d'une autre manière.
+
+## Contact
+
+Si vous voulez me contacter, par exemple pour demander un éclaircissement sur le fonctionnement de LibreQR ou pour signaler un bug, vous pouvez le faire par :
+
+* Matrix : @miraty:matrix.antopie.org
+* courriel : [miraty+libreqr@antopie.org](mailto:miraty+libreqr@antopie.org) (GPG : [B16B 12A8 957B 2EC7 9659 04A6 B82D 15F0 3E67 B2B5](https://miraty.antopie.org/B16B12A8957B2EC7965904A6B82D15F03E67B2B5.asc))
+* le Fédiverse : [@Miraty@oc.todon.fr](https://oc.todon.fr/@Miraty)
+
 ## Bibliothèques tierces
 
 Ce code source inclus :
 
 * [phpqrcode](https://github.com/t0k4rt/phpqrcode) pour générer les codes QR
 * [La police Ubuntu packagée pour le Web](https://github.com/earaujoassis/ubuntu-fontface)
-* [lessphp](http://leafo.net/lessphp) pour compiler le [Less](http://lesscss.org/)
+* [lessphp](http://leafo.net/lessphp) pour compiler le [Less](http://lesscss.org)
 
 ## Licence
 
