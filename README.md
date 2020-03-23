@@ -15,6 +15,8 @@ Vous pouvez ainsi générer un code QR directement depuis la barre de recherche 
 
 Un [WebManifest](https://developer.mozilla.org/docs/Web/Manifest) est également inclus, ce qui permet de mieux l'intégrer au système via Fennec (Firefox Android) ou Chromium.
 
+Les codes QR générés sont placés dans le dossier temp/, nommés avec le nombre de caractères aléatoires indiqué dans config.inc.php (32 par défaut), puis supprimés après le temps indiqué dans config.inc.php (7 jours par défaut).
+
 ## Installation
 
 ### Générique
