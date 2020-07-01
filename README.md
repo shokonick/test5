@@ -59,8 +59,7 @@ Par défaut, trois thèmes sont proposés :
 php themes/resize.php [nom de votre thème]
 ```
 
-Cela nécessitera d'avoir installé [ImageMagick](https://imagemagick.org)  et
-[pngquant](https://pngquant.org).
+Cela nécessitera d'avoir installé [ImageMagick](https://imagemagick.org) et [pngquant](https://pngquant.org).
 
 ## Contribuer
 
@@ -80,7 +79,7 @@ Ce code source inclus :
 
 * [phpqrcode](https://github.com/t0k4rt/phpqrcode) pour générer les codes QR
 * [La police Ubuntu packagée pour le Web](https://github.com/earaujoassis/ubuntu-fontface)
-* [lessphp](http://leafo.net/lessphp) pour compiler le [Less](http://lesscss.org)
+* [lesserphp](https://github.com/MarcusSchwarz/lesserphp) pour compiler le [Less](http://lesscss.org)
 
 ## Licence
 
