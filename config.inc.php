@@ -13,10 +13,16 @@ deleteOldQR(60 * 60 * 24 * 7);
 // FR : Nom du thème (doit être dans le dossier themes)
 $theme = "dark";
 
-// EN: Language used if those wanted by the user are not available
+// EN: Language used if those requested by the user are not available
 // FR : Langue utilisée si celles demandées par l'utilisateurice ne sont pas disponibles
-$locale = "fr"; // fr ou en
+$locale = "en"; // en || fr
 
-$fileNameLenght = 32; // Longueur du nom du fichier du code QR
+// EN: Should the locales requested by the user be ignored?
+// FR : Faut-il ignorer les langues demandées par l'utilisateurice ?
+$forceLocale = false;
 
-//$additionalText = "This LibreQR instance is hosted by <a href='https://foo.bar'>foo</a>.";
+// EN: Lenght of the QR code filename
+// FR : Longueur du nom du fichier du code QR
+$fileNameLenght = 32;
+
+//$customText = "This LibreQR instance is hosted by <a href='https://foo.bar'>foo</a>.";

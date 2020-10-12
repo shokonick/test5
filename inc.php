@@ -2,30 +2,33 @@
 
 require "config.inc.php";
 
-// Defines locale used
-$clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-$clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
-$clientLocales = explode(',', $clientLocales);
-$availableLocales = array('fr', 'en', 'template');
-foreach ($clientLocales as $clientLocale) {
-  if (in_array($clientLocale, $availableLocales)) {
-    $locale = $clientLocale;
-    break;
+// Defines the locale used
+if ($forceLocale == false) {
+  $clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+  $clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
+  $clientLocales = explode(',', $clientLocales);
+  $availableLocales = array('fr', 'en', 'template');
+  foreach ($clientLocales as $clientLocale) {
+    if (in_array($clientLocale, $availableLocales)) {
+      $locale = $clientLocale;
+      break;
+    }
   }
 }
 require "locales/" . $locale . ".php";
 
-// Defines root URL
+// Defines the root URL
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
   $protocol = "https";
 else
   $protocol = "http";
-$instPath = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$instPath = preg_replace('#\?.*$#', '', $instPath);
-$instPath = preg_replace('#(manifest|opensearch|index).php$#i', '', $instPath);
+$rootPath = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$rootPath = preg_replace('#\?.*$#', '', $rootPath);
+$rootPath = preg_replace('#(manifest|opensearch|index).php$#i', '', $rootPath);
 
 require "themes/" . $theme . "/theme.php"; // Load theme
 
+// Used to generate the filename of the QR code
 function generateRandomString($length) {
   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   $charactersLength = strlen($characters);
