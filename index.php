@@ -5,29 +5,19 @@
 | |   | | '_ \| '__/ _ | | | | |_) |
 | |___| | |_) | | |  __| |_| |  _ <
 |_____|_|_.__/|_|  \___|\__\_|_| \_\
+A PHP Web interface for generating QR codes
 
-LibreQR version 1.2.0
-Créé par Miraty et diffusé sous AGPLv3+
-Code source : https://code.antopie.org/miraty/libreqr
+Source code : https://code.antopie.org/miraty/libreqr
 
-Ce fichier fait partie de LibreQR.
+This file is part of LibreQR.
 
-  LibreQR est un logiciel libre ; vous pouvez le redistribuer ou le modifier
-  suivant les termes de la GNU Affero General Public License
-  telle que publiée par la Free Software Foundation ; soit la version 3
-  de la licence, soit (à votre gré) toute version ultérieure.
+  LibreQR is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-  LibreQR est distribué dans l'espoir qu'il sera utile,
-  mais SANS AUCUNE GARANTIE ; sans même la garantie tacite de
-  QUALITÉ MARCHANDE ou d'ADÉQUATION à UN BUT PARTICULIER.
-  Consultez la GNU Affero General Public License pour plus de détails.
+  LibreQR is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-  Vous devez avoir reçu une copie de la GNU Affero General Public License
-  en même temps que LibreQR ; si ce n'est pas le cas,
-  consultez <https://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 -->
-
 <?php
 
 function badQuery() { // Check if browser must be redirected
@@ -93,7 +83,6 @@ if (badQuery()) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="<?= $locale ?>">
   <head>
@@ -149,7 +138,7 @@ if (badQuery()) {
           <div class="param">
             <label for="txt"><?= $loc['label_content'] ?></label>
             <span class="conteneurAide">
-              <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
+              <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
               <span class="contenuAide">
                 <?= $loc['help_content'] ?>
               </span>
@@ -169,7 +158,7 @@ if (badQuery()) {
             <div class="param">
               <label for="redondancy"><?= $loc['label_redondancy'] ?></label>
               <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
+                <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
                 <span class="contenuAide"><?= $loc['help_redondancy'] ?></span>
               </span>
               <br>
@@ -184,7 +173,7 @@ if (badQuery()) {
             <div class="param">
               <label for="margin"><?= $loc['label_margin'] ?></label>
               <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
+                <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
                 <span class="contenuAide"><?= $loc['help_margin'] ?></span>
               </span>
               <br>
@@ -203,7 +192,7 @@ if (badQuery()) {
             <div class="param">
               <label for="size"><?= $loc['label_size'] ?></label>
               <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
+                <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
                 <span class="contenuAide"><?= $loc['help_size'] ?></span>
               </span>
               <br>
@@ -270,27 +259,26 @@ if (badQuery()) {
     }
         ?>
 
+      <div id="metaTexts">
+
+        <section id="info" class="metaText">
+          <?= $loc['metaText_qr'] ?>
+        </section>
+
+        <footer class="metaText">
+          <p>
+            <?= $loc['metaText_legal'] ?>
+          </p>
+          <?php if (isset($customText)) { ?>
+          <br>
+          <p>
+            <?= $customText ?>
+          </p>
+          <?php } ?>
+        </footer>
+
+      </div>
     </main>
-
-    <div id="metaTexts">
-
-      <section id="info" class="metaText">
-        <?= $loc['metaText_qr'] ?>
-      </section>
-
-      <footer class="metaText">
-        <p>
-          <?= $loc['metaText_legal'] ?>
-        </p>
-        <?php if (isset($additionalText)) { ?>
-        <br>
-        <p>
-          <?= $additionalText ?>
-        </p>
-        <?php } ?>
-      </footer>
-
-    </div>
 
   </body>
 </html>
