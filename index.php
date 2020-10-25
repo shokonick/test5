@@ -122,9 +122,9 @@ if (badQuery()) {
     <main>
 
       <header>
-        <a id="lienTitres" href="./">
-          <img id="logo" src="themes/<?php echo $theme; ?>/icons/128.png">
-          <div id="titres">
+        <a id="linkTitles" href="./">
+          <img alt="" id="logo" src="themes/<?php echo $theme; ?>/icons/128.png">
+          <div id="titles">
             <h1>LibreQR</h1>
             <h2><?= $loc['subtitle'] ?></h2>
           </div>
@@ -137,9 +137,9 @@ if (badQuery()) {
 
           <div class="param">
             <label for="txt"><?= $loc['label_content'] ?></label>
-            <span class="conteneurAide">
-              <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-              <span class="contenuAide">
+            <span class="helpContainer">
+              <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+              <span class="helpContent">
                 <?= $loc['help_content'] ?>
               </span>
             </span>
@@ -157,9 +157,9 @@ if (badQuery()) {
 
             <div class="param">
               <label for="redondancy"><?= $loc['label_redondancy'] ?></label>
-              <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-                <span class="contenuAide"><?= $loc['help_redondancy'] ?></span>
+              <span class="helpContainer">
+                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+                <span class="helpContent"><?= $loc['help_redondancy'] ?></span>
               </span>
               <br>
               <select id="redondancy" name="redondancy">
@@ -172,9 +172,9 @@ if (badQuery()) {
 
             <div class="param">
               <label for="margin"><?= $loc['label_margin'] ?></label>
-              <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-                <span class="contenuAide"><?= $loc['help_margin'] ?></span>
+              <span class="helpContainer">
+                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+                <span class="helpContent"><?= $loc['help_margin'] ?></span>
               </span>
               <br>
               <select id="margin" name="margin">
@@ -191,9 +191,9 @@ if (badQuery()) {
 
             <div class="param">
               <label for="size"><?= $loc['label_size'] ?></label>
-              <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-                <span class="contenuAide"><?= $loc['help_size'] ?></span>
+              <span class="helpContainer">
+                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+                <span class="helpContent"><?= $loc['help_size'] ?></span>
               </span>
               <br>
               <select id="size" name="size">
@@ -218,21 +218,21 @@ if (badQuery()) {
 
           <div class="param">
             <label for="bgColor"><?= $loc['label_bgColor'] ?></label>
-            <div class="conteneurInputColor">
+            <div class="inputColorContainer">
                         <input type="color" name="bgColor" id="bgColor" value="<?php if (!empty($_GET['bgColor'])) {echo htmlspecialchars($_GET['bgColor']);} else {echo "#FFFFFF";} ?>">
             </div>
           </div>
 
           <div class="param">
             <label for="mainColor"><?= $loc['label_mainColor'] ?></label>
-            <div class="conteneurInputColor">
+            <div class="inputColorContainer">
               <input type="color" name="mainColor" id="mainColor" value="<?php if (!empty($_GET['mainColor'])) {echo htmlspecialchars($_GET['mainColor']);} else {echo "#000000";} ?>">
             </div>
           </div>
         </div>
 
         <div class="centered">
-          <input class="bouton" type="submit" value="<?= $loc['button_create'] ?>" />
+          <input class="button" type="submit" value="<?= $loc['button_create'] ?>" />
         </div>
 
       </form>
@@ -248,33 +248,33 @@ if (badQuery()) {
         QRcode::png($_GET['txt'], $cheminImage, $_GET['redondancy'], $_GET['size'], $_GET['margin'], false, hexdec($_GET['bgColor']), hexdec($_GET['mainColor']));
         ?>
         <div class="centered">
-          <a href="<?php echo $cheminImage; ?>" class="bouton" download="<?php echo htmlspecialchars($_GET['txt']); ?>.png"><?= $loc['button_download'] ?></a>
+          <a href="<?php echo $cheminImage; ?>" class="button" download="<?php echo htmlspecialchars($_GET['txt']); ?>.png"><?= $loc['button_download'] ?></a>
         </div>
 
         <div class="centered" id="showOnlyQR">
-          <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?php echo $cheminImage; ?>"><img alt='Un code QR contenant "<?php echo htmlspecialchars($_GET['txt']); ?>"' id="qrCode" src="<?php echo $cheminImage; ?>"/></a>
+          <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?php echo $cheminImage; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?php echo htmlspecialchars($_GET['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?php echo $cheminImage; ?>"/></a>
         </div>
         <?php
       }
     }
         ?>
 
-      <div id="metaTexts">
+        <footer>
 
-        <section id="info" class="metaText">
-          <?= $loc['metaText_qr'] ?>
-        </section>
+          <section id="info" class="metaText">
+            <?= $loc['metaText_qr'] ?>
+          </section>
 
-        <footer class="metaText">
-          <p>
-            <?= $loc['metaText_legal'] ?>
-          </p>
-          <?php if (isset($customText)) { ?>
-          <br>
-          <p>
-            <?= $customText ?>
-          </p>
+          <?php if ($customTextEnabled) { ?>
+            <section class="metaText">
+              <?= $customText ?>
+            </section>
           <?php } ?>
+
+          <section class="metaText">
+            <?= $loc['metaText_legal'] ?>
+          </section>
+
         </footer>
 
       </div>

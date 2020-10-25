@@ -1,6 +1,8 @@
 <?php
 $loc = array(
   'subtitle' => "subtitle",
+  'description' => "description",
+
   'label_content' => "label_content",
   'label_redondancy' => "label_redondancy",
   'label_margin' => "label_margin",
@@ -22,6 +24,13 @@ $loc = array(
 
   'title_showOnlyQR' => "title_showOnlyQR",
 
+  'alt_help' => "alt_help",
+  'alt_QR_before' => "alt_QR_before",
+  'alt_QR_after' => "alt_QR_after",
+
   'metaText_qr' => "metaText_qr",
   'metaText_legal' => "metaText_legal",
+
+  'opensearch_description' => "opensearch_description",
+  'opensearch_actionName' => "opensearch_actionName",
 );

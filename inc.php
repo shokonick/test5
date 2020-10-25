@@ -2,7 +2,9 @@
 
 require "config.inc.php";
 
-// Defines the locale used
+$libreqrVersion = "1.3.0-dev";
+
+// Defines the locale to be used
 if ($forceLocale == false) {
   $clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
   $clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
@@ -40,12 +42,10 @@ function generateRandomString($length) {
 }
 
 // Deletes images in temp/ older than the specified time in seconds
-function deleteOldQR($deleteAfter) {
-  $files = array_diff(scandir("temp"), array('..', '.', '.gitkeep'));
-  foreach($files as $file) {
-    // If this actual time (in Posix time) less last modification image date is greater than time asked
-    if ((time() - filemtime("temp/" . $file)) > $deleteAfter) {
-      unlink("temp/" . $file); // Deletes this image
-    }
+$files = array_diff(scandir("temp"), array('..', '.', '.gitkeep'));
+foreach($files as $file) {
+  // If the current time (in Posix time) minus the date of last modification of the file is higher than specified time
+  if ((time() - filemtime("temp/" . $file)) > $timeBeforeDeletion) {
+    unlink("temp/" . $file); // Deletes this image
   }
 }

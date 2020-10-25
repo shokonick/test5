@@ -34,7 +34,7 @@ a {
 }
 
 p {
-  margin: 0px;
+  margin: 10px;
 }
 
 #firstWrapper {
@@ -55,7 +55,7 @@ p {
   text-align: center;
 }
 
-.bouton {
+.button {
   padding: 3px 10px 3px 10px;
   text-decoration: none;
 }
@@ -99,7 +99,7 @@ header {
   height: 64px;
 }
 
-#titres {
+#titles {
   margin-left: 20px;
 }
 
@@ -116,7 +116,7 @@ h2 {
   font-size: 22px;
 }
 
-#lienTitres {
+#linkTitles {
   text-align: left;
   justify-content: center;
   text-decoration: none;
@@ -128,11 +128,6 @@ h2 {
   margin-top: 30px;
 }
 
-#titre {
-  text-align: center;
-  justify-content: center;
-}
-
 .param {
   padding: 10px;
   padding-left: 0px;
@@ -141,7 +136,7 @@ h2 {
   margin-right: 0px;
 }
 
-.conteneurInputColor {
+.inputColorContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -173,33 +168,29 @@ label[for=txt] {
 
 .metaText {
   color: @secondaryText;
-  text-align: left;
   transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
+  padding: 6px;
 
-  & a:link {
+  & a, a:visited {
     transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
     color: @secondaryText;
     text-decoration: underline;
   }
 
-  &:hover, &:hover a:link {
+  &:hover, &:hover a {
     color: @text;
   }
 
 }
 
-#metaTexts {
-  padding-top: 50px;
-}
-
-header, #metaTexts {
-  flex-shrink: 0;
-}
-
 footer {
   font-size: 14px;
   padding-top: 20px;
+  text-align: left;
+}
 
+header, footer {
+  flex-shrink: 0;
 }
 
 #info {
@@ -217,7 +208,7 @@ footer {
 
 /* Inputs */
 
-#redondancy, #margin, #txt, #size, input[type=color], input[type=submit], .bouton {
+#redondancy, #margin, #txt, #size, input[type=color], input[type=submit], .button {
   border: 2px @border solid;
   border-radius: 10px;
   font-size: 20px;
@@ -285,7 +276,7 @@ input[type=color] {
   margin-left: 5px;
 }
 
-.boutonAide {
+.helpButton {
   height: 0px;
   width: 0px;
   color: @secondaryText;
@@ -293,7 +284,7 @@ input[type=color] {
   font-size: 0.8em;
 }
 
-.conteneurAide .contenuAide {
+.helpContainer .helpContent {
   position: absolute;
   transform: scale(0) rotate(-12deg);
   color: @text;
@@ -317,7 +308,7 @@ input[type=color] {
   }
 }
 
-.conteneurAide:hover .contenuAide, .conteneurAide:focus-within .contenuAide {
+.helpContainer:hover .helpContent, .helpContainer:focus-within .helpContent {
   transform: scale(1) rotate(0);
   opacity: 1;
 }

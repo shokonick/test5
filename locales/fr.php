@@ -35,12 +35,16 @@ $loc = array(
 
   'title_showOnlyQR' => "Afficher uniquement ce code QR",
 
+  'alt_help' => "Aide",
+  'alt_QR_before' => "Code QR signifiant « ",
+  'alt_QR_after' => " »",
+
   'metaText_qr' => "
     <h3>Qu'est-ce qu'un code QR ?</h3>
     Un code QR est un code-barres en 2 dimensions dans lequel du texte est inscrit en binaire. Il peut être décodé avec un appareil muni d'un capteur photo et d'un logiciel adéquat.
     <a href='https://fr.wikipedia.org/wiki/Code_QR'>Code QR sur Wikipédia</a>
   ",
-  'metaText_legal' => "LibreQR 1.2.0 est un logiciel libre dont le <a href='https://code.antopie.org/miraty/libreqr/''>code source</a> est disponible selon les termes de l'<abbr title='GNU Affero General Public License version 3 ou toute version ultérieure'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
+  'metaText_legal' => "LibreQR " . $libreqrVersion . " est un logiciel libre dont le <a href='https://code.antopie.org/miraty/libreqr/'>code source</a> est disponible selon les termes de l'<abbr title='GNU Affero General Public License version 3 ou toute version ultérieure'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
 
   'opensearch_description' => "Générez des codes QR depuis votre barre de recherche ou d'adresse",
   'opensearch_actionName' => "Générez des codes QR depuis votre barre de recherche ou d'adresse",
