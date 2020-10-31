@@ -270,21 +270,27 @@ input[type=color] {
 /* Help message */
 
 .helpImg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   margin-bottom: -3px;
-  margin-left: 5px;
+  display: inline-block;
 }
 
 .helpButton {
-  height: 0px;
-  width: 0px;
+  height: 22px;
+  width: 22px;
   color: @secondaryText;
   cursor: help;
   font-size: 0.8em;
+  display: inline-block;
 }
 
-.helpContainer .helpContent {
+.helpContainer {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.helpContent {
   position: absolute;
   transform: scale(0) rotate(-12deg);
   color: @text;
