@@ -11,5 +11,5 @@ $variablesTheme = array(
   "borderHover" => "#808080",
   "borderFocus" => "white",
   "text" => "white",
-  "secondaryText" => "#868686"
+  "secondaryText" => "#bababa"
 ); // Définit les couleurs du thème

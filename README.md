@@ -1,93 +1,101 @@
 # ![](themes/dark/icons/32.png) LibreQR
 
-## Présentation
+[Lire ceci en français](README_fr.md)
 
-Une interface Web pour générer des codes QR en PHP.
+A PHP Web interface for generating QR codes.
 
-## Démo
+## Demo
 
-Une instance de ce service est disponible à l'adresse [https://qr.antopie.org](https://qr.antopie.org).
+A LibreQR instance is available at <https://qr.antopie.org>.
 
-## Fonctionnement
+## How it works
 
-LibreQR inclus un plugin [OpenSearch](https://developer.mozilla.org/docs/Web/OpenSearch), ce qui permet de l'ajouter comme moteur de recherche dans Firefox et de sauvegarder vos paramètres.
-Vous pouvez ainsi générer un code QR directement depuis la barre de recherche avec les réglages de LibreQR utilisés lors de l'ajout comme moteur de recherche.
+LibreQR includes an [OpenSearch](https://developer.mozilla.org/docs/Web/OpenSearch) plugin, which allows to add it as a search engine in Firefox and to save settings.
+You can thus generate a QR code directly from your search bar with the LibreQR's settings used at the time of adding as search engine.
 
-Un [WebManifest](https://developer.mozilla.org/docs/Web/Manifest) est également inclus, ce qui permet de mieux l'intégrer au système via Fennec (Firefox Android) ou Chromium.
+A [WebManifest](https://developer.mozilla.org/docs/Web/Manifest) is also included, which allows better system integration using  Fennec (Firefox Android) ou Chromium.
 
-Les codes QR générés sont placés dans le dossier temp/, nommés avec le nombre de caractères aléatoires indiqué dans config.inc.php (32 par défaut), puis supprimés après le temps indiqué dans config.inc.php (7 jours par défaut).
+QR codes generated are located in the temp/ directory, named with the number of random characters set in config.inc.php (32 by default), and then deleted after the time set in config.inc.php (7 days by default).
+
+See `config.inc.php` for more settings.
 
 ## Installation
 
-### Générique
+### Generic
 
-Je développe directement dans master, donc en production téléchargez plutôt une version stable dans [l'onglet Versions](https://code.antopie.org/miraty/libreqr/releases).
+Just place this source code in a Web server with PHP.
 
-Placez ce code source dans un serveur Web avec PHP, tout simplement.
+`wget https://code.antopie.org/miraty/libreqr/archive/1.2.0.zip`
+
+GD extension is required.
+
+`apt install php7.3-gd`
+
+LibreQR need writing rights on the `temp/` directory.
+
+```
+chown -R www-data:www-data /var/www/libreqr/temp
+chmod -R 600 /var/www/libreqr/temp
+```
 
 ### YunoHost
 
-J'ai créé [un paquet](https://code.antopie.org/miraty/qr_ynh/) pour [YunoHost](https://yunohost.org/).
+There is [a package](https://code.antopie.org/miraty/qr_ynh/) for [YunoHost](https://yunohost.org/).
 
-Vous pouvez l'installer depuis l'interface Web d'administration ou avec cette commande :
+For historical reasons, LibreQR is technically named `qr` in YunoHost.
+
+You can install it from the WebAdmin or with this command :
 
 ```
 sudo yunohost app install qr
 ```
 
-## Thèmes
+## Themes
 
-### Changer de thème
+### Change theme
 
-Dans config.inc.php, donnez à $theme le nom du thème voulu.
+In config.inc.php, set $theme to the wanted theme.
 
-Par défaut, trois thèmes sont proposés :
+By default, 3 themes are offered:
 
-* dark, le thème par défaut, sombre. Il est utilisé ici : <https://qr.antopie.org>
-* light, thème clair
-* parinux, un thème bleu, créé pour [Bastet](https://bastet.parinux.org), le CHATON de [Parinux](https://parinux.org). Il est utilisé ici : <https://codeqr.parinux.org>
+* dark, the default dark theme. Used here: <https://qr.antopie.org>
+* light, the light theme.
+* parinux, a blue theme, made for [Bastet](https://bastet.parinux.org), the [Parinux](https://parinux.org)'s CHATON. Used here: <https://codeqr.parinux.org>
 
-### Créer un thème
+### Make a theme
 
-* Copiez themes/dark vers themes/[nom de votre thème]
-* Complétez theme.php en fonction des couleurs CSS voulues dans l'interface
-* Modifiez l'image source.png en fonction de votre thème
+* Copy themes/dark to themes/[new theme's name]
+* Fill theme.php according to CSS colors you want
+* Change the source.png image according to your theme
+* To automatically generate favicons with the rights sizes, use `php themes/resize.php [theme's name]`
 
-* Pour générer automatiquement les icônes aux tailles correctes, utilisez
+This last step will need [ImageMagick](https://imagemagick.org) and [pngquant](https://pngquant.org) to be installed.
 
-```
-php themes/resize.php [nom de votre thème]
-```
+```apt install imagemagick pngquant```
 
-Cela nécessitera d'avoir installé [ImageMagick](https://imagemagick.org)  et
-[pngquant](https://pngquant.org).
+## Contribute
 
-## Contribuer
-
-Si vous souhaitez rapporter un bug, vous pouvez ouvrir un ticket sur <https://code.antopie.org/miraty/libreqr/issues> après vous être créé un compte (méthode préférée) ou me contacter d'une autre manière.
+If you want to report a bug, you can open an issue at <https://code.antopie.org/miraty/libreqr/issues> after creating an account (prefered method) or contact me in another way.
 
 ## Contact
 
-Si vous voulez me contacter, par exemple pour demander un éclaircissement sur le fonctionnement de LibreQR ou pour signaler un bug, vous pouvez le faire par :
+If you want to contact me, for instance to report a bug or ask me a question about installing or using LibreQR, you can get my contact details on <https://miraty.antopie.org>.
 
-* Matrix : @miraty:matrix.antopie.org
-* courriel : [miraty+libreqr@antopie.org](mailto:miraty+libreqr@antopie.org) (GPG : [B16B 12A8 957B 2EC7 9659 04A6 B82D 15F0 3E67 B2B5](https://miraty.antopie.org/B16B12A8957B2EC7965904A6B82D15F03E67B2B5.asc))
-* le Fédiverse : [@Miraty@oc.todon.fr](https://oc.todon.fr/@Miraty)
+## Libraries
 
-## Bibliothèques tierces
+This source code includes:
 
-Ce code source inclus :
+* [phpqrcode](https://github.com/t0k4rt/phpqrcode) to generate QR codes
+* [Ubuntu font for the Web](https://github.com/earaujoassis/ubuntu-fontface)
+* [lesserphp](https://github.com/MarcusSchwarz/lesserphp) to compile [Less](http://lesscss.org)
 
-* [phpqrcode](https://github.com/t0k4rt/phpqrcode) pour générer les codes QR
-* [La police Ubuntu packagée pour le Web](https://github.com/earaujoassis/ubuntu-fontface)
-* [lessphp](http://leafo.net/lessphp) pour compiler le [Less](http://lesscss.org)
-
-## Licence
+## License
 
 [AGPLv3+](https://code.antopie.org/miraty/libreqr/src/branch/master/LICENSE)
 
-LibreQR est un logiciel libre ; vous pouvez le diffuser et le modifier suivant les termes de la GNU Affero General Public License telle que publiée par la Free Software Foundation ; soit la version 3 de cette licence, soit (à votre convenance) une version ultérieure.
+LibreQR is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-LibreQR est diffusé dans l’espoir qu’il sera utile, mais SANS AUCUNE GARANTIE ; sans même une garantie implicite de COMMERCIALISATION ou d’ADÉQUATION À UN USAGE PARTICULIER. Voyez la GNU Affero General Public License pour plus de détails.
+LibreQR is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-Vous devriez avoir reçu une copie de la GNU Affero General Public License avec ce code. Sinon, consultez <https://www.gnu.org/licenses/>
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.

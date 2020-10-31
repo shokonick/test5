@@ -1,9 +1,10 @@
-[![Build Status](https://travis-ci.org/leafo/lessphp.svg?branch=master)](https://travis-ci.org/leafo/lessphp)
+[![Build Status](https://travis-ci.org/MarcusSchwarz/lesserphp.svg)](https://travis-ci.org/MarcusSchwarz/lesserphp)
 
-# lessphp v0.5.0
-### <http://leafo.net/lessphp>
+# lesserphp v0.5.4
+### <http://github.com/MarcusSchwarz/lesserphp>
 
-`lessphp` is a compiler for LESS written in PHP. The documentation is great,
+`lesserphp` is a compiler for LESS written in PHP. It is based on lessphp bei leafo.
+The documentation is great,
 so check it out: <http://leafo.net/lessphp/docs/>.
 
 Here's a quick tutorial:
@@ -12,7 +13,7 @@ Here's a quick tutorial:
 
 The only file required is `lessc.inc.php`, so copy that to your include directory.
 
-The typical flow of **lessphp** is to create a new instance of `lessc`,
+The typical flow of **lesserphp** is to create a new instance of `lessc`,
 configure it how you like, then tell it to compile something using one built in
 compile methods.
 
@@ -48,7 +49,7 @@ If there any problem compiling your code, an exception is thrown with a helpful 
 <?php
 try {
   $less->compile("invalid LESS } {");
-} catch (exception $e) {
+} catch (\Exception $e) {
   echo "fatal error: " . $e->getMessage();
 }
 ```

@@ -1,33 +1,23 @@
-<?php require "config.inc.php"; ?>
+<?php require "inc.php"; ?>
 <!--
  _     _ _               ___  ____
 | |   (_| |__  _ __ ___ / _ \|  _ \
 | |   | | '_ \| '__/ _ | | | | |_) |
 | |___| | |_) | | |  __| |_| |  _ <
 |_____|_|_.__/|_|  \___|\__\_|_| \_\
+A PHP Web interface for generating QR codes
 
-LibreQR version 1.2.0
-Créé par Miraty et diffusé sous AGPLv3+
-Code source : https://code.antopie.org/miraty/libreqr
+Source code : https://code.antopie.org/miraty/libreqr
 
-Ce fichier fait partie de LibreQR.
+This file is part of LibreQR.
 
-  LibreQR est un logiciel libre ; vous pouvez le redistribuer ou le modifier
-  suivant les termes de la GNU Affero General Public License
-  telle que publiée par la Free Software Foundation ; soit la version 3
-  de la licence, soit (à votre gré) toute version ultérieure.
+  LibreQR is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-  LibreQR est distribué dans l'espoir qu'il sera utile,
-  mais SANS AUCUNE GARANTIE ; sans même la garantie tacite de
-  QUALITÉ MARCHANDE ou d'ADÉQUATION à UN BUT PARTICULIER.
-  Consultez la GNU Affero General Public License pour plus de détails.
+  LibreQR is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-  Vous devez avoir reçu une copie de la GNU Affero General Public License
-  en même temps que LibreQR ; si ce n'est pas le cas,
-  consultez <https://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 -->
-
 <?php
 
 function badQuery() { // Check if browser must be redirected
@@ -93,36 +83,35 @@ if (badQuery()) {
 }
 
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $locale ?>">
   <head>
     <meta charset="UTF-8">
-    <title>Générateur de codes QR</title>
-    <meta name="description" content="Générez des codes QR librement. Choisissez le contenu, la taille, la couleur...">
+    <title>LibreQR · <?= $loc['subtitle'] ?></title>
+    <meta name="description" content="<?= $loc['description'] ?>">
     <meta name="theme-color" content="<?php echo $variablesTheme['bg']; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.php">
-    <link rel="search" type="application/opensearchdescription+xml" title="Générer un code QR" href="opensearch.php&#63;redondancy=<?= $_GET['redondancy'] ?>&amp;margin=<?= $_GET['margin'] ?>&amp;size=<?= $_GET['size'] ?>&amp;bgColor=<?= urlencode($_GET['bgColor']) ?>&amp;mainColor=<?= urlencode($_GET['mainColor']) ?>">
+    <link rel="search" type="application/opensearchdescription+xml" title="<?= $loc['opensearch_actionName'] ?>" href="opensearch.php&#63;redondancy=<?= $_GET['redondancy'] ?>&amp;margin=<?= $_GET['margin'] ?>&amp;size=<?= $_GET['size'] ?>&amp;bgColor=<?= urlencode($_GET['bgColor']) ?>&amp;mainColor=<?= urlencode($_GET['mainColor']) ?>">
     <?php
     // If style.min.css exists
-    if (file_exists("style.min.css"))
+    if (file_exists("temp/style.min.css"))
       // And if it's older than theme.php or config.inc.php (so not up to date)
-      if (filemtime("themes/" . $theme . "/theme.php") > filemtime("style.min.css") OR filemtime("config.inc.php") > filemtime("style.min.css"))
+      if (filemtime("themes/" . $theme . "/theme.php") > filemtime("temp/style.min.css") OR filemtime("config.inc.php") > filemtime("temp/style.min.css"))
         // Then delete it
-        unlink("style.min.css");
+        unlink("temp/style.min.css");
 
-    require "lessphp/lessc.inc.php";
+    require "lesserphp/lessc.inc.php";
     $less = new lessc;
-    $less->setVariables($variablesTheme); // Rends ces couleurs utilisables dans style.less
+    $less->setVariables($variablesTheme); // Make these colors available in style.less
     $less->setFormatter("compressed");
-    $less->checkedCompile("style.less", "style.min.css"); // Compile, minimise et met en cache style.less dans style.min.css
+    $less->checkedCompile("style.less", "temp/style.min.css"); // Compile, minimise and cache style.less into style.min.css
     ?>
-    <link type="text/css" rel="stylesheet" href="style.min.css">
+    <link type="text/css" rel="stylesheet" href="temp/style.min.css">
     <link type="text/css" rel="stylesheet" href="ubuntu/ubuntu.min.css">
 
     <?php
-    foreach($themeDimensionsIcons as $dimFav) { // Indique toutes les dimensions d'icones
+    foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
         echo '    <link rel="icon" type="image/png" href="themes/' . $theme . '/icons/' . $dimFav . '.png" sizes="' . $dimFav . 'x' . $dimFav . '">' . "\n";
     } ?>
 
@@ -130,14 +119,14 @@ if (badQuery()) {
 
   <body>
 
-    <div class="center">
+    <main>
 
       <header>
-        <a id="lienTitres" href="./">
-          <img id="logo" src="themes/<?php echo $theme; ?>/icons/128.png" alt="Code QR stylisé">
-          <div id="titres">
+        <a id="linkTitles" href="./">
+          <img alt="" id="logo" src="themes/<?php echo $theme; ?>/icons/128.png">
+          <div id="titles">
             <h1>LibreQR</h1>
-            <h2>Générateur de codes QR</h2>
+            <h2><?= $loc['subtitle'] ?></h2>
           </div>
         </a>
       </header>
@@ -147,24 +136,15 @@ if (badQuery()) {
         <div id="firstWrapper">
 
           <div class="param">
-            <label for="txt">Texte à encoder</label>
-            <span class="conteneurAide">
-              <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-              <span class="contenuAide">
-                Vous pouvez encoder ce que vous voulez sous forme de texte.<br>
-                Les logiciels qui décodent ces codes QR pourraient proposer de les ouvrir avec un logiciel dédié, en fonction de leur <a href="https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI">schéma d'URI</a>.<br><br>
-                Par exemple, pour ouvrir une page Web :<br>
-                https://www.domaine.tld/<br><br>
-                Pour envoyer un mail :<br>
-                mailto:contact@domaine.tld<br><br>
-                Pour partager des coordonnées géographique :<br>
-                geo:48.867564,2.364057<br><br>
-                Pour appeler un numéro de téléphone :<br>
-                tel:0639981871
+            <label for="txt"><?= $loc['label_content'] ?></label>
+            <span class="helpContainer">
+              <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+              <span class="helpContent">
+                <?= $loc['help_content'] ?>
               </span>
             </span>
             <br>
-            <textarea rows="8" required="" id="txt" placeholder="Entrez le texte à encoder dans le code QR" name="txt"><?php
+            <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt"><?php
 
             if (isset($_GET['txt'])) {
               echo htmlspecialchars($_GET['txt']);
@@ -176,31 +156,31 @@ if (badQuery()) {
           <div id="menusDeroulants">
 
             <div class="param">
-              <label for="redondancy">Taux de redondance</label>
-              <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-                <span class="contenuAide">La redondance est le "doublement" des informations dans le code QR afin de corriger les erreurs lors du décodage. Un taux plus élevé produira un code QR plus grand, mais aura plus de chance d'être décodé correctement.</span>
+              <label for="redondancy"><?= $loc['label_redondancy'] ?></label>
+              <span class="helpContainer">
+                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+                <span class="helpContent"><?= $loc['help_redondancy'] ?></span>
               </span>
               <br>
               <select id="redondancy" name="redondancy">
-                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "L")) {echo 'selected="" ';} ?>value="L">L - 7% de redondance</option>
-                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "M")) {echo 'selected="" ';} ?>value="M">M - 15% de redondance</option>
-                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "Q")) {echo 'selected="" ';} ?>value="Q">Q - 25% de redondance</option>
-                <option <?php if ((isset($_GET['redondancy']) AND ($_GET['redondancy'] == "H")) OR (!isset($_GET['redondancy']) OR empty($_GET['redondancy']))) {echo 'selected="" ';} ?>value="H">H - 30% de redondance</option>
+                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "L")) {echo 'selected="" ';} ?>value="L">L - 7%</option>
+                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "M")) {echo 'selected="" ';} ?>value="M">M - 15%</option>
+                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "Q")) {echo 'selected="" ';} ?>value="Q">Q - 25%</option>
+                <option <?php if ((isset($_GET['redondancy']) AND ($_GET['redondancy'] == "H")) OR (!isset($_GET['redondancy']) OR empty($_GET['redondancy']))) {echo 'selected="" ';} ?>value="H">H - 30%</option>
               </select>
             </div>
 
             <div class="param">
-              <label for="margin">Taille de la marge</label>
-              <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-                <span class="contenuAide">Nombre de pixels des bandes blanches autour du code QR.</span>
+              <label for="margin"><?= $loc['label_margin'] ?></label>
+              <span class="helpContainer">
+                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+                <span class="helpContent"><?= $loc['help_margin'] ?></span>
               </span>
               <br>
               <select id="margin" name="margin">
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "0")) {echo 'selected="" ';} ?>value="0">0</option>
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "1")) {echo 'selected="" ';} ?>value="1">1</option>
-                <option <?php if ((isset($_GET['margin']) AND ($_GET['margin'] == "2")) OR (!isset($_GET['margin']) OR empty($_GET['margin']))) {echo 'selected="" ';} ?>value="2">2 - par défaut</option>
+                <option <?php if ((isset($_GET['margin']) AND ($_GET['margin'] == "2")) OR (!isset($_GET['margin']) OR empty($_GET['margin']))) {echo 'selected="" ';} ?>value="2">2 - <?= $loc['value_default'] ?></option>
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "3")) {echo 'selected="" ';} ?>value="3">3</option>
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "4")) {echo 'selected="" ';} ?>value="4">4</option>
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "5")) {echo 'selected="" ';} ?>value="5">5</option>
@@ -210,17 +190,17 @@ if (badQuery()) {
             </div>
 
             <div class="param">
-              <label for="size">Taille de l'image</label>
-              <span class="conteneurAide">
-                <span class="boutonAide" tabindex="0"><img id="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="Aide"></span>
-                <span class="contenuAide">Par combien les dimensions de l'image seront-elles multipliées ?</span>
+              <label for="size"><?= $loc['label_size'] ?></label>
+              <span class="helpContainer">
+                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
+                <span class="helpContent"><?= $loc['help_size'] ?></span>
               </span>
               <br>
               <select id="size" name="size">
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 1)) {echo 'selected="" ';} ?>value="1">1</option>
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 2)) {echo 'selected="" ';} ?>value="2">2</option>
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 3)) {echo 'selected="" ';} ?>value="3">3</option>
-                <option <?php if ((isset($_GET['size']) AND ($_GET['size'] == 4)) OR (!isset($_GET['size']) OR empty($_GET['size']))) {echo 'selected="" ';} ?>value="4">4 - par défaut</option>
+                <option <?php if ((isset($_GET['size']) AND ($_GET['size'] == 4)) OR (!isset($_GET['size']) OR empty($_GET['size']))) {echo 'selected="" ';} ?>value="4">4 - <?= $loc['value_default'] ?></option>
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 5)) {echo 'selected="" ';} ?>value="5">5</option>
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 6)) {echo 'selected="" ';} ?>value="6">6</option>
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 8)) {echo 'selected="" ';} ?>value="8">8</option>
@@ -237,22 +217,22 @@ if (badQuery()) {
         <div id="colors">
 
           <div class="param">
-            <label for="bgColor">Couleur de fond</label>
-            <div class="conteneurInputColor">
+            <label for="bgColor"><?= $loc['label_bgColor'] ?></label>
+            <div class="inputColorContainer">
                         <input type="color" name="bgColor" id="bgColor" value="<?php if (!empty($_GET['bgColor'])) {echo htmlspecialchars($_GET['bgColor']);} else {echo "#FFFFFF";} ?>">
             </div>
           </div>
 
           <div class="param">
-            <label for="mainColor">Couleur de premier plan</label>
-            <div class="conteneurInputColor">
+            <label for="mainColor"><?= $loc['label_mainColor'] ?></label>
+            <div class="inputColorContainer">
               <input type="color" name="mainColor" id="mainColor" value="<?php if (!empty($_GET['mainColor'])) {echo htmlspecialchars($_GET['mainColor']);} else {echo "#000000";} ?>">
             </div>
           </div>
         </div>
 
-        <div class="centrer">
-          <input class="bouton" type="submit" value="Générer" />
+        <div class="centered">
+          <input class="button" type="submit" value="<?= $loc['button_create'] ?>" />
         </div>
 
       </form>
@@ -267,34 +247,37 @@ if (badQuery()) {
         $cheminImage = "temp/" . generateRandomString($fileNameLenght) . ".png";
         QRcode::png($_GET['txt'], $cheminImage, $_GET['redondancy'], $_GET['size'], $_GET['margin'], false, hexdec($_GET['bgColor']), hexdec($_GET['mainColor']));
         ?>
-        <div class="centrer">
-          <a href="<?php echo $cheminImage; ?>" class="bouton" download="<?php echo htmlspecialchars($_GET['txt']); ?>.png">Télécharger ce code QR</a>
+        <div class="centered">
+          <a href="<?php echo $cheminImage; ?>" class="button" download="<?php echo htmlspecialchars($_GET['txt']); ?>.png"><?= $loc['button_download'] ?></a>
         </div>
 
-        <div class="centrer" id="showOnlyQR">
-          <a title="Cliquez pour afficher uniquement ce code QR" href="<?php echo $cheminImage; ?>"><img alt='Un code QR contenant "<?php echo htmlspecialchars($_GET['txt']); ?>"' id="qrCode" src="<?php echo $cheminImage; ?>"/></a>
+        <div class="centered" id="showOnlyQR">
+          <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?php echo $cheminImage; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?php echo htmlspecialchars($_GET['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?php echo $cheminImage; ?>"/></a>
         </div>
         <?php
       }
     }
         ?>
 
-    </div>
+        <footer>
 
-    <div id="metaTexts">
+          <section id="info" class="metaText">
+            <?= $loc['metaText_qr'] ?>
+          </section>
 
-      <section id="info" class="metaText">
-        <h3>Qu'est-ce qu'un code QR ?</h3>
-        Un code QR est un code-barres en 2 dimensions dans lequel est inscrit en binaire du texte. Il peut être décodé avec un appareil muni d'un capteur photo et d'un logiciel adéquat.
-        <a href="https://fr.wikipedia.org/wiki/Code_QR">Code QR sur Wikipédia</a>
-      </section>
+          <?php if ($customTextEnabled) { ?>
+            <section class="metaText">
+              <?= $customText ?>
+            </section>
+          <?php } ?>
 
-      <footer class="metaText">
-        LibreQR 1.2.0 est un logiciel libre dont le <a href="https://code.antopie.org/miraty/libreqr/">code source</a> est disponible
-        selon les termes de l'<abbr title="GNU Affero General Public License version 3 ou toute version ultérieure"><a href="LICENSE.html">AGPLv3</a>+</abbr>.
-      </footer>
+          <section class="metaText">
+            <?= $loc['metaText_legal'] ?>
+          </section>
 
-    </div>
+        </footer>
+
+    </main>
 
   </body>
 </html>

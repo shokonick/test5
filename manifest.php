@@ -1,28 +1,28 @@
-<?php require "config.inc.php"; ?>
+<?php require "inc.php"; ?>
 {
 	"dir": "ltr",
-	"lang": "fr",
+	"lang": "<?= $locale ?>",
 	"name": "LibreQR",
 	"short_name": "LibreQR",
-	"description": "Générer un code QR",
-	"start_url": "<?php echo $instPath; ?>",
-	"scope": "<?php echo $instPath; ?>",
+	"description": "<?= $loc['subtitle'] ?>",
+	"start_url": "<?= $instPath; ?>",
+	"scope": "<?= $instPath; ?>",
 	"display": "standalone",
-	"theme_color": "<?php echo $variablesTheme["bg"]; ?>",
-	"background_color": "<?php echo $variablesTheme["bg"]; ?>",
-  "orientation": "portrait",
+	"theme_color": "<?= $variablesTheme["bg"]; ?>",
+	"background_color": "<?= $variablesTheme["bg"]; ?>",
+	"orientation": "portrait",
 	"icons":
 	[
 <?php for ($i = 0; $i < (count($themeDimensionsIcons) - 1); $i++) { ?>
 		{
-			"src": "themes/<?php echo $theme; ?>/icons/<?php echo $themeDimensionsIcons[$i]; ?>.png",
-			"sizes": "<?php echo $themeDimensionsIcons[$i]; ?>x<?php echo $themeDimensionsIcons[$i]; ?>",
+			"src": "themes/<?= $theme; ?>/icons/<?= $themeDimensionsIcons[$i]; ?>.png",
+			"sizes": "<?= $themeDimensionsIcons[$i]; ?>x<?= $themeDimensionsIcons[$i]; ?>",
 			"type": "image/png"
 		},
 <?php } ?>
 		{
-			"src": "themes/<?php echo $theme; ?>/icons/<?php echo $themeDimensionsIcons[$i]; ?>.png",
-			"sizes": "<?php echo $themeDimensionsIcons[$i]; ?>x<?php echo $themeDimensionsIcons[$i]; ?>",
+			"src": "themes/<?= $theme; ?>/icons/<?= $themeDimensionsIcons[$i]; ?>.png",
+			"sizes": "<?= $themeDimensionsIcons[$i]; ?>x<?= $themeDimensionsIcons[$i]; ?>",
 			"type": "image/png"
 		}
 	]

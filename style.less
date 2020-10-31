@@ -33,6 +33,10 @@ a {
   }
 }
 
+p {
+  margin: 10px;
+}
+
 #firstWrapper {
   display: flex;
   flex-direction: row;
@@ -47,27 +51,27 @@ a {
   max-width: 480px;
 }
 
-.centrer {
+.centered {
   text-align: center;
 }
 
-.bouton {
+.button {
   padding: 3px 10px 3px 10px;
   text-decoration: none;
 }
 
 form {
-  display: block;
+  flex-grow: 1;
   margin-bottom: 30px;
 }
 
-.center {
+main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   width: 814px;
+  height: 99%;
 }
 
 body {
@@ -76,16 +80,11 @@ body {
   color: @text;
   font-weight: normal;
   font-size: 20px;
-
-  & h1 {
-    color: @text;
-    text-decoration: none;
-  }
-
+  height: 99%;
 }
 
-label {
-  font-size: 20px;
+html {
+  height: 97%;
 }
 
 header {
@@ -100,7 +99,7 @@ header {
   height: 64px;
 }
 
-#titres {
+#titles {
   margin-left: 20px;
 }
 
@@ -117,7 +116,7 @@ h2 {
   font-size: 22px;
 }
 
-#lienTitres {
+#linkTitles {
   text-align: left;
   justify-content: center;
   text-decoration: none;
@@ -129,11 +128,6 @@ h2 {
   margin-top: 30px;
 }
 
-#titre {
-  text-align: center;
-  justify-content: center;
-}
-
 .param {
   padding: 10px;
   padding-left: 0px;
@@ -142,7 +136,7 @@ h2 {
   margin-right: 0px;
 }
 
-.conteneurInputColor {
+.inputColorContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -174,18 +168,16 @@ label[for=txt] {
 
 .metaText {
   color: @secondaryText;
-  text-align: left;
   transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
-  position: fixed;
-  width: 400px;
+  padding: 6px;
 
-  & a:link {
+  & a, a:visited {
     transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
     color: @secondaryText;
     text-decoration: underline;
   }
 
-  &:hover, &:hover a:link {
+  &:hover, &:hover a {
     color: @text;
   }
 
@@ -193,8 +185,12 @@ label[for=txt] {
 
 footer {
   font-size: 14px;
-  bottom: 20px;
-  left: 20px;
+  padding-top: 20px;
+  text-align: left;
+}
+
+header, footer {
+  flex-shrink: 0;
 }
 
 #info {
@@ -212,7 +208,7 @@ footer {
 
 /* Inputs */
 
-#redondancy, #margin, #txt, #size, input[type=color], input[type=submit], .bouton {
+#redondancy, #margin, #txt, #size, input[type=color], input[type=submit], .button {
   border: 2px @border solid;
   border-radius: 10px;
   font-size: 20px;
@@ -271,24 +267,30 @@ input[type=color] {
   border: 2px @border solid;
 }
 
-/* Infobulle */
+/* Help message */
 
-#helpImg {
-  width: 20px;
-  height: 20px;
+.helpImg {
+  width: 22px;
+  height: 22px;
   margin-bottom: -3px;
-  margin-left: 5px;
+  display: inline-block;
 }
 
-.boutonAide {
-  height: 0px;
-  width: 0px;
+.helpButton {
+  height: 22px;
+  width: 22px;
   color: @secondaryText;
   cursor: help;
   font-size: 0.8em;
+  display: inline-block;
 }
 
-.conteneurAide .contenuAide {
+.helpContainer {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.helpContent {
   position: absolute;
   transform: scale(0) rotate(-12deg);
   color: @text;
@@ -312,55 +314,16 @@ input[type=color] {
   }
 }
 
-.conteneurAide:hover .contenuAide, .conteneurAide:focus-within .contenuAide {
+.helpContainer:hover .helpContent, .helpContainer:focus-within .helpContent {
   transform: scale(1) rotate(0);
   opacity: 1;
 }
 
 /* Media queries */
 
-@media (max-width: 1400px) {
-  .metaText {
-    width: 250px;
-  }
-}
-
-@media (max-width: 1050px) {
-
-  #metaTexts {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .metaText {
-    width: 100%;
-    position: static;
-    font-size: 20px;
-  }
-
-  #info {
-    color: @text;
-    margin-bottom: 20px;
-    padding-top: 30px;
-    font-size: 20px;
-
-    & a:link {
-      color: @text;
-    }
-  }
-}
-
 @media (max-width: 850px) {
 
-  #metaTexts {
-    flex-direction: column;
-    width: 480px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .center {
+  main {
     width: auto;
   }
 
@@ -378,11 +341,7 @@ input[type=color] {
 
 }
 
-@media (max-width: 500px) { // Version mobile
-
-  #metaTexts {
-    width: auto;
-  }
+@media (max-width: 500px) { // Mobile version
 
   #colors {
     flex-direction: column;
