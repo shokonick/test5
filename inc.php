@@ -2,7 +2,7 @@
 
 require "config.inc.php";
 
-$libreqrVersion = "1.3.0-dev";
+$libreqrVersion = "1.3.0";
 
 // Defines the locale to be used
 if ($forceLocale == false) {
