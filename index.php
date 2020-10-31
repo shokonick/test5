@@ -277,7 +277,6 @@ if (badQuery()) {
 
         </footer>
 
-      </div>
     </main>
 
   </body>
