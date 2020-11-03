@@ -5,7 +5,7 @@
   <Description><?= $loc['opensearch_actionName'] ?></Description>
 <?php
   foreach($themeDimensionsIcons as $dimIcon) {
-    echo '  <Image height="' . $dimIcon . '" width="' . $dimIcon . '" type="image/png">' . $instPath . 'themes/' . $theme . '/icons/' . $dimIcon . '.png</Image>' . "\n";
+    echo '  <Image height="' . $dimIcon . '" width="' . $dimIcon . '" type="image/png">' . $rootPath . 'themes/' . $theme . '/icons/' . $dimIcon . '.png</Image>' . "\n";
   } ?>
   <Language>*</Language>
   <InputEncoding>UTF-8</InputEncoding>
@@ -16,7 +16,7 @@
   $bgColor = htmlspecialchars(urlencode((isset($_GET['bgColor'])) ? $_GET['bgColor'] : '%23FFFFFF'));
   $mainColor = htmlspecialchars(urlencode((isset($_GET['mainColor'])) ? $_GET['mainColor'] : '%23000000'));
 ?>
-  <Url type="text/html" template="<?= $instPath; ?>">
+  <Url type="text/html" template="<?= $rootPath; ?>">
     <Param name="txt" value="{searchTerms}"/>
     <Param name="redondancy" value="<?= $redondancy ?>"/>
     <Param name="margin" value="<?= $margin ?>"/>
@@ -24,7 +24,7 @@
     <Param name="bgColor" value="<?= $bgColor ?>"/>
     <Param name="mainColor" value="<?= $mainColor ?>"/>
   </Url>
-  <Url type="application/opensearchdescription+xml" rel="self" template="<?= $instPath; ?>opensearch.php">
+  <Url type="application/opensearchdescription+xml" rel="self" template="<?= $rootPath; ?>opensearch.php">
     <Param name="redondancy" value="<?= $redondancy ?>"/>
     <Param name="margin" value="<?= $margin ?>"/>
     <Param name="size" value="<?= $size ?>"/>

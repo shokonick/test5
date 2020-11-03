@@ -78,7 +78,7 @@ if (badQuery()) {
   if (!isset($params['mainColor']) OR !is_string($params['mainColor']))
     $params['mainColor'] = "#000000";
 
-  header('Location: ' . $instPath . "?" . http_build_query($params));
+  header('Location: ' . $rootPath . "?" . http_build_query($params));
   exit;
 }
 
