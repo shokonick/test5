@@ -1,7 +1,7 @@
 <?php
 $loc = array(
   'subtitle' => "QR codes generator",
-  'description' => "Generate QR codes freely. Choose content, size, colors...",
+  'description' => "Generate QR codes freely. Choose content, size, colors…",
 
   'label_content' => "Text to encode",
   'label_redondancy' => "Redondancy rate",
@@ -42,7 +42,7 @@ $loc = array(
   'metaText_qr' => "
     <h3>What's a QR code?</h3>
     A QR code is a 2 dimensions barcode in which a text is written in binary. It can be decoded with a device equipped with a photo sensor and an adequate software.
-    <a href='https://en.wikipedia.org/wiki/QR_code'>QR code on Wikipedia</a>
+    <a href='https://en.wikipedia.org/wiki/QR_code'>QR code on Wikipedia</a>.
   ",
   'metaText_legal' => "LibreQR " . $libreqrVersion . " is a free software whose <a href='https://code.antopie.org/miraty/libreqr/'>source code</a> is available under the terms of the <abbr title='GNU Affero General Public License version 3 or any later version'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
 

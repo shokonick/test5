@@ -1,7 +1,7 @@
 <?php
 $loc = array(
   'subtitle' => "Générateur de codes QR",
-  'description' => "Générez des codes QR librement. Choisissez le contenu, la taille, les couleurs...",
+  'description' => "Générez des codes QR librement. Choisissez le contenu, la taille, les couleurs…",
 
   'label_content' => "Texte à encoder",
   'label_redondancy' => "Taux de redondance",
@@ -42,7 +42,7 @@ $loc = array(
   'metaText_qr' => "
     <h3>Qu'est-ce qu'un code QR ?</h3>
     Un code QR est un code-barres en 2 dimensions dans lequel du texte est inscrit en binaire. Il peut être décodé avec un appareil muni d'un capteur photo et d'un logiciel adéquat.
-    <a href='https://fr.wikipedia.org/wiki/Code_QR'>Code QR sur Wikipédia</a>
+    <a href='https://fr.wikipedia.org/wiki/Code_QR'>Code QR sur Wikipédia</a>.
   ",
   'metaText_legal' => "LibreQR " . $libreqrVersion . " est un logiciel libre dont le <a href='https://code.antopie.org/miraty/libreqr/'>code source</a> est disponible selon les termes de l'<abbr title='GNU Affero General Public License version 3 ou toute version ultérieure'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
 
