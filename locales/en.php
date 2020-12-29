@@ -1,7 +1,7 @@
 <?php
 $loc = array(
   'subtitle' => "QR codes generator",
-  'description' => "Generate QR codes freely. Choose content, size, colors...",
+  'description' => "Generate QR codes freely. Choose content, size, colors…",
 
   'label_content' => "Text to encode",
   'label_redondancy' => "Redondancy rate",
