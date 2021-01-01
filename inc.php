@@ -9,7 +9,7 @@ if ($forceLocale == false) {
   $clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
   $clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
   $clientLocales = explode(',', $clientLocales);
-  $availableLocales = array('fr', 'en', 'template');
+  $availableLocales = array('en', 'fr', 'oc', 'template');
   foreach ($clientLocales as $clientLocale) {
     if (in_array($clientLocale, $availableLocales)) {
       $locale = $clientLocale;
