@@ -25,7 +25,7 @@ Voir `config.inc.php` pour plus de paramètres.
 
 Placez simplement ce code source dans un serveur Web avec PHP.
 
-`wget https://code.antopie.org/miraty/libreqr/archive/1.2.0.zip`
+`wget https://code.antopie.org/miraty/libreqr/archive/1.3.0.zip`
 
 L'extension GD est requise.
 
