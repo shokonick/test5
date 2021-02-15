@@ -86,7 +86,6 @@ If you want to contact me, for instance to report a bug or ask me a question abo
 This source code includes:
 
 * [phpqrcode](https://github.com/t0k4rt/phpqrcode) to generate QR codes
-* [Ubuntu font for the Web](https://github.com/earaujoassis/ubuntu-fontface)
 * [less.php](https://github.com/wikimedia/less.php) to compile [Less](http://lesscss.org)
 
 ## License

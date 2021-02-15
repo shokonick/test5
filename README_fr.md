@@ -86,7 +86,6 @@ Si vous voulez me contacter, par exemple pour signaler un bug ou me poser une qu
 Ce code source inclus :
 
 * [phpqrcode](https://github.com/t0k4rt/phpqrcode) pour générer les codes QR
-* [La police Ubuntu pour le Web](https://github.com/earaujoassis/ubuntu-fontface)
 * [less.php](https://github.com/wikimedia/less.php) pour compiler le [Less](http://lesscss.org)
 
 ## Licence

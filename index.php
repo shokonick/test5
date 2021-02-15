@@ -108,7 +108,6 @@ if (badQuery()) {
     $less->checkedCompile("style.less", "temp/style.min.css"); // Compile, minimise and cache style.less into style.min.css
     ?>
     <link type="text/css" rel="stylesheet" href="temp/style.min.css">
-    <link type="text/css" rel="stylesheet" href="ubuntu/ubuntu.min.css">
 
     <?php
     foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
