@@ -101,7 +101,7 @@ if (badQuery()) {
         // Then delete it
         unlink("temp/style.min.css");
 
-    require "lesserphp/lessc.inc.php";
+    require "less.php/lessc.inc.php";
     $less = new lessc;
     $less->setVariables($variablesTheme); // Make these colors available in style.less
     $less->setFormatter("compressed");

@@ -87,7 +87,7 @@ Ce code source inclus :
 
 * [phpqrcode](https://github.com/t0k4rt/phpqrcode) pour générer les codes QR
 * [La police Ubuntu pour le Web](https://github.com/earaujoassis/ubuntu-fontface)
-* [lesserphp](https://github.com/MarcusSchwarz/lesserphp) pour compiler le [Less](http://lesscss.org)
+* [less.php](https://github.com/wikimedia/less.php) pour compiler le [Less](http://lesscss.org)
 
 ## Licence
 
