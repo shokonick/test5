@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+### Added
+
+* Occitan l10n (PR [#10](https://code.antopie.org/miraty/libreqr/pulls/10))
+
 ### Changed
 
 * Use less.php instead of lesserphp
