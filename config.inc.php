@@ -4,10 +4,10 @@
 // ----- Paramètres -----
 
 // EN: Time in seconds after which the QR code will be deleted when a page loads.
-// Default: 60 * 60 * 24 * 7 (one week)
+// Default: 60 * 60 * 24 * 2 (two days)
 // FR : Temps en secondes après lequel le code QR sera supprimé lors du chargement d'une page.
-// Par défaut : 60 * 60 * 24 * 7 (une semaine)
-$timeBeforeDeletion = 60 * 60 * 24 * 7;
+// Par défaut : 60 * 60 * 24 * 2 (deux jours)
+$timeBeforeDeletion = 60 * 60 * 24 * 2;
 
 // EN: Theme's name (must be in the themes directory)
 // FR : Nom du thème (doit être dans le dossier themes)
