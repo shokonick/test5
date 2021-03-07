@@ -8,8 +8,6 @@
 	"start_url": "<?= $rootPath; ?>",
 	"scope": "<?= $rootPath; ?>",
 	"display": "standalone",
-	"theme_color": "<?= $variablesTheme["bg"]; ?>",
-	"background_color": "<?= $variablesTheme["bg"]; ?>",
 	"orientation": "portrait",
 	"icons":
 	[

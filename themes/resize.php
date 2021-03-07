@@ -1,4 +1,9 @@
 <?php
+
+/*
+  A small script that can be used to generate LibreQR's icons
+*/
+
 if (php_sapi_name() == "cli") {
   if (isset($argv[1])) {
     $done = array();

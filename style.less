@@ -10,16 +10,33 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General 
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 */
+@light: ~"(prefers-color-scheme: light)";
+@dark: ~"(prefers-color-scheme: dark)";
 
 * {
   font-family: system-ui, sans-serif;
-  scrollbar-color: @text @bg;
+
   scrollbar-width: auto;
+
+  @media @light {
+    scrollbar-color: @text-light @bg-light;
+  }
+
+  @media @dark {
+    scrollbar-color: @text-dark @bg-dark;
+  }
 }
 
 a {
-  color: @text;
   text-decoration: underline;
+
+  @media @light {
+    color: @text-light;
+  }
+
+  @media @dark {
+    color: @text-dark;
+  }
 
   &:hover {
     text-decoration: none;
@@ -31,10 +48,17 @@ p {
 }
 
 details .helpText {
-  background-color: @bgHelp;
   padding: 5px;
   border-radius: 10px;
   text-align: left;
+
+  @media @light {
+    background-color: @bgHelp-light;
+  }
+
+  @media @dark {
+    background-color: @bgHelp-dark;
+  }
 }
 
 #menusDeroulants summary {
@@ -76,11 +100,19 @@ main {
 
 body {
   margin: 18px;
-  background-color: @bg;
-  color: @text;
   font-weight: normal;
   font-size: 20px;
   height: 99%;
+
+  @media @light {
+    color: @text-light;
+    background-color: @bg-light;
+  }
+
+  @media @dark {
+    color: @text-dark;
+    background-color: @bg-dark;
+  }
 }
 
 html {
@@ -143,8 +175,16 @@ h2 {
 }
 
 ::selection {
-  color: @bg;
-  background-color: @text;
+
+  @media @light {
+    color: @bg-light;
+    background-color: @text-light;
+  }
+
+  @media @dark {
+    color: @bg-dark;
+    background-color: @text-dark;
+  }
 }
 
 label[for=txt] {
@@ -167,13 +207,26 @@ label[for=txt] {
 }
 
 .metaText {
-  color: @text;
   padding: 6px;
+  @media @light {
+    color: @text-light;
+  }
+
+  @media @dark {
+    color: @text-dark;
+  }
 
   & a, a:visited {
-    color: @text;
     text-decoration: underline;
+    @media @light {
+      color: @text-light;
+    }
+
+    @media @dark {
+      color: @text-dark;
+    }
   }
+
 }
 
 footer {
@@ -202,40 +255,83 @@ header, footer {
 /* Inputs */
 
 #redondancy, #margin, #txt, #size, input[type=color], input[type=submit], .button {
-  border: 2px @border solid;
+  border-width: 2px;
+  border-style: solid;
   border-radius: 10px;
   font-size: 20px;
   padding-left: 10px;
   font-weight: normal;
-  color: @text;
   transition: border 0.1s linear;
-  background-color: @bgField;
   margin-top: 8px;
 
+  @media @light {
+    color: @text-light;
+    background-color: @bgField-light;
+    border-color: @border-light;
+  }
+
+  @media @dark {
+    color: @text-dark;
+    background-color: @bgField-dark;
+    border-color: @border-dark;
+  }
+
   &:hover {
-    border: 2px @borderHover solid;
+    border-width: 2px;
+    border-style: solid;
+    @media @light {
+      color: @text-light;
+    }
+
+    @media @dark {
+      color: @text-dark;
+    }
   }
 
   &:focus {
-    border: 2px @borderFocus solid;
+    border-width: 2px;
+    border-style: solid;
     outline: none;
+
+    @media @light {
+      border-color: @borderHover-light;
+    }
+
+    @media @dark {
+      border-color: @borderHover-dark;
+    }
   }
 }
 
 #redondancy, #size, #margin {
-  background-color: @bgField;
   width: 250px;
   height: 40px;
+  @media @light {
+    background-color: @bgField-light;
+  }
+
+  @media @dark {
+    background-color: @bgField-dark;
+  }
 }
 
 #txt {
-  background-color: @bgTextField;
-  color: @text;
   padding: 10px;
   margin: 10px;
   width: 500px;
-  scrollbar-color: @text @bgTextField;
   scrollbar-width: auto;
+
+  @media @light {
+    background-color: @bgTextField-light;
+    color: @text-light;
+    scrollbar-color: @text-light @bgTextField-light;
+  }
+
+  @media @dark {
+    background-color: @bgTextField-dark;
+    color: @text-dark;
+    scrollbar-color: @text-dark @bgTextField-dark;
+  }
 }
 
 input[type=submit] {
@@ -246,18 +342,33 @@ input[type=submit] {
 }
 
 #txt::placeholder {
-  color: @secondaryText;
   opacity: 1;
   font-family: system-ui, sans-serif;
   font-weight: normal;
   font-size: 1em;
+  @media @light {
+    color: @secondaryText-light;
+  }
+
+  @media @dark {
+    color: @secondaryText-dark;
+  }
 }
 
 input[type=color] {
   height: 60px;
   width: 84px;
   padding: 5px;
-  border: 2px @border solid;
+  border-width: 2px;
+  border-style: solid;
+
+  @media @light {
+    border-color: @border-light;
+  }
+
+  @media @dark {
+    border-color: @border-dark;
+  }
 }
 
 /* Media queries */

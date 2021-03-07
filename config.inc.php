@@ -11,7 +11,7 @@ $timeBeforeDeletion = 60 * 60 * 24 * 7;
 
 // EN: Theme's name (must be in the themes directory)
 // FR : Nom du thème (doit être dans le dossier themes)
-$theme = "dark";
+$theme = "libreqr";
 
 // EN: Language used if those requested by the user are not available
 // FR : Langue utilisée si celles demandées par l'utilisateurice ne sont pas disponibles

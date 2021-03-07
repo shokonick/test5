@@ -89,7 +89,6 @@ if (badQuery()) {
     <meta charset="UTF-8">
     <title>LibreQR · <?= $loc['subtitle'] ?></title>
     <meta name="description" content="<?= $loc['description'] ?>">
-    <meta name="theme-color" content="<?php echo $variablesTheme['bg']; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.php">
     <link rel="search" type="application/opensearchdescription+xml" title="<?= $loc['opensearch_actionName'] ?>" href="opensearch.php&#63;redondancy=<?= $_GET['redondancy'] ?>&amp;margin=<?= $_GET['margin'] ?>&amp;size=<?= $_GET['size'] ?>&amp;bgColor=<?= urlencode($_GET['bgColor']) ?>&amp;mainColor=<?= urlencode($_GET['mainColor']) ?>">
@@ -101,13 +100,20 @@ if (badQuery()) {
         // Then delete it
         unlink("temp/style.min.css");
 
-    require "less.php/lessc.inc.php";
-    $less = new lessc;
-    $less->setVariables($variablesTheme); // Make these colors available in style.less
-    $less->setFormatter("compressed");
-    $less->checkedCompile("style.less", "temp/style.min.css"); // Compile, minimise and cache style.less into style.min.css
+    require_once "less.php/lib/Less/Autoloader.php";
+    Less_Autoloader::register();
+
+    $options = array('cache_dir' => '/srv/http/libreqr/temp/', 'compress' => true);
+    $cssFileName = Less_Cache::Get(array("/srv/http/libreqr/style.less" => ""), $options, $colorScheme);
+
+    //require "less.php/lessc.inc.php";
+    //$less = new lessc;
+    //$less->setVariables($lightTheme); // Make these colors available in style.less
+    //$less->setVariables($darkTheme);
+    //$less->setFormatter("compressed");
+    //$less->checkedCompile("style.less", "temp/style.min.css"); // Compile, minimise and cache style.less into style.min.css
     ?>
-    <link type="text/css" rel="stylesheet" href="temp/style.min.css">
+    <link type="text/css" rel="stylesheet" href="temp/<?= $cssFileName ?>">
 
     <?php
     foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
