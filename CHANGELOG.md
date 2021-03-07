@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 * Use less.php instead of lesserphp
+* Use the prefers-color-scheme CSS feature to let the client choose their prefered theme (dark/light)
 
 ### Removed
 
