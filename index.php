@@ -135,14 +135,14 @@ if (badQuery()) {
         <div id="firstWrapper">
 
           <div class="param">
-            <label for="txt"><?= $loc['label_content'] ?></label>
-            <span class="helpContainer">
-              <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
-              <span class="helpContent">
-                <?= $loc['help_content'] ?>
-              </span>
-            </span>
-            <br>
+            <label for="txt">
+              <details>
+                <summary><?= $loc['label_content'] ?></summary>
+                <p class="helpText">
+                  <?= $loc['help_content'] ?>
+                </p>
+              </details>
+            </label>
             <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt"><?php
 
             if (isset($_GET['txt'])) {
@@ -155,12 +155,14 @@ if (badQuery()) {
           <div id="menusDeroulants">
 
             <div class="param">
-              <label for="redondancy"><?= $loc['label_redondancy'] ?></label>
-              <span class="helpContainer">
-                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
-                <span class="helpContent"><?= $loc['help_redondancy'] ?></span>
-              </span>
-              <br>
+              <label for="redondancy">
+                <details>
+                  <summary><?= $loc['label_redondancy'] ?></summary>
+                  <p class="helpText">
+                    <?= $loc['help_redondancy'] ?>
+                  </p>
+                </details>
+              </label>
               <select id="redondancy" name="redondancy">
                 <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "L")) {echo 'selected="" ';} ?>value="L">L - 7%</option>
                 <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "M")) {echo 'selected="" ';} ?>value="M">M - 15%</option>
@@ -170,12 +172,14 @@ if (badQuery()) {
             </div>
 
             <div class="param">
-              <label for="margin"><?= $loc['label_margin'] ?></label>
-              <span class="helpContainer">
-                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
-                <span class="helpContent"><?= $loc['help_margin'] ?></span>
-              </span>
-              <br>
+              <label for="margin">
+                <details>
+                  <summary><?= $loc['label_margin'] ?></summary>
+                  <p class="helpText">
+                    <?= $loc['help_margin'] ?>
+                  </p>
+                </details>
+              </label>
               <select id="margin" name="margin">
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "0")) {echo 'selected="" ';} ?>value="0">0</option>
                 <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "1")) {echo 'selected="" ';} ?>value="1">1</option>
@@ -189,12 +193,14 @@ if (badQuery()) {
             </div>
 
             <div class="param">
-              <label for="size"><?= $loc['label_size'] ?></label>
-              <span class="helpContainer">
-                <span class="helpButton" tabindex="0"><img class="helpImg" src="help.svg.php?clr=<?= urlencode($variablesTheme["text"]) ?>" alt="<?= $loc['alt_help'] ?>"></span>
-                <span class="helpContent"><?= $loc['help_size'] ?></span>
-              </span>
-              <br>
+              <label for="size">
+                <details>
+                  <summary><?= $loc['label_size'] ?></summary>
+                  <p class="helpText">
+                    <?= $loc['help_size'] ?>
+                  </p>
+                </details>
+              </label>
               <select id="size" name="size">
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 1)) {echo 'selected="" ';} ?>value="1">1</option>
                 <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 2)) {echo 'selected="" ';} ?>value="2">2</option>

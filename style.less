@@ -30,14 +30,21 @@ p {
   margin: 10px;
 }
 
+details .helpText {
+  background-color: @bgHelp;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+#menusDeroulants summary {
+  text-align: center;
+  margin-left: 20px;
+}
+
 #firstWrapper {
   display: flex;
   flex-direction: row;
-}
-
-#menusDeroulants {
-  text-align: center;
-  margin-left: 20px;
 }
 
 #qrCode {
@@ -160,20 +167,13 @@ label[for=txt] {
 }
 
 .metaText {
-  color: @secondaryText;
-  transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
+  color: @text;
   padding: 6px;
 
   & a, a:visited {
-    transition: color 0.12s cubic-bezier(0.42, 0.0, 1.0, 1.0);
-    color: @secondaryText;
+    color: @text;
     text-decoration: underline;
   }
-
-  &:hover, &:hover a {
-    color: @text;
-  }
-
 }
 
 footer {
@@ -258,58 +258,6 @@ input[type=color] {
   width: 84px;
   padding: 5px;
   border: 2px @border solid;
-}
-
-/* Help message */
-
-.helpImg {
-  width: 22px;
-  height: 22px;
-  margin-bottom: -3px;
-  display: inline-block;
-}
-
-.helpButton {
-  height: 22px;
-  width: 22px;
-  color: @secondaryText;
-  cursor: help;
-  font-size: 0.8em;
-  display: inline-block;
-}
-
-.helpContainer {
-  display: inline-block;
-  margin-left: 5px;
-}
-
-.helpContent {
-  position: absolute;
-  transform: scale(0) rotate(-12deg);
-  color: @text;
-  background: @bgHelp;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);
-  margin-top: 23px;
-  margin-left: -35px;
-  transition: all .25s;
-  opacity: 0;
-  max-width: 500px;
-  font-size: 20px;
-  text-align: left;
-
-  @media (max-width: 500px) {
-    position: fixed;
-    margin: 5px;
-    left: 0px;
-    top: 0px;
-  }
-}
-
-.helpContainer:hover .helpContent, .helpContainer:focus-within .helpContent {
-  transform: scale(1) rotate(0);
-  opacity: 1;
 }
 
 /* Media queries */

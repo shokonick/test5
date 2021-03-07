@@ -24,7 +24,6 @@ $loc = array(
 
   'title_showOnlyQR' => "title_showOnlyQR",
 
-  'alt_help' => "alt_help",
   'alt_QR_before' => "alt_QR_before",
   'alt_QR_after' => "alt_QR_after",
 

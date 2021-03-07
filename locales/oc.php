@@ -35,7 +35,6 @@ $loc = array(
 
   'title_showOnlyQR' => "Mostrar sonque aqueste còdi QR",
 
-  'alt_help' => "Ajuda",
   'alt_QR_before' => 'Significacion de còdi QR"',
   'alt_QR_after' => '"',
 

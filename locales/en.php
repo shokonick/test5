@@ -35,7 +35,6 @@ $loc = array(
 
   'title_showOnlyQR' => "Show this QR code only",
 
-  'alt_help' => "Help",
   'alt_QR_before' => 'QR code meaning "',
   'alt_QR_after' => '"',
 
