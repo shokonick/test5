@@ -256,7 +256,7 @@ if (badQuery()) {
         require "phpqrcode.php";
 
         $cheminImage = "temp/" . generateRandomString($fileNameLenght) . ".png";
-        QRcode::png($_GET['txt'], $cheminImage, $_GET['redondancy'], $_GET['size'], $_GET['margin'], false, hexdec($_GET['bgColor']), hexdec($_GET['mainColor']));
+        QRcode::png($_GET['txt'], $cheminImage, $_GET['redondancy'], $_GET['size'], $_GET['margin'], false, hexdec(substr($_GET['bgColor'], -6)), hexdec(substr($_GET['mainColor'], -6)));
         ?>
         <div class="centered">
           <a href="<?php echo $cheminImage; ?>" class="button" download="<?php echo htmlspecialchars($_GET['txt']); ?>.png"><?= $loc['button_download'] ?></a>
