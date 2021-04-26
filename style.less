@@ -279,12 +279,13 @@ header, footer {
   &:hover {
     border-width: 2px;
     border-style: solid;
+
     @media @light {
-      color: @text-light;
+      border-color: @borderHover-light;
     }
 
     @media @dark {
-      color: @text-dark;
+      border-color: @borderHover-dark;
     }
   }
 
@@ -294,11 +295,11 @@ header, footer {
     outline: none;
 
     @media @light {
-      border-color: @borderHover-light;
+      border-color: @borderFocus-light;
     }
 
     @media @dark {
-      border-color: @borderHover-dark;
+      border-color: @borderFocus-dark;
     }
   }
 }
@@ -322,15 +323,15 @@ header, footer {
   scrollbar-width: auto;
 
   @media @light {
-    background-color: @bgTextField-light;
-    color: @text-light;
-    scrollbar-color: @text-light @bgTextField-light;
+    background-color: @bgTextarea-light;
+    color: @textareaText-light;
+    scrollbar-color: @textareaText-light @bgTextarea-light;
   }
 
   @media @dark {
-    background-color: @bgTextField-dark;
-    color: @text-dark;
-    scrollbar-color: @text-dark @bgTextField-dark;
+    background-color: @bgTextarea-dark;
+    color: @textareaText-dark;
+    scrollbar-color: @textareaText-dark @bgTextarea-dark;
   }
 }
 
@@ -347,11 +348,11 @@ input[type=submit] {
   font-weight: normal;
   font-size: 1em;
   @media @light {
-    color: @secondaryText-light;
+    color: @textareaPlaceholder-light;
   }
 
   @media @dark {
-    color: @secondaryText-dark;
+    color: @textareaPlaceholder-dark;
   }
 }
 
