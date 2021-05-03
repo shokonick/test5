@@ -106,12 +106,6 @@ if (badQuery()) {
     $options = array('cache_dir' => '/srv/http/libreqr/temp/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("/srv/http/libreqr/style.less" => ""), $options, $colorScheme);
 
-    //require "less.php/lessc.inc.php";
-    //$less = new lessc;
-    //$less->setVariables($lightTheme); // Make these colors available in style.less
-    //$less->setVariables($darkTheme);
-    //$less->setFormatter("compressed");
-    //$less->checkedCompile("style.less", "temp/style.min.css"); // Compile, minimise and cache style.less into style.min.css
     ?>
     <link type="text/css" rel="stylesheet" href="temp/<?= $cssFileName ?>">
 
