@@ -158,7 +158,7 @@ if (badQuery()) {
              ?></textarea>
           </div>
 
-          <div id="menusDeroulants">
+          <div id="sideParams">
 
             <div class="param">
               <label for="redondancy">
@@ -186,16 +186,7 @@ if (badQuery()) {
                   </p>
                 </details>
               </label>
-              <select id="margin" name="margin">
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "0")) {echo 'selected="" ';} ?>value="0">0</option>
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "1")) {echo 'selected="" ';} ?>value="1">1</option>
-                <option <?php if ((isset($_GET['margin']) AND ($_GET['margin'] == "2")) OR (!isset($_GET['margin']) OR empty($_GET['margin']))) {echo 'selected="" ';} ?>value="2">2 - <?= $loc['value_default'] ?></option>
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "3")) {echo 'selected="" ';} ?>value="3">3</option>
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "4")) {echo 'selected="" ';} ?>value="4">4</option>
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "5")) {echo 'selected="" ';} ?>value="5">5</option>
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "8")) {echo 'selected="" ';} ?>value="8">8</option>
-                <option <?php if (isset($_GET['margin']) AND ($_GET['margin'] == "10")) {echo 'selected="" ';} ?>value="10">10</option>
-              </select>
+              <input type="number" id="margin" placeholder="2" name="margin" min="0" value="<?= $_GET['margin'] ?>">
             </div>
 
             <div class="param">
@@ -207,18 +198,7 @@ if (badQuery()) {
                   </p>
                 </details>
               </label>
-              <select id="size" name="size">
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 1)) {echo 'selected="" ';} ?>value="1">1</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 2)) {echo 'selected="" ';} ?>value="2">2</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 3)) {echo 'selected="" ';} ?>value="3">3</option>
-                <option <?php if ((isset($_GET['size']) AND ($_GET['size'] == 4)) OR (!isset($_GET['size']) OR empty($_GET['size']))) {echo 'selected="" ';} ?>value="4">4 - <?= $loc['value_default'] ?></option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 5)) {echo 'selected="" ';} ?>value="5">5</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 6)) {echo 'selected="" ';} ?>value="6">6</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 8)) {echo 'selected="" ';} ?>value="8">8</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 10)) {echo 'selected="" ';} ?>value="10">10</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 15)) {echo 'selected="" ';} ?>value="15">15</option>
-                <option <?php if (isset($_GET['size']) AND ($_GET['size'] == 20)) {echo 'selected="" ';} ?>value="20">20</option>
-              </select>
+              <input type="number" id="size" placeholder="4" name="size" min="1" max="44" value="<?= $_GET['size'] ?>">
             </div>
 
           </div>
