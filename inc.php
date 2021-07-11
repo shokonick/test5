@@ -11,7 +11,7 @@ define("DEFAULT_MAINCOLOR", "000000");
 $libreqrVersion = "1.3.0";
 
 // Defines the locale to be used
-if ($forceLocale == false) {
+if ($forceLocale == false AND isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
   $clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
   $clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
   $clientLocales = explode(',', $clientLocales);
