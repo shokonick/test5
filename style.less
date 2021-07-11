@@ -27,6 +27,27 @@ You should have received a copy of the GNU Affero General Public License along w
   }
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  font-weight: normal;
+  font-size: 20px;
+  height: 100%;
+
+  @media @light {
+    color: @text-light;
+    background-color: @bg-light;
+  }
+
+  @media @dark {
+    color: @text-dark;
+    background-color: @bg-dark;
+  }
+}
+
 a {
   text-decoration: underline;
 
@@ -43,8 +64,8 @@ a {
   }
 }
 
-p {
-  margin: 10px;
+p.helpText {
+  margin: 5px 0px 0px 0px;
 }
 
 details .helpText {
@@ -59,6 +80,11 @@ details .helpText {
   @media @dark {
     background-color: @bgHelp-dark;
   }
+}
+
+#sideParams {
+  text-align: center;
+  margin-left: 12px;
 }
 
 #sideParams summary {
@@ -84,44 +110,18 @@ details .helpText {
   text-decoration: none;
 }
 
-form {
-  flex-grow: 1;
-  margin-bottom: 30px;
-}
-
 main {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   width: 814px;
-  height: 99%;
-}
-
-body {
-  margin: 18px;
-  font-weight: normal;
-  font-size: 20px;
-  height: 99%;
-
-  @media @light {
-    color: @text-light;
-    background-color: @bg-light;
-  }
-
-  @media @dark {
-    color: @text-dark;
-    background-color: @bg-dark;
-  }
-}
-
-html {
-  height: 97%;
+  height: 100%;
 }
 
 header {
   text-align: center;
-  padding: 0px;
+  padding-top: 12px;
   margin: 0px;
   height: 64px;
 }
@@ -156,7 +156,11 @@ h2 {
   flex-direction: row;
 }
 
-#showOnlyQR {
+section#output {
+  flex-grow: 1;
+}
+
+#showOnlyQR, #downloadQR {
   margin-top: 30px;
 }
 
@@ -187,8 +191,8 @@ h2 {
   }
 }
 
-label[for=txt] {
-  padding-left: 22px;
+label[for=txt] summary {
+  margin-left: 22px;
 }
 
 #colors {
@@ -231,7 +235,7 @@ label[for=txt] {
 
 footer {
   font-size: 14px;
-  padding-top: 20px;
+  margin-top: 10px;
   text-align: left;
 }
 
@@ -250,6 +254,10 @@ header, footer {
     font-weight: normal;
     padding-bottom: 10px;
   }
+}
+
+p.helpText {
+  width: 534px;
 }
 
 /* Inputs */
@@ -304,8 +312,15 @@ header, footer {
   }
 }
 
-#redondancy, #size, #margin {
+#redondancy {
   width: 250px;
+}
+
+#size, #margin {
+  width: 234px;
+}
+
+#redondancy, #size, #margin {
   height: 40px;
   @media @light {
     background-color: @bgField-light;
@@ -382,10 +397,6 @@ input[type=color] {
 
   #firstWrapper {
     flex-direction: column;
-  }
-
-  body {
-    margin: 10px;
   }
 
   #txt {

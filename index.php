@@ -120,7 +120,7 @@ if (
 
         <div id="firstWrapper">
 
-          <div class="param">
+          <div class="param" id="txtParam">
             <label for="txt">
               <details>
                 <summary><?= $loc['label_content'] ?></summary>
@@ -202,33 +202,36 @@ if (
 
       </form>
 
-    <?php
+      <section id="output">
 
-    if (!empty($params['txt'])) {
-      require "phpqrcode.php";
+        <?php
 
-      $imagePath = "temp/" . generateRandomString($fileNameLenght) . ".png";
-      QRcode::png(
-        $params['txt'],
-        $imagePath,
-        $params['redondancy'],
-        $params['size'],
-        $params['margin'],
-        false,
-        hexdec(substr($params['bgColor'], -6)),
-        hexdec(substr($params['mainColor'], -6))
-      );
-      ?>
-      <div class="centered">
-        <a href="<?php echo $imagePath; ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
-      </div>
+        if (!empty($params['txt'])) {
+          require "phpqrcode.php";
 
-      <div class="centered" id="showOnlyQR">
-        <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $imagePath; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?= $imagePath; ?>"/></a>
-      </div>
-    <?php
-    }
-      ?>
+          $imagePath = "temp/" . generateRandomString($fileNameLenght) . ".png";
+          QRcode::png(
+            $params['txt'],
+            $imagePath,
+            $params['redondancy'],
+            $params['size'],
+            $params['margin'],
+            false,
+            hexdec(substr($params['bgColor'], -6)),
+            hexdec(substr($params['mainColor'], -6))
+          );
+          ?>
+          <div class="centered" id="downloadQR">
+            <a href="<?php echo $imagePath; ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
+          </div>
+
+          <div class="centered" id="showOnlyQR">
+            <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $imagePath; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?= $imagePath; ?>"/></a>
+          </div>
+
+        <?php } ?>
+
+        </section>
 
         <footer>
 
