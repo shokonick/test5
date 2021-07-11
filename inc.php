@@ -8,7 +8,7 @@ define("DEFAULT_SIZE", 4);
 define("DEFAULT_BGCOLOR", "FFFFFF");
 define("DEFAULT_MAINCOLOR", "000000");
 
-$libreqrVersion = "1.3.0";
+$libreqrVersion = "1.4.0dev";
 
 // Defines the locale to be used
 if ($forceLocale == false AND isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
