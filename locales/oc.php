@@ -46,6 +46,4 @@ $loc = array(
   'metaText_legal' => "LibreQR " . $libreqrVersion . " es un logicial liure que son <a href='https://code.antopie.org/miraty/libreqr/'>còdi font</a> es disponible jols tèrmes de la licéncia <abbr title='GNU Affero General Public License version 3 or any later version'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
 
   'opensearch_description' => "Generatz de còdis QR a partir de la barra de recèrca o d’adreça",
-  'opensearch_actionName' => "Generatz de còdis QR a partir de la barra de recèrca o d’adreça",
 );
-

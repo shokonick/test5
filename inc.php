@@ -2,6 +2,12 @@
 
 require "config.inc.php";
 
+define("DEFAULT_REDONDANCY", "H");
+define("DEFAULT_MARGIN", 2);
+define("DEFAULT_SIZE", 4);
+define("DEFAULT_BGCOLOR", "FFFFFF");
+define("DEFAULT_MAINCOLOR", "000000");
+
 $libreqrVersion = "1.3.0";
 
 // Defines the locale to be used

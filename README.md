@@ -90,7 +90,7 @@ This source code includes:
 
 ## License
 
-[AGPLv3+](https://code.antopie.org/miraty/libreqr/src/branch/master/LICENSE)
+[AGPLv3+](https://code.antopie.org/miraty/libreqr/src/branch/main/LICENSE)
 
 LibreQR is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

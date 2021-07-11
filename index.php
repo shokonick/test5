@@ -20,66 +20,54 @@ This file is part of LibreQR.
 -->
 <?php
 
-function badQuery() { // Check if browser must be redirected
+$params = array(
+  "txt" => "",
+  "redondancy" => DEFAULT_REDONDANCY,
+  "margin" => DEFAULT_MARGIN,
+  "size" => DEFAULT_SIZE,
+  "bgColor" => "#" . DEFAULT_BGCOLOR,
+  "mainColor" => "#" . DEFAULT_MAINCOLOR,
+);
 
-  // Check if parameters are set
-  if (!isset($_GET['txt']))
-    return true;
-  else if (!isset($_GET['size']))
-    return true;
-  else if (!isset($_GET['redondancy']))
-    return true;
-  else if (!isset($_GET['margin']))
-    return true;
-  else if (!isset($_GET['bgColor']))
-    return true;
-  else if (!isset($_GET['mainColor']))
-    return true;
+if (
+  isset($_POST['txt'])
+  AND isset($_POST['redondancy'])
+  AND isset($_POST['margin'])
+  AND isset($_POST['size'])
+  AND isset($_POST['bgColor'])
+  AND isset($_POST['mainColor'])
+) {
 
-  // Check parameters's types
-  else if (!is_numeric($_GET['size']))
-    return true;
-  else if (!is_string($_GET['redondancy']))
-    return true;
-  else if (!is_numeric($_GET['margin']))
-    return true;
-  else if (!is_string($_GET['bgColor']))
-    return true;
-  else if (!is_string($_GET['mainColor']))
-    return true;
-
-  // Check if redondancy value is correct
-  else if ($_GET['redondancy'] != "L" AND $_GET['redondancy'] != "M" AND $_GET['redondancy'] != "Q" AND $_GET['redondancy'] != "H")
-    return true;
-
+  if (strlen($_POST['txt']) >= 1 AND strlen($_POST['txt']) <= 4096)
+    $params['txt'] = $_POST['txt'];
   else
-    return false;
-}
+    exit("Wrong value for txt");
 
-if (badQuery()) {
+  if ($_POST['redondancy'] === "L" OR $_POST['redondancy'] === "M" OR $_POST['redondancy'] === "Q" OR $_POST['redondancy'] === "H")
+    $params['redondancy'] = $_POST['redondancy'];
+  else
+    exit("Wrong value for redondancy");
 
-  parse_str(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY), $params);
+  if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 128)
+    $params['margin'] = $_POST['margin'];
+  else
+    exit("Wrong value for margin");
 
-  if (!isset($params['txt']))
-    $params['txt'] = "";
+  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 128)
+    $params['size'] = $_POST['size'];
+  else
+    exit("Wrong value for size");
 
-  if (!isset($params['redondancy']) OR !is_string($params['redondancy']) OR ($params['redondancy'] != "L" AND $params['redondancy'] != "M" AND $params['redondancy'] != "Q" AND $params['redondancy'] != "H"))
-    $params['redondancy'] = "H";
+  if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['bgColor']))
+    $params['bgColor'] = $_POST['bgColor'];
+  else
+    exit("Wrong value for bgColor");
 
-  if (!isset($params['margin']) OR !is_numeric($params['margin']))
-    $params['margin'] = 2;
+  if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['mainColor']))
+    $params['mainColor'] = $_POST['mainColor'];
+  else
+    exit("Wrong value for mainColor");
 
-  if (!isset($params['size']) OR !is_numeric($params['size']))
-    $params['size'] = 4;
-
-  if (!isset($params['bgColor']) OR !is_string($params['bgColor']))
-    $params['bgColor'] = "#FFFFFF";
-
-  if (!isset($params['mainColor']) OR !is_string($params['mainColor']))
-    $params['mainColor'] = "#000000";
-
-  header('Location: ' . $rootPath . "?" . http_build_query($params));
-  exit;
 }
 
 ?>
@@ -91,8 +79,8 @@ if (badQuery()) {
     <meta name="description" content="<?= $loc['description'] ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.php">
-    <link rel="search" type="application/opensearchdescription+xml" title="<?= $loc['opensearch_actionName'] ?>" href="opensearch.php&#63;redondancy=<?= $_GET['redondancy'] ?>&amp;margin=<?= $_GET['margin'] ?>&amp;size=<?= $_GET['size'] ?>&amp;bgColor=<?= urlencode($_GET['bgColor']) ?>&amp;mainColor=<?= urlencode($_GET['mainColor']) ?>">
-    <?php
+    <link rel="search" type="application/opensearchdescription+xml" title="LibreQR" href="opensearch.php&#63;redondancy=<?= $params['redondancy'] ?>&amp;margin=<?= $params['margin'] ?>&amp;size=<?= $params['size'] ?>&amp;bgColor=<?= urlencode($params['bgColor']) ?>&amp;mainColor=<?= urlencode($params['mainColor']) ?>">
+<?php
     // If style.min.css exists
     if (file_exists("temp/style.min.css"))
       // And if it's older than theme.php or config.inc.php (so not up to date)
@@ -108,12 +96,10 @@ if (badQuery()) {
 
     ?>
     <link type="text/css" rel="stylesheet" href="temp/<?= $cssFileName ?>">
-
-    <?php
+<?php
     foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
         echo '    <link rel="icon" type="image/png" href="themes/' . $theme . '/icons/' . $dimFav . '.png" sizes="' . $dimFav . 'x' . $dimFav . '">' . "\n";
     } ?>
-
   </head>
 
   <body>
@@ -130,7 +116,7 @@ if (badQuery()) {
         </a>
       </header>
 
-      <form method="get" action="./">
+      <form method="post" action="./">
 
         <div id="firstWrapper">
 
@@ -143,13 +129,7 @@ if (badQuery()) {
                 </p>
               </details>
             </label>
-            <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt"><?php
-
-            if (isset($_GET['txt'])) {
-              echo htmlspecialchars($_GET['txt']);
-            }
-
-             ?></textarea>
+            <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt" minlenght="5" maxlenght="50"><?= htmlspecialchars($params['txt']) ?></textarea>
           </div>
 
           <div id="sideParams">
@@ -164,10 +144,10 @@ if (badQuery()) {
                 </details>
               </label>
               <select id="redondancy" name="redondancy">
-                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "L")) {echo 'selected="" ';} ?>value="L">L - 7%</option>
-                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "M")) {echo 'selected="" ';} ?>value="M">M - 15%</option>
-                <option <?php if (isset($_GET['redondancy']) AND ($_GET['redondancy'] == "Q")) {echo 'selected="" ';} ?>value="Q">Q - 25%</option>
-                <option <?php if ((isset($_GET['redondancy']) AND ($_GET['redondancy'] == "H")) OR (!isset($_GET['redondancy']) OR empty($_GET['redondancy']))) {echo 'selected="" ';} ?>value="H">H - 30%</option>
+                <option <?php if ($params['redondancy'] === "L") echo 'selected="" '; ?>value="L">L - 7%</option>
+                <option <?php if ($params['redondancy'] === "M") echo 'selected="" '; ?>value="M">M - 15%</option>
+                <option <?php if ($params['redondancy'] === "Q") echo 'selected="" '; ?>value="Q">Q - 25%</option>
+                <option <?php if ($params['redondancy'] === "H") echo 'selected="" '; ?>value="H">H - 30%</option>
               </select>
             </div>
 
@@ -180,7 +160,7 @@ if (badQuery()) {
                   </p>
                 </details>
               </label>
-              <input type="number" id="margin" placeholder="2" name="margin" min="0" value="<?= $_GET['margin'] ?>">
+              <input type="number" id="margin" placeholder="2" name="margin" min="0" max="128" value="<?= htmlspecialchars($params['margin']) ?>">
             </div>
 
             <div class="param">
@@ -192,7 +172,7 @@ if (badQuery()) {
                   </p>
                 </details>
               </label>
-              <input type="number" id="size" placeholder="4" name="size" min="1" max="44" value="<?= $_GET['size'] ?>">
+              <input type="number" id="size" placeholder="4" name="size" min="1" max="128" value="<?= htmlspecialchars($params['size']) ?>">
             </div>
 
           </div>
@@ -204,14 +184,14 @@ if (badQuery()) {
           <div class="param">
             <label for="bgColor"><?= $loc['label_bgColor'] ?></label>
             <div class="inputColorContainer">
-                        <input type="color" name="bgColor" id="bgColor" value="<?php if (!empty($_GET['bgColor'])) {echo htmlspecialchars($_GET['bgColor']);} else {echo "#FFFFFF";} ?>">
+                        <input type="color" name="bgColor" id="bgColor" value="<?= htmlspecialchars($params['bgColor']) ?>">
             </div>
           </div>
 
           <div class="param">
             <label for="mainColor"><?= $loc['label_mainColor'] ?></label>
             <div class="inputColorContainer">
-              <input type="color" name="mainColor" id="mainColor" value="<?php if (!empty($_GET['mainColor'])) {echo htmlspecialchars($_GET['mainColor']);} else {echo "#000000";} ?>">
+              <input type="color" name="mainColor" id="mainColor" value="<?= htmlspecialchars($params['mainColor']) ?>">
             </div>
           </div>
         </div>
@@ -224,25 +204,31 @@ if (badQuery()) {
 
     <?php
 
-    if (!empty($_GET['txt']) AND !empty($_GET['size']) AND !empty($_GET['redondancy']) AND !empty($_GET['margin']) AND !empty($_GET['bgColor']) AND !empty($_GET['mainColor'])) {
-      if (isset($_GET['txt']) AND isset($_GET['size']) AND isset($_GET['redondancy']) AND isset($_GET['margin']) AND isset($_GET['bgColor']) AND isset($_GET['mainColor'])) {
+    if (!empty($params['txt'])) {
+      require "phpqrcode.php";
 
-        require "phpqrcode.php";
+      $imagePath = "temp/" . generateRandomString($fileNameLenght) . ".png";
+      QRcode::png(
+        $params['txt'],
+        $imagePath,
+        $params['redondancy'],
+        $params['size'],
+        $params['margin'],
+        false,
+        hexdec(substr($params['bgColor'], -6)),
+        hexdec(substr($params['mainColor'], -6))
+      );
+      ?>
+      <div class="centered">
+        <a href="<?php echo $imagePath; ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
+      </div>
 
-        $cheminImage = "temp/" . generateRandomString($fileNameLenght) . ".png";
-        QRcode::png($_GET['txt'], $cheminImage, $_GET['redondancy'], $_GET['size'], $_GET['margin'], false, hexdec(substr($_GET['bgColor'], -6)), hexdec(substr($_GET['mainColor'], -6)));
-        ?>
-        <div class="centered">
-          <a href="<?php echo $cheminImage; ?>" class="button" download="<?php echo htmlspecialchars($_GET['txt']); ?>.png"><?= $loc['button_download'] ?></a>
-        </div>
-
-        <div class="centered" id="showOnlyQR">
-          <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?php echo $cheminImage; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?php echo htmlspecialchars($_GET['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?php echo $cheminImage; ?>"/></a>
-        </div>
-        <?php
-      }
+      <div class="centered" id="showOnlyQR">
+        <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $imagePath; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?= $imagePath; ?>"/></a>
+      </div>
+    <?php
     }
-        ?>
+      ?>
 
         <footer>
 
