@@ -31,5 +31,4 @@ $loc = array(
   'metaText_legal' => "metaText_legal",
 
   'opensearch_description' => "opensearch_description",
-  'opensearch_actionName' => "opensearch_actionName",
 );

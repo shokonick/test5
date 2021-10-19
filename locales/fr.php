@@ -46,5 +46,4 @@ $loc = array(
   'metaText_legal' => "LibreQR " . $libreqrVersion . " est un logiciel libre dont le <a href='https://code.antopie.org/miraty/libreqr/'>code source</a> est disponible selon les termes de l'<abbr title='GNU Affero General Public License version 3 ou toute version ultérieure'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
 
   'opensearch_description' => "Générez des codes QR depuis votre barre de recherche ou d'adresse",
-  'opensearch_actionName' => "Générez des codes QR depuis votre barre de recherche ou d'adresse",
 );

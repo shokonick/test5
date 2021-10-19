@@ -7,8 +7,7 @@
 	"description": "<?= $loc['subtitle'] ?>",
 	"start_url": "<?= $rootPath; ?>",
 	"scope": "<?= $rootPath; ?>",
-	"display": "standalone",
-	"orientation": "portrait",
+	"orientation": "any",
 	"icons":
 	[
 <?php for ($i = 0; $i < (count($themeDimensionsIcons) - 1); $i++) { ?>
