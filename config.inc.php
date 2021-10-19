@@ -28,4 +28,4 @@ $fileNameLenght = 32;
 // EN: Will be printed at the bottom of the interface
 // FR : Sera affiché en bas de l'interface
 $customTextEnabled = false;
-$customText = "This LibreQR instance is hosted by <a href='https://foo.bar'>foo</a>.";
+$customText = "This LibreQR instance is hosted by <a href='https://foo.example/'>foo</a>.";

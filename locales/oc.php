@@ -18,13 +18,11 @@ $loc = array(
     Podètz pas que codar lo tèxt que volètz.<br>
     Los logicials que deschifran los còdis QR poirián suggerir de los dubrir dins de logicials especials, segon lor <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes'>esquèma URI</a>.<br><br>
     Per exemple, per dubrir la pagina web :<br>
-    https://www.domain.tld/<br><br>
+    https://www.example/<br><br>
     Per enviar un corrièl :<br>
-    mailto:contact@domain.tld<br><br>
+    mailto:contact@email.example<br><br>
     Per partejar de coordonadas geograficas :<br>
-    geo:48.867564,2.364057<br><br>
-    Per sonar un numèro de telefòn :<br>
-    tel:+33639981871
+    geo:48.867564,2.364057
   ",
   'help_redondancy' => "La redondància es la duplicacion de las informacions al còdi QR per dire de corregir las errors pendent lo deschiframent. Un taux mai naut produirà un còdi mai grand, mas serà de melhor deschifrar corrèctament.",
   'help_margin' => "Nombre de pixèls de la banda blanca a l’entorn del còdi QR.",

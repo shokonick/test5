@@ -1,7 +1,7 @@
 <?php
 $loc = array(
   'subtitle' => "Générateur de codes QR",
-  'description' => "Générez des codes QR librement. Choisissez le contenu, la taille, les couleurs…",
+  'description' => "Générer des codes QR librement. Choix du contenu, de la taille, des couleurs…",
 
   'label_content' => "Texte à encoder",
   'label_redondancy' => "Taux de redondance",
@@ -18,13 +18,11 @@ $loc = array(
     Vous pouvez encoder ce que vous voulez sous forme de texte.<br>
     Les logiciels qui décodent ces codes QR pourraient proposer de les ouvrir avec un logiciel dédié, en fonction de leur <a href='https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI'>schéma d'URI</a>.<br><br>
     Par exemple, pour ouvrir une page Web :<br>
-    https://www.domaine.tld/<br><br>
+    https://www.example/<br><br>
     Pour envoyer un mail :<br>
-    mailto:contact@domaine.tld<br><br>
+    mailto:contact@email.example<br><br>
     Pour partager des coordonnées géographique :<br>
-    geo:48.867564,2.364057<br><br>
-    Pour appeler un numéro de téléphone :<br>
-    tel:+33639981871
+    geo:48.867564,2.364057
   ",
   'help_redondancy' => "La redondance est la duplication des informations dans le code QR afin de corriger les erreurs lors du décodage. Un taux plus élevé produira un code QR plus grand, mais aura plus de chance d'être décodé correctement.",
   'help_margin' => "Nombre de pixels des bandes blanches autour du code QR.",

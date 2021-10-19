@@ -7,7 +7,7 @@
 |_____|_|_.__/|_|  \___|\__\_|_| \_\
 A PHP Web interface for generating QR codes
 
-Source code : https://code.antopie.org/miraty/libreqr
+Source code: https://code.antopie.org/miraty/libreqr
 
 This file is part of LibreQR.
 
@@ -91,8 +91,8 @@ if (
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
 
-    $options = array('cache_dir' => '/srv/http/libreqr/temp/', 'compress' => true);
-    $cssFileName = Less_Cache::Get(array("/srv/http/libreqr/style.less" => ""), $options, $colorScheme);
+    $options = array('cache_dir' => 'temp/', 'compress' => true);
+    $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
 
     ?>
     <link type="text/css" rel="stylesheet" href="temp/<?= $cssFileName ?>">

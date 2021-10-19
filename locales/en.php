@@ -16,15 +16,13 @@ $loc = array(
 
   'help_content' => "
     You can only encode whatever text you want.<br>
-    Softwares which decode these QR codes could suggest to open them with dedicated software, depending on their <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes'>URI scheme</a>.<br><br>
+    Software which decodes these QR codes could suggest to open them with dedicated software, depending on their <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes'>URI scheme</a>.<br><br>
     For instance, to open a webpage:<br>
-    https://www.domain.tld/<br><br>
+    https://www.example/<br><br>
     To send an email:<br>
-    mailto:contact@domain.tld<br><br>
+    mailto:contact@email.example<br><br>
     To share geographic coordinates:<br>
-    geo:48.867564,2.364057<br><br>
-    To call a phone number:<br>
-    tel:+33639981871
+    geo:48.867564,2.364057
   ",
   'help_redondancy' => "Redundancy is the duplication of information in the QR code to correct errors during decoding. A higher rate will produce a bigger QR code, but will have a better chance of being decoded correctly.",
   'help_margin' => "Number of pixels in the white bands around the QR code.",
@@ -40,7 +38,7 @@ $loc = array(
 
   'metaText_qr' => "
     <h3>What's a QR code?</h3>
-    A QR code is a 2 dimensions barcode in which a text is written in binary. It can be decoded with a device equipped with a photo sensor and an adequate software.
+    A QR code is a 2 dimensional barcode in which text is written in binary. It can be decoded with a device equipped with a photo sensor and an adequate software.
     <a href='https://en.wikipedia.org/wiki/QR_code'>QR code on Wikipedia</a>.
   ",
   'metaText_legal' => "LibreQR " . $libreqrVersion . " is a free software whose <a href='https://code.antopie.org/miraty/libreqr/'>source code</a> is available under the terms of the <abbr title='GNU Affero General Public License version 3 or any later version'><a href='LICENSE.html'>AGPLv3</a>+</abbr>.",
