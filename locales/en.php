@@ -12,8 +12,6 @@ $loc = array(
 
   'placeholder' => "Enter the text to encode in the QR code",
 
-  'value_default' => "default",
-
   'help_content' => "
     You can only encode whatever text you want.<br>
     Software which decodes these QR codes could suggest to open them with dedicated software, depending on their <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes'>URI scheme</a>.<br><br>

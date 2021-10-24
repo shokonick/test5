@@ -12,8 +12,6 @@ $loc = array(
 
   'placeholder' => "Entrez le texte à encoder dans le code QR",
 
-  'value_default' => "par défaut",
-
   'help_content' => "
     Vous pouvez encoder ce que vous voulez sous forme de texte.<br>
     Les logiciels qui décodent ces codes QR pourraient proposer de les ouvrir avec un logiciel dédié, en fonction de leur <a href='https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI'>schéma d'URI</a>.<br><br>

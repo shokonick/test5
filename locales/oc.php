@@ -12,8 +12,6 @@ $loc = array(
 
   'placeholder' => "Dintratz lo tèxt de codar en còdi QR",
 
-  'value_default' => "per defaut",
-
   'help_content' => "
     Podètz pas que codar lo tèxt que volètz.<br>
     Los logicials que deschifran los còdis QR poirián suggerir de los dubrir dins de logicials especials, segon lor <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes'>esquèma URI</a>.<br><br>
