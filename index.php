@@ -25,8 +25,8 @@ $params = array(
   "redondancy" => DEFAULT_REDONDANCY,
   "margin" => DEFAULT_MARGIN,
   "size" => DEFAULT_SIZE,
-  "bgColor" => "#" . DEFAULT_BGCOLOR,
-  "mainColor" => "#" . DEFAULT_MAINCOLOR,
+  "bgColor" => DEFAULT_BGCOLOR,
+  "mainColor" => DEFAULT_MAINCOLOR,
 );
 
 if (
@@ -43,32 +43,35 @@ if (
   else
     exit("Wrong value for txt");
 
-  if ($_POST['redondancy'] === "L" OR $_POST['redondancy'] === "M" OR $_POST['redondancy'] === "Q" OR $_POST['redondancy'] === "H")
+  if ($_POST['redondancy'] === "low" OR $_POST['redondancy'] === "medium" OR $_POST['redondancy'] === "quartile" OR $_POST['redondancy'] === "high")
     $params['redondancy'] = $_POST['redondancy'];
   else
     exit("Wrong value for redondancy");
 
-  if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 128)
+  if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 1024)
     $params['margin'] = $_POST['margin'];
   else
     exit("Wrong value for margin");
 
-  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 128)
+  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 1024)
     $params['size'] = $_POST['size'];
   else
     exit("Wrong value for size");
 
   if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['bgColor']))
-    $params['bgColor'] = $_POST['bgColor'];
+    $params['bgColor'] = substr($_POST['bgColor'], -6);
   else
     exit("Wrong value for bgColor");
 
   if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['mainColor']))
-    $params['mainColor'] = $_POST['mainColor'];
+    $params['mainColor'] = substr($_POST['mainColor'], -6);
   else
     exit("Wrong value for mainColor");
 
 }
+
+require "barcode-generator/Utils/QrCode.php";
+use CodeItNow\BarcodeBundle\Utils\QrCode;
 
 ?>
 <!DOCTYPE html>
@@ -144,10 +147,10 @@ if (
                 </details>
               </label>
               <select id="redondancy" name="redondancy">
-                <option <?php if ($params['redondancy'] === "L") echo 'selected="" '; ?>value="L">L - 7%</option>
-                <option <?php if ($params['redondancy'] === "M") echo 'selected="" '; ?>value="M">M - 15%</option>
-                <option <?php if ($params['redondancy'] === "Q") echo 'selected="" '; ?>value="Q">Q - 25%</option>
-                <option <?php if ($params['redondancy'] === "H") echo 'selected="" '; ?>value="H">H - 30%</option>
+                <option <?php if ($params['redondancy'] === "low") echo 'selected="" '; ?>value="low">L - 7%</option>
+                <option <?php if ($params['redondancy'] === "medium") echo 'selected="" '; ?>value="medium">M - 15%</option>
+                <option <?php if ($params['redondancy'] === "quartile") echo 'selected="" '; ?>value="quartile">Q - 25%</option>
+                <option <?php if ($params['redondancy'] === "high") echo 'selected="" '; ?>value="high">H - 30%</option>
               </select>
             </div>
 
@@ -160,7 +163,7 @@ if (
                   </p>
                 </details>
               </label>
-              <input type="number" id="margin" placeholder="2" name="margin" min="0" max="128" value="<?= htmlspecialchars($params['margin']) ?>">
+              <input type="number" id="margin" placeholder="2" name="margin" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
             </div>
 
             <div class="param">
@@ -172,7 +175,7 @@ if (
                   </p>
                 </details>
               </label>
-              <input type="number" id="size" placeholder="4" name="size" min="1" max="128" value="<?= htmlspecialchars($params['size']) ?>">
+              <input type="number" id="size" placeholder="4" name="size" min="1" max="1024" value="<?= htmlspecialchars($params['size']) ?>">
             </div>
 
           </div>
@@ -184,14 +187,14 @@ if (
           <div class="param">
             <label for="bgColor"><?= $loc['label_bgColor'] ?></label>
             <div class="inputColorContainer">
-                        <input type="color" name="bgColor" id="bgColor" value="<?= htmlspecialchars($params['bgColor']) ?>">
+                        <input type="color" name="bgColor" id="bgColor" value="#<?= htmlspecialchars($params['bgColor']) ?>">
             </div>
           </div>
 
           <div class="param">
             <label for="mainColor"><?= $loc['label_mainColor'] ?></label>
             <div class="inputColorContainer">
-              <input type="color" name="mainColor" id="mainColor" value="<?= htmlspecialchars($params['mainColor']) ?>">
+              <input type="color" name="mainColor" id="mainColor" value="#<?= htmlspecialchars($params['mainColor']) ?>">
             </div>
           </div>
         </div>
@@ -207,26 +210,32 @@ if (
         <?php
 
         if (!empty($params['txt'])) {
-          require "phpqrcode.php";
+          $qrCode = new QrCode();
+          $qrCode
+            ->setText($params['txt'])
+            ->setSize($params['size'])
+            ->setPadding($params['margin'])
+            ->setErrorCorrection($params['redondancy'])
+            ->setForegroundColor(array(
+              'r' => hexdec(substr($params['mainColor'],0,2)),
+              'g' => hexdec(substr($params['mainColor'],2,2)),
+              'b' => hexdec(substr($params['mainColor'],4,2)),
+            ))
+            ->setBackgroundColor(array(
+              'r' => hexdec(substr($params['bgColor'],0,2)),
+              'g' => hexdec(substr($params['bgColor'],2,2)),
+              'b' => hexdec(substr($params['bgColor'],4,2)),
+            ))
+            ->setImageType(QrCode::IMAGE_TYPE_PNG);
+          $base64 = $qrCode->generate();
 
-          $imagePath = "temp/" . generateRandomString($fileNameLenght) . ".png";
-          QRcode::png(
-            $params['txt'],
-            $imagePath,
-            $params['redondancy'],
-            $params['size'],
-            $params['margin'],
-            false,
-            hexdec(substr($params['bgColor'], -6)),
-            hexdec(substr($params['mainColor'], -6))
-          );
           ?>
           <div class="centered" id="downloadQR">
-            <a href="<?php echo $imagePath; ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
+            <a href="data:image/png;base64,<?= $base64 ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
           </div>
 
           <div class="centered" id="showOnlyQR">
-            <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $imagePath; ?>"><img alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?= $imagePath; ?>"/></a>
+            <a title="<?= $loc['title_showOnlyQR'] ?>" href="data:image/png;base64,<?= $base64 ?>"><img alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="data:image/png;base64,<?= $base64 ?>"></a>
           </div>
 
         <?php } ?>

@@ -85,8 +85,8 @@ If you want to contact me, for instance to report a bug or ask me a question abo
 
 This source code includes:
 
-* [phpqrcode](https://github.com/t0k4rt/phpqrcode) to generate QR codes
-* [less.php](https://github.com/wikimedia/less.php) to compile [Less](http://lesscss.org)
+* [CodeItNow Barcode & QrCode Generator](https://github.com/codeitnowin/barcode-generator) to generate QR codes
+* [Less.php](https://github.com/wikimedia/less.php) to compile [Less](http://lesscss.org)
 
 ## License
 

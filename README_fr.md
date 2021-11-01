@@ -85,7 +85,7 @@ Si vous voulez me contacter, par exemple pour signaler un bug ou me poser une qu
 
 Ce code source inclus :
 
-* [phpqrcode](https://github.com/t0k4rt/phpqrcode) pour générer les codes QR
+* [CodeItNow Barcode & QrCode Generator](https://github.com/codeitnowin/barcode-generator) pour générer les codes QR
 * [less.php](https://github.com/wikimedia/less.php) pour compiler le [Less](http://lesscss.org)
 
 ## Licence
