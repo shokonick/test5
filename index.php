@@ -1,4 +1,3 @@
-<?php require "inc.php"; ?>
 <!--
  _     _ _               ___  ____
 | |   (_| |__  _ __ ___ / _ \|  _ \
@@ -19,6 +18,10 @@ This file is part of LibreQR.
 
 -->
 <?php
+
+use CodeItNow\BarcodeBundle\Utils\QrCode;
+
+require "inc.php";
 
 $params = array(
   "txt" => "",
@@ -69,9 +72,6 @@ if (
     exit("Wrong value for mainColor");
 
 }
-
-require "barcode-generator/Utils/QrCode.php";
-use CodeItNow\BarcodeBundle\Utils\QrCode;
 
 ?>
 <!DOCTYPE html>
@@ -210,6 +210,9 @@ use CodeItNow\BarcodeBundle\Utils\QrCode;
         <?php
 
         if (!empty($params['txt'])) {
+
+          require "barcode-generator/Utils/QrCode.php";
+
           $qrCode = new QrCode();
           $qrCode
             ->setText($params['txt'])
