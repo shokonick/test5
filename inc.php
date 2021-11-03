@@ -35,23 +35,3 @@ $rootPath = preg_replace('#\?.*$#', '', $rootPath);
 $rootPath = preg_replace('#(manifest|opensearch|index).php$#i', '', $rootPath);
 
 require "themes/" . $theme . "/theme.php"; // Load theme
-
-// Used to generate the filename of the QR code
-function generateRandomString($length) {
-  $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  $charactersLength = strlen($characters);
-  $randomString = '';
-  for ($i = 0; $i < $length; $i++) {
-    $randomString .= $characters[rand(0, $charactersLength - 1)];
-  }
-  return $randomString;
-}
-
-// Deletes images in temp/ older than the specified time in seconds
-$files = array_diff(scandir("temp"), array('..', '.', '.gitkeep'));
-foreach($files as $file) {
-  // If the current time (in Posix time) minus the date of last modification of the file is higher than specified time
-  if ((time() - filemtime("temp/" . $file)) > $timeBeforeDeletion) {
-    unlink("temp/" . $file); // Deletes this image
-  }
-}

@@ -83,26 +83,19 @@ if (
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="manifest.php">
     <link rel="search" type="application/opensearchdescription+xml" title="LibreQR" href="opensearch.php&#63;redondancy=<?= $params['redondancy'] ?>&amp;margin=<?= $params['margin'] ?>&amp;size=<?= $params['size'] ?>&amp;bgColor=<?= urlencode($params['bgColor']) ?>&amp;mainColor=<?= urlencode($params['mainColor']) ?>">
-<?php
-    // If style.min.css exists
-    if (file_exists("temp/style.min.css"))
-      // And if it's older than theme.php or config.inc.php (so not up to date)
-      if (filemtime("themes/" . $theme . "/theme.php") > filemtime("temp/style.min.css") OR filemtime("config.inc.php") > filemtime("temp/style.min.css"))
-        // Then delete it
-        unlink("temp/style.min.css");
-
+    <?php
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
 
-    $options = array('cache_dir' => 'temp/', 'compress' => true);
+    $options = array('cache_dir' => 'css/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
-
     ?>
-    <link type="text/css" rel="stylesheet" href="temp/<?= $cssFileName ?>">
-<?php
+    <link type="text/css" rel="stylesheet" href="css/<?= $cssFileName ?>">
+    <?php
     foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
         echo '    <link rel="icon" type="image/png" href="themes/' . $theme . '/icons/' . $dimFav . '.png" sizes="' . $dimFav . 'x' . $dimFav . '">' . "\n";
-    } ?>
+    }
+    ?>
   </head>
 
   <body>

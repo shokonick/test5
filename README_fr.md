@@ -31,11 +31,11 @@ L'extension GD est requise.
 
 `apt install php7.3-gd`
 
-LibreQR a besoin des permissions d'écriture dans le dossier `temp/`.
+LibreQR a besoin des permissions d'écriture dans le dossier `css/`.
 
 ```
-chown -R www-data:www-data /var/www/libreqr/temp
-chmod -R 600 /var/www/libreqr/temp
+chown -R www-data:www-data /var/www/libreqr/css
+chmod -R 600 /var/www/libreqr/css
 ```
 
 ### YunoHost
