@@ -53,11 +53,15 @@ if (
 
   if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 1024)
     $params['margin'] = $_POST['margin'];
+  else if (empty($_POST['margin']))
+    $params['margin'] = NULL;
   else
     exit("Wrong value for margin");
 
-  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 1024)
+  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 4096)
     $params['size'] = $_POST['size'];
+  else if (empty($_POST['size']))
+    $params['size'] = NULL;
   else
     exit("Wrong value for size");
 
@@ -117,28 +121,24 @@ if (
         <div id="firstWrapper">
 
           <div class="param" id="txtParam">
-            <label for="txt">
-              <details>
-                <summary><?= $loc['label_content'] ?></summary>
-                <p class="helpText">
-                  <?= $loc['help_content'] ?>
-                </p>
-              </details>
-            </label>
-            <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt" minlenght="5" maxlenght="50"><?= htmlspecialchars($params['txt']) ?></textarea>
+            <details>
+              <summary><label for="txt"><?= $loc['label_content'] ?></label></summary>
+              <div class="helpText">
+                <?= $loc['help_content'] ?>
+              </div>
+            </details>
+            <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt"><?= htmlspecialchars($params['txt']) ?></textarea>
           </div>
 
           <div id="sideParams">
 
             <div class="param">
-              <label for="redondancy">
-                <details>
-                  <summary><?= $loc['label_redondancy'] ?></summary>
-                  <p class="helpText">
-                    <?= $loc['help_redondancy'] ?>
-                  </p>
-                </details>
-              </label>
+              <details>
+                <summary><label for="redondancy"><?= $loc['label_redondancy'] ?></label></summary>
+                <p class="helpText">
+                  <?= $loc['help_redondancy'] ?>
+                </p>
+              </details>
               <select id="redondancy" name="redondancy">
                 <option <?php if ($params['redondancy'] === "low") echo 'selected="" '; ?>value="low">L - 7%</option>
                 <option <?php if ($params['redondancy'] === "medium") echo 'selected="" '; ?>value="medium">M - 15%</option>
@@ -148,27 +148,35 @@ if (
             </div>
 
             <div class="param">
-              <label for="margin">
-                <details>
-                  <summary><?= $loc['label_margin'] ?></summary>
-                  <p class="helpText">
-                    <?= $loc['help_margin'] ?>
-                  </p>
-                </details>
-              </label>
-              <input type="number" id="margin" placeholder="2" name="margin" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
+              <details>
+                <summary><label for="margin"><?= $loc['label_margin'] ?></label></summary>
+                <p class="helpText">
+                  <?= $loc['help_margin'] ?>
+                </p>
+              </details>
+              <input type="number" list="margins" id="margin" placeholder="<?= $loc['placeholder_pixels'] ?>" name="margin" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
+              <datalist id="margins">
+                <option value="16">
+                <option value="32">
+                <option value="64">
+                <option value="128">
+              </datalist>
             </div>
 
             <div class="param">
-              <label for="size">
-                <details>
-                  <summary><?= $loc['label_size'] ?></summary>
-                  <p class="helpText">
-                    <?= $loc['help_size'] ?>
-                  </p>
-                </details>
-              </label>
-              <input type="number" id="size" placeholder="4" name="size" min="1" max="1024" value="<?= htmlspecialchars($params['size']) ?>">
+              <details>
+                <summary><label for="size"><?= $loc['label_size'] ?></label></summary>
+                <p class="helpText">
+                  <?= $loc['help_size'] ?>
+                </p>
+              </details>
+              <input type="number" list="sizes" id="size" placeholder="<?= $loc['placeholder_pixels'] ?>" name="size" min="1" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
+              <datalist id="sizes">
+                <option value="128">
+                <option value="256">
+                <option value="512">
+                <option value="1024">
+              </datalist>
             </div>
 
           </div>
@@ -198,45 +206,45 @@ if (
 
       </form>
 
-      <section id="output">
+      <?php
 
-        <?php
+      if (!empty($params['txt'])) {
 
-        if (!empty($params['txt'])) {
+        require "barcode-generator/Utils/QrCode.php";
+        $qrCode = new QrCode();
+        if (!is_null($params['margin']))
+          $qrCode->setPadding($params['margin']);
+        $qrCode
+          ->setText($params['txt'])
+          ->setSize($params['size'])
+          ->setErrorCorrection($params['redondancy'])
+          ->setForegroundColor(array(
+            'r' => hexdec(substr($params['mainColor'],0,2)),
+            'g' => hexdec(substr($params['mainColor'],2,2)),
+            'b' => hexdec(substr($params['mainColor'],4,2)),
+          ))
+          ->setBackgroundColor(array(
+            'r' => hexdec(substr($params['bgColor'],0,2)),
+            'g' => hexdec(substr($params['bgColor'],2,2)),
+            'b' => hexdec(substr($params['bgColor'],4,2)),
+          ))
+          ->setImageType(QrCode::IMAGE_TYPE_PNG);
+        $dataUri = $qrCode->getDataUri();
+        $qrSize = $qrCode->getSize() + 2 * $qrCode->getPadding();
 
-          require "barcode-generator/Utils/QrCode.php";
+        ?>
 
-          $qrCode = new QrCode();
-          $qrCode
-            ->setText($params['txt'])
-            ->setSize($params['size'])
-            ->setPadding($params['margin'])
-            ->setErrorCorrection($params['redondancy'])
-            ->setForegroundColor(array(
-              'r' => hexdec(substr($params['mainColor'],0,2)),
-              'g' => hexdec(substr($params['mainColor'],2,2)),
-              'b' => hexdec(substr($params['mainColor'],4,2)),
-            ))
-            ->setBackgroundColor(array(
-              'r' => hexdec(substr($params['bgColor'],0,2)),
-              'g' => hexdec(substr($params['bgColor'],2,2)),
-              'b' => hexdec(substr($params['bgColor'],4,2)),
-            ))
-            ->setImageType(QrCode::IMAGE_TYPE_PNG);
-          $base64 = $qrCode->generate();
-
-          ?>
+        <section id="output">
           <div class="centered" id="downloadQR">
-            <a href="data:image/png;base64,<?= $base64 ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
+            <a href="<?= $dataUri ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
           </div>
 
           <div class="centered" id="showOnlyQR">
-            <a title="<?= $loc['title_showOnlyQR'] ?>" href="data:image/png;base64,<?= $base64 ?>"><img alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="data:image/png;base64,<?= $base64 ?>"></a>
+            <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $dataUri ?>"><img width="<?= $qrSize ?>" height="<?= $qrSize ?>" alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?= $dataUri ?>"></a>
           </div>
-
-        <?php } ?>
-
         </section>
+
+      <?php } ?>
 
         <footer>
 

@@ -2,9 +2,9 @@
 
 require "config.inc.php";
 
-define("DEFAULT_REDONDANCY", "H");
-define("DEFAULT_MARGIN", 10);
-define("DEFAULT_SIZE", 100);
+define("DEFAULT_REDONDANCY", "high");
+define("DEFAULT_MARGIN", NULL);
+define("DEFAULT_SIZE", NULL);
 define("DEFAULT_BGCOLOR", "FFFFFF");
 define("DEFAULT_MAINCOLOR", "000000");
 
