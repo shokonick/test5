@@ -1,23 +1,4 @@
-<!--
- _     _ _               ___  ____
-| |   (_| |__  _ __ ___ / _ \|  _ \
-| |   | | '_ \| '__/ _ | | | | |_) |
-| |___| | |_) | | |  __| |_| |  _ <
-|_____|_|_.__/|_|  \___|\__\_|_| \_\
-A PHP Web interface for generating QR codes
-
-Source code: https://code.antopie.org/miraty/libreqr
-
-This file is part of LibreQR.
-
-  LibreQR is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-  LibreQR is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-  You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
-
--->
-<?php
+<?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
 
 use CodeItNow\BarcodeBundle\Utils\QrCode;
 

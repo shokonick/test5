@@ -1,4 +1,5 @@
-<?php require "inc.php"; ?>
+<?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
+require "inc.php"; ?>
 {
 	"dir": "ltr",
 	"lang": "<?= $locale ?>",

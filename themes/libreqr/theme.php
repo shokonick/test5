@@ -1,4 +1,4 @@
-<?php
+<?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
 
 // List icons dimensions
 $themeDimensionsIcons = array(16, 32, 48, 64, 96, 128, 192, 256, 384, 512);

@@ -1,4 +1,6 @@
-<?php // ----- This file is included everywhere -----
+<?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
+
+// ----- This file is included everywhere -----
 
 require "config.inc.php";
 

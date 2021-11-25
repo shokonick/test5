@@ -1,4 +1,4 @@
-<?php
+<?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
 $loc = array(
   'subtitle' => "Generator de còdis QR",
   'description' => "Generatz de còdis QR liurament. Causissètz lo contengut, la talha, las colors…",
