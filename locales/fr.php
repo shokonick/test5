@@ -25,7 +25,7 @@ $loc = array(
   'help_size' => "Par combien les dimensions de l'image seront-elles multipliées ?",
 
   'button_create' => "Générer",
-  'button_download' => "Télécharger ce code QR",
+  'button_download' => "Enregistrer ce code QR",
 
   'title_showOnlyQR' => "Afficher uniquement ce code QR",
 

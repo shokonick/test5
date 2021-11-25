@@ -25,7 +25,7 @@ $loc = array(
   'help_size' => "By how much will the dimensions of the image be multiplied?",
 
   'button_create' => "Generate",
-  'button_download' => "Download this QR code",
+  'button_download' => "Save this QR code",
 
   'title_showOnlyQR' => "Show this QR code only",
 
