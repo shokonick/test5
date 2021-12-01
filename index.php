@@ -62,10 +62,14 @@ if (
 <!DOCTYPE html>
 <html lang="<?= $locale ?>">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>LibreQR · <?= $loc['subtitle'] ?></title>
     <meta name="description" content="<?= $loc['description'] ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="application-name" content="LibreQR">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; form-action 'self';">
     <link rel="manifest" href="manifest.php">
     <link rel="search" type="application/opensearchdescription+xml" title="LibreQR" href="opensearch.php&#63;redondancy=<?= $params['redondancy'] ?>&amp;margin=<?= $params['margin'] ?>&amp;size=<?= $params['size'] ?>&amp;bgColor=<?= urlencode($params['bgColor']) ?>&amp;mainColor=<?= urlencode($params['mainColor']) ?>">
     <?php
