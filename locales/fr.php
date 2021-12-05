@@ -21,8 +21,8 @@ $loc = array(
     <p>Pour partager des coordonnées géographique : <code>geo:48.867564,2.364057</code></p>
   ",
   'help_redondancy' => "La redondance est la duplication des informations dans le code QR afin de corriger les erreurs lors du décodage. Un taux plus élevé produira un code QR plus grand, mais aura plus de chance d'être décodé correctement.",
-  'help_margin' => "Nombre de pixels des bandes blanches autour du code QR.",
-  'help_size' => "Par combien les dimensions de l'image seront-elles multipliées ?",
+  'help_margin' => "Nombre de pixels de chaque bande blanche autour du code QR.",
+  'help_size' => "Largeur et hauteur de l'image en pixels, sans la marge.",
 
   'button_create' => "Générer",
   'button_download' => "Enregistrer ce code QR",

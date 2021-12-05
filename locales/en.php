@@ -21,8 +21,8 @@ $loc = array(
     <p>To share geographic coordinates: <code>geo:48.867564,2.364057</code></p>
   ",
   'help_redondancy' => "Redundancy is the duplication of information in the QR code to correct errors during decoding. A higher rate will produce a bigger QR code, but will have a better chance of being decoded correctly.",
-  'help_margin' => "Number of pixels in the white bands around the QR code.",
-  'help_size' => "By how much will the dimensions of the image be multiplied?",
+  'help_margin' => "Number of pixels in each white band around the QR code.",
+  'help_size' => "Image width and height in pixels, without the margin.",
 
   'button_create' => "Generate",
   'button_download' => "Save this QR code",
