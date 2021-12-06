@@ -93,7 +93,6 @@ if (
 
       <header>
         <a id="linkTitles" href="./">
-          <img alt="" id="logo" src="themes/<?php echo $theme; ?>/icons/128.png">
           <div id="titles">
             <h1>LibreQR</h1>
             <h2><?= $loc['subtitle'] ?></h2>

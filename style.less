@@ -2,6 +2,16 @@
 
 @light: ~"(prefers-color-scheme: light)";
 @dark: ~"(prefers-color-scheme: dark)";
+@import "themes/@{theme}/logo.less";
+
+:root {
+  @media @light {
+    color-scheme: light;
+  }
+  @media @dark {
+    color-scheme: dark;
+  }
+}
 
 * {
   font-family: system-ui, sans-serif;
@@ -123,9 +133,19 @@ header {
   justify-content: center;
 }
 
-#logo {
+#linkTitles::before {
   width: 64px;
   height: 64px;
+  content: "";
+
+  background-repeat: no-repeat;
+  @media @light {
+    background-image: var(--logo-light);
+  }
+
+  @media @dark {
+    background-image: var(--logo-dark);
+  }
 }
 
 #titles {
