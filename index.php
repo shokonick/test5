@@ -76,6 +76,8 @@ if (
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
 
+    $colorScheme['theme'] = $theme;
+
     $options = array('cache_dir' => 'css/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
     ?>
@@ -194,6 +196,12 @@ if (
 
       if (!empty($params['txt'])) {
 
+        $rgbBgColor = array(
+          'r' => hexdec(substr($params['bgColor'],0,2)),
+          'g' => hexdec(substr($params['bgColor'],2,2)),
+          'b' => hexdec(substr($params['bgColor'],4,2)),
+        );
+
         require "barcode-generator/Utils/QrCode.php";
         $qrCode = new QrCode();
         if (!is_null($params['margin']))
@@ -207,11 +215,7 @@ if (
             'g' => hexdec(substr($params['mainColor'],2,2)),
             'b' => hexdec(substr($params['mainColor'],4,2)),
           ))
-          ->setBackgroundColor(array(
-            'r' => hexdec(substr($params['bgColor'],0,2)),
-            'g' => hexdec(substr($params['bgColor'],2,2)),
-            'b' => hexdec(substr($params['bgColor'],4,2)),
-          ))
+          ->setBackgroundColor($rgbBgColor)
           ->setImageType(QrCode::IMAGE_TYPE_PNG);
         $dataUri = $qrCode->getDataUri();
         $qrSize = $qrCode->getSize() + 2 * $qrCode->getPadding();
@@ -224,7 +228,19 @@ if (
           </div>
 
           <div class="centered" id="showOnlyQR">
-            <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $dataUri ?>"><img width="<?= $qrSize ?>" height="<?= $qrSize ?>" alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode" src="<?= $dataUri ?>"></a>
+            <a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $dataUri ?>"><img width="<?= $qrSize ?>" height="<?= $qrSize ?>" alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode"<?php
+
+              // Compute the difference between the QR code and theme background colors
+              $diffLight = abs($rgbBgColor['r']-hexdec(substr($colorScheme['bg-light'],-6,2))) + abs($rgbBgColor['g']-hexdec(substr($colorScheme['bg-light'],-4,2))) + abs($rgbBgColor['b']-hexdec(substr($colorScheme['bg-light'],-2,2)));
+              $diffDark = abs($rgbBgColor['r']-hexdec(substr($colorScheme['bg-dark'],-6,2))) + abs($rgbBgColor['g']-hexdec(substr($colorScheme['bg-dark'],-4,2))) + abs($rgbBgColor['b']-hexdec(substr($colorScheme['bg-dark'],-2,2)));
+
+              // Determine whether a CSS corner is needed to let the user see the margin of the QR code
+              $contrastThreshold = 64;
+              if ($diffLight < $contrastThreshold)
+                echo " class='needLightContrast'";
+              if ($diffDark < $contrastThreshold)
+                echo " class='needDarkContrast'";
+              ?> src="<?= $dataUri ?>"></a>
           </div>
         </section>
 

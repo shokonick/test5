@@ -104,6 +104,41 @@ a {
 
 #qrCode {
   max-width: 480px;
+  @width: 2px;
+  @lenght: 16px;
+  padding: @width;
+
+  &.needLightContrast {
+    @media @light {
+      background:
+        linear-gradient(to right, @borderQr-light @width, transparent 0px) 0 0,
+        linear-gradient(to right, @borderQr-light @width, transparent 0px) 0 100%,
+        linear-gradient(to left, @borderQr-light @width, transparent 0px) 100% 0,
+        linear-gradient(to left, @borderQr-light @width, transparent 0px) 100% 100%,
+        linear-gradient(to bottom, @borderQr-light @width, transparent 0px) 0 0,
+        linear-gradient(to bottom, @borderQr-light @width, transparent 0px) 100% 0,
+        linear-gradient(to top, @borderQr-light @width, transparent 0px) 0 100%,
+        linear-gradient(to top, @borderQr-light @width, transparent 0px) 100% 100%;
+      background-repeat: no-repeat;
+      background-size: @lenght @lenght;
+    }
+  }
+
+  &.needDarkContrast {
+    @media @dark {
+      background:
+        linear-gradient(to right, @borderQr-dark @width, transparent 0px) 0 0,
+        linear-gradient(to right, @borderQr-dark @width, transparent 0px) 0 100%,
+        linear-gradient(to left, @borderQr-dark @width, transparent 0px) 100% 0,
+        linear-gradient(to left, @borderQr-dark @width, transparent 0px) 100% 100%,
+        linear-gradient(to bottom, @borderQr-dark @width, transparent 0px) 0 0,
+        linear-gradient(to bottom, @borderQr-dark @width, transparent 0px) 100% 0,
+        linear-gradient(to top, @borderQr-dark @width, transparent 0px) 0 100%,
+        linear-gradient(to top, @borderQr-dark @width, transparent 0px) 100% 100%;
+      background-repeat: no-repeat;
+      background-size: @lenght @lenght;
+    }
+  }
 }
 
 .centered {

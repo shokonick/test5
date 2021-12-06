@@ -6,7 +6,7 @@ $themeDimensionsIcons = array(16, 32, 48, 64, 96, 128, 192, 256, 384, 512);
 $colorScheme = array(
   // Light theme
   "text-light" => "#2a2a2a",
-  "bg-light" => "white",
+  "bg-light" => "#ffffff", // Must be a long hexadecimal color
   "bgField-light" => "#eeeeee",
   "bgHelp-light" => "#ececec",
   "bgTextarea-light" => "#e5e5e5",
@@ -15,9 +15,10 @@ $colorScheme = array(
   "border-light" => "#65666b",
   "borderHover-light" => "#46484e",
   "borderFocus-light" => "#2a2a2a",
+  "borderQr-light" => "gray",
   // Dark theme
   "text-dark" => "white",
-  "bg-dark" => "#2a2a2a",
+  "bg-dark" => "#2a2a2a", // Must be a long hexadecimal color
   "bgField-dark" => "#31363B",
   "bgHelp-dark" => "#151616",
   "bgTextarea-dark" => "#232629",
@@ -25,5 +26,6 @@ $colorScheme = array(
   "textareaPlaceholder-dark" => "#bababa",
   "border-dark" => "#5f5f5f",
   "borderHover-dark" => "#808080",
-  "borderFocus-dark" => "white"
+  "borderFocus-dark" => "white",
+  "borderQr-dark" => "gray",
 );
