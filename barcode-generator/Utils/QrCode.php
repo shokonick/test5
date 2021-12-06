@@ -1496,20 +1496,20 @@ class QrCode
         $allow_alpha = $imagecolorset_function->getNumberOfParameters() == 6;
 
         if ($this->color_background != null) {
-            $index = imagecolorclosest($output_image, 255, 255, 255);
+            //$index = imagecolorclosest($output_image, 255, 255, 255);
             if ($allow_alpha) {
-                imagecolorset($output_image, $index, $this->color_background['r'], $this->color_background['g'], $this->color_background['b'], $this->color_background['a']);
+                imagecolorset($output_image, 0, $this->color_background['r'], $this->color_background['g'], $this->color_background['b'], $this->color_background['a']);
             } else {
-                imagecolorset($output_image, $index, $this->color_background['r'], $this->color_background['g'], $this->color_background['b']);
+                imagecolorset($output_image, 0, $this->color_background['r'], $this->color_background['g'], $this->color_background['b']);
             }
         }
 
         if ($this->color_foreground != null) {
-            $index = imagecolorclosest($output_image, 0, 0, 0);
+            //$index = imagecolorclosest($output_image, 0, 0, 0);
             if ($allow_alpha) {
-                imagecolorset($output_image, $index, $this->color_foreground['r'], $this->color_foreground['g'], $this->color_foreground['b'], $this->color_foreground['a']);
+                imagecolorset($output_image, 1, $this->color_foreground['r'], $this->color_foreground['g'], $this->color_foreground['b'], $this->color_foreground['a']);
             } else {
-                imagecolorset($output_image, $index, $this->color_foreground['r'], $this->color_foreground['g'], $this->color_foreground['b']);
+                imagecolorset($output_image, 1, $this->color_foreground['r'], $this->color_foreground['g'], $this->color_foreground['b']);
             }
         }
         
