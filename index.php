@@ -13,6 +13,8 @@ $params = array(
   "mainColor" => DEFAULT_MAINCOLOR,
 );
 
+$validFormSubmitted = false;
+
 if (
   isset($_POST['txt'])
   AND isset($_POST['redondancy'])
@@ -55,6 +57,8 @@ if (
     $params['mainColor'] = substr($_POST['mainColor'], -6);
   else
     exit("Wrong value for mainColor");
+
+  $validFormSubmitted = true;
 
 }
 
@@ -194,7 +198,7 @@ if (
 
       <?php
 
-      if (!empty($params['txt'])) {
+      if ($validFormSubmitted) {
 
         $rgbBgColor = array(
           'r' => hexdec(substr($params['bgColor'],0,2)),
