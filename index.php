@@ -106,7 +106,7 @@ if (
         </a>
       </header>
 
-      <form method="post" action="./">
+      <form method="post" action="./#output">
 
         <div id="firstWrapper">
 
