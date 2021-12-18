@@ -92,9 +92,12 @@ a {
   margin-left: 12px;
 }
 
-#sideParams summary {
-  text-align: center;
+summary {
   margin-left: 20px;
+
+  #sideParams & {
+    text-align: center;
+  }
 }
 
 #firstWrapper {
@@ -162,10 +165,7 @@ main {
 header {
   text-align: center;
   padding-top: 12px;
-  margin: 0px;
   height: 64px;
-  display: flex;
-  justify-content: center;
 }
 
 #linkTitles::before {
@@ -206,10 +206,6 @@ h2 {
   text-decoration: none;
   display: flex;
   flex-direction: row;
-}
-
-form {
-  flex-grow: 1;
 }
 
 #showOnlyQR, #downloadQR {
@@ -287,12 +283,8 @@ label[for=txt] summary {
 
 footer {
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: auto;
   text-align: left;
-}
-
-header, footer {
-  flex-shrink: 0;
 }
 
 #info {
