@@ -85,7 +85,7 @@ if (
     $options = array('cache_dir' => 'css/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
     ?>
-    <link type="text/css" rel="stylesheet" href="css/<?= $cssFileName ?>">
+    <link rel="stylesheet" media="screen" href="css/<?= $cssFileName ?>">
     <?php
     foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
         echo '    <link rel="icon" type="image/png" href="themes/' . $theme . '/icons/' . $dimFav . '.png" sizes="' . $dimFav . 'x' . $dimFav . '">' . "\n";
