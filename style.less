@@ -106,7 +106,10 @@ summary {
 }
 
 #qrCode {
-  max-width: 480px;
+  max-width: 94%;
+  width: auto;
+  height: auto;
+
   @width: 2px;
   @lenght: 16px;
   padding: @width;
@@ -310,7 +313,7 @@ footer {
   padding-left: 10px;
   font-weight: normal;
   transition: border-color 0.1s ease;
-  margin-top: 8px;
+  margin: 6px;
 
   @media @light {
     color: @text-light;
@@ -325,7 +328,8 @@ footer {
   }
 
   &:hover {
-    border-width: 2px;
+    border-width: 3px;
+    margin: 5px;
     border-style: solid;
 
     @media @light {
@@ -338,7 +342,8 @@ footer {
   }
 
   &:focus {
-    border-width: 2px;
+    border-width: 4px;
+    margin: 4px;
     border-style: solid;
     outline: none;
 
@@ -355,6 +360,24 @@ footer {
 #redondancy {
   width: 250px;
   height: 44px;
+  &:hover {
+    height: 46px;
+  }
+  &:focus {
+    height: 48px;
+  }
+}
+
+input[type=color] {
+  height: 60px;
+  width: 84px;
+  padding: 5px;
+  &:hover {
+    height: 62px;
+  }
+  &:focus {
+    height: 64px;
+  }
 }
 
 #size, #margin {
@@ -375,7 +398,6 @@ footer {
 
 #txt {
   padding: 10px;
-  margin: 10px;
   width: 500px;
   scrollbar-width: auto;
 
@@ -413,22 +435,6 @@ input[type=submit] {
   }
 }
 
-input[type=color] {
-  height: 60px;
-  width: 84px;
-  padding: 5px;
-  border-width: 2px;
-  border-style: solid;
-
-  @media @light {
-    border-color: @border-light;
-  }
-
-  @media @dark {
-    border-color: @border-dark;
-  }
-}
-
 /* Media queries */
 
 @media (max-width: 850px) {
@@ -457,17 +463,11 @@ input[type=color] {
     width: 85%;
   }
 
-  #qrCode {
-    max-width: 94%;
-  }
-
 }
 
 a[download]::before {
   content: "💾 ";
 
-  filter: drop-shadow(1px 1px white)
-          drop-shadow(-1px -1px white)
-          drop-shadow(-1px 1px white)
-          drop-shadow(1px -1px white);
+  filter: drop-shadow(-1px 1px 1px white)
+          drop-shadow(1px -1px 1px white);
 }
