@@ -4,7 +4,7 @@ $loc = array(
   'description' => "Generatz de còdis QR liurament. Causissètz lo contengut, la talha, las colors…",
 
   'label_content' => "Tèxt de codar",
-  'label_redondancy' => "Taus de redondància",
+  'label_redundancy' => "Taus de redondància",
   'label_margin' => "Talha del marge",
   'label_size' => "Talha de l’imatge",
   'label_bgColor' => "Color de fons",
@@ -20,7 +20,7 @@ $loc = array(
     <p>Per enviar un corrièl : mailto:contact@email.example</p>
     <p>Per partejar de coordonadas geograficas : geo:48.867564,2.364057</p>
   ",
-  'help_redondancy' => "La redondància es la duplicacion de las informacions al còdi QR per dire de corregir las errors pendent lo deschiframent. Un taux mai naut produirà un còdi mai grand, mas serà de melhor deschifrar corrèctament.",
+  'help_redundancy' => "La redondància es la duplicacion de las informacions al còdi QR per dire de corregir las errors pendent lo deschiframent. Un taux mai naut produirà un còdi mai grand, mas serà de melhor deschifrar corrèctament.",
   'help_margin' => "Nombre de pixèls de la banda blanca a l’entorn del còdi QR.",
   'help_size' => "Per quant deu la dimensions de l’imatge èsser multiplicada ?",
 

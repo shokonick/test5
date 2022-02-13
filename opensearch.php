@@ -11,7 +11,7 @@ require "inc.php"; ?>
   <Language>*</Language>
   <InputEncoding>UTF-8</InputEncoding>
 <?php
-  $redondancy = htmlspecialchars((isset($_GET['redondancy'])) ? $_GET['redondancy'] : DEFAULT_REDONDANCY);
+  $redundancy = htmlspecialchars((isset($_GET['redundancy'])) ? $_GET['redundancy'] : DEFAULT_REDUNDANCY);
   $margin = htmlspecialchars((isset($_GET['margin'])) ? $_GET['margin'] : DEFAULT_MARGIN);
   $size = htmlspecialchars((isset($_GET['size'])) ? $_GET['size'] : DEFAULT_SIZE);
   $bgColor = htmlspecialchars(urlencode((isset($_GET['bgColor'])) ? $_GET['bgColor'] : "%23" . DEFAULT_BGCOLOR));
@@ -19,14 +19,14 @@ require "inc.php"; ?>
 ?>
   <Url type="text/html" method="post" template="<?= $rootPath ?>">
     <Param name="txt" value="{searchTerms}"/>
-    <Param name="redondancy" value="<?= $redondancy ?>"/>
+    <Param name="redundancy" value="<?= $redundancy ?>"/>
     <Param name="margin" value="<?= $margin ?>"/>
     <Param name="size" value="<?= $size ?>"/>
     <Param name="bgColor" value="<?= $bgColor ?>"/>
     <Param name="mainColor" value="<?= $mainColor ?>"/>
   </Url>
   <Url type="application/opensearchdescription+xml" rel="self" template="<?= $rootPath ?>opensearch.php">
-    <Param name="redondancy" value="<?= $redondancy ?>"/>
+    <Param name="redundancy" value="<?= $redundancy ?>"/>
     <Param name="margin" value="<?= $margin ?>"/>
     <Param name="size" value="<?= $size ?>"/>
     <Param name="bgColor" value="<?= $bgColor ?>"/>

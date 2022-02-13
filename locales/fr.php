@@ -4,7 +4,7 @@ $loc = array(
   'description' => "Générer des codes QR librement. Choix du contenu, de la taille, des couleurs…",
 
   'label_content' => "Texte à encoder",
-  'label_redondancy' => "Taux de redondance",
+  'label_redundancy' => "Taux de redondance",
   'label_margin' => "Taille de la marge",
   'label_size' => "Taille de l'image",
   'label_bgColor' => "Couleur de fond",
@@ -20,7 +20,7 @@ $loc = array(
     <p>Pour envoyer un mail : <code>mailto:contact@email.example</code></p>
     <p>Pour partager des coordonnées géographique : <code>geo:48.867564,2.364057</code></p>
   ",
-  'help_redondancy' => "La redondance est la duplication des informations dans le code QR afin de corriger les erreurs lors du décodage. Un taux plus élevé produira un code QR plus grand, mais aura plus de chance d'être décodé correctement.",
+  'help_redundancy' => "La redondance est la duplication des informations dans le code QR afin de corriger les erreurs lors du décodage. Un taux plus élevé produira un code QR plus grand, mais aura plus de chance d'être décodé correctement.",
   'help_margin' => "Nombre de pixels de chaque bande blanche autour du code QR.",
   'help_size' => "Largeur et hauteur de l'image en pixels, sans la marge.",
 

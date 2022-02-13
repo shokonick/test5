@@ -4,7 +4,7 @@ $loc = array(
   'description' => "description",
 
   'label_content' => "label_content",
-  'label_redondancy' => "label_redondancy",
+  'label_redundancy' => "label_redundancy",
   'label_margin' => "label_margin",
   'label_size' => "label_size",
   'label_bgColor' => "label_bgColor",
@@ -15,7 +15,7 @@ $loc = array(
   'value_default' => "value_default",
 
   'help_content' => "help_content",
-  'help_redondancy' => "help_redondancy",
+  'help_redundancy' => "help_redundancy",
   'help_margin' => "help_margin",
   'help_size' => "help_size",
 

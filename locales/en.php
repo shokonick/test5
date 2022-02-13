@@ -4,7 +4,7 @@ $loc = array(
   'description' => "Generate QR codes freely. Choose content, size, colors…",
 
   'label_content' => "Text to encode",
-  'label_redondancy' => "Redondancy rate",
+  'label_redundancy' => "Redundancy rate",
   'label_margin' => "Margin size",
   'label_size' => "Image size",
   'label_bgColor' => "Background color",
@@ -20,7 +20,7 @@ $loc = array(
     <p>To send an email: <code>mailto:contact@email.example</code></p>
     <p>To share geographic coordinates: <code>geo:48.867564,2.364057</code></p>
   ",
-  'help_redondancy' => "Redundancy is the duplication of information in the QR code to correct errors during decoding. A higher rate will produce a bigger QR code, but will have a better chance of being decoded correctly.",
+  'help_redundancy' => "Redundancy is the duplication of information in the QR code to correct errors during decoding. A higher rate will produce a bigger QR code, but will have a better chance of being decoded correctly.",
   'help_margin' => "Number of pixels in each white band around the QR code.",
   'help_size' => "Image width and height in pixels, without the margin.",
 

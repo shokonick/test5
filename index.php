@@ -6,7 +6,7 @@ require "inc.php";
 
 $params = array(
   "txt" => "",
-  "redondancy" => DEFAULT_REDONDANCY,
+  "redundancy" => DEFAULT_REDUNDANCY,
   "margin" => DEFAULT_MARGIN,
   "size" => DEFAULT_SIZE,
   "bgColor" => DEFAULT_BGCOLOR,
@@ -17,7 +17,7 @@ $validFormSubmitted = false;
 
 if (
   isset($_POST['txt'])
-  AND isset($_POST['redondancy'])
+  AND isset($_POST['redundancy'])
   AND isset($_POST['margin'])
   AND isset($_POST['size'])
   AND isset($_POST['bgColor'])
@@ -29,10 +29,10 @@ if (
   else
     exit("Wrong value for txt");
 
-  if ($_POST['redondancy'] === "low" OR $_POST['redondancy'] === "medium" OR $_POST['redondancy'] === "quartile" OR $_POST['redondancy'] === "high")
-    $params['redondancy'] = $_POST['redondancy'];
+  if ($_POST['redundancy'] === "low" OR $_POST['redundancy'] === "medium" OR $_POST['redundancy'] === "quartile" OR $_POST['redundancy'] === "high")
+    $params['redundancy'] = $_POST['redundancy'];
   else
-    exit("Wrong value for redondancy");
+    exit("Wrong value for redundancy");
 
   if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 1024)
     $params['margin'] = $_POST['margin'];
@@ -75,7 +75,7 @@ if (
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; manifest-src 'self'; form-action 'self';">
     <link rel="manifest" href="manifest.php">
-    <link rel="search" type="application/opensearchdescription+xml" title="LibreQR" href="opensearch.php&#63;redondancy=<?= $params['redondancy'] ?>&amp;margin=<?= $params['margin'] ?>&amp;size=<?= $params['size'] ?>&amp;bgColor=<?= urlencode($params['bgColor']) ?>&amp;mainColor=<?= urlencode($params['mainColor']) ?>">
+    <link rel="search" type="application/opensearchdescription+xml" title="LibreQR" href="opensearch.php&#63;redundancy=<?= $params['redundancy'] ?>&amp;margin=<?= $params['margin'] ?>&amp;size=<?= $params['size'] ?>&amp;bgColor=<?= urlencode($params['bgColor']) ?>&amp;mainColor=<?= urlencode($params['mainColor']) ?>">
     <?php
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
@@ -124,16 +124,16 @@ if (
 
             <div class="param">
               <details>
-                <summary><label for="redondancy"><?= $loc['label_redondancy'] ?></label></summary>
+                <summary><label for="redundancy"><?= $loc['label_redundancy'] ?></label></summary>
                 <p class="helpText">
-                  <?= $loc['help_redondancy'] ?>
+                  <?= $loc['help_redundancy'] ?>
                 </p>
               </details>
-              <select id="redondancy" name="redondancy">
-                <option <?php if ($params['redondancy'] === "low") echo 'selected="" '; ?>value="low">L - 7%</option>
-                <option <?php if ($params['redondancy'] === "medium") echo 'selected="" '; ?>value="medium">M - 15%</option>
-                <option <?php if ($params['redondancy'] === "quartile") echo 'selected="" '; ?>value="quartile">Q - 25%</option>
-                <option <?php if ($params['redondancy'] === "high") echo 'selected="" '; ?>value="high">H - 30%</option>
+              <select id="redundancy" name="redundancy">
+                <option <?php if ($params['redundancy'] === "low") echo 'selected="" '; ?>value="low">L - 7%</option>
+                <option <?php if ($params['redundancy'] === "medium") echo 'selected="" '; ?>value="medium">M - 15%</option>
+                <option <?php if ($params['redundancy'] === "quartile") echo 'selected="" '; ?>value="quartile">Q - 25%</option>
+                <option <?php if ($params['redundancy'] === "high") echo 'selected="" '; ?>value="high">H - 30%</option>
               </select>
             </div>
 
@@ -213,7 +213,7 @@ if (
         $qrCode
           ->setText($params['txt'])
           ->setSize($params['size'])
-          ->setErrorCorrection($params['redondancy'])
+          ->setErrorCorrection($params['redundancy'])
           ->setForegroundColor(array(
             'r' => hexdec(substr($params['mainColor'],0,2)),
             'g' => hexdec(substr($params['mainColor'],2,2)),

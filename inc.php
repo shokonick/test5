@@ -4,7 +4,7 @@
 
 require "config.inc.php";
 
-define("DEFAULT_REDONDANCY", "high");
+define("DEFAULT_REDUNDANCY", "high");
 define("DEFAULT_MARGIN", NULL);
 define("DEFAULT_SIZE", NULL);
 define("DEFAULT_BGCOLOR", "FFFFFF");
