@@ -68,14 +68,18 @@ a {
   margin: 5px 0px 0px 0px;
   padding: 5px;
   border-radius: 10px;
+  border-width: 2px;
+  border-style: dashed;
   text-align: left;
 
   @media @light {
     background-color: @bgHelp-light;
+    border-color: @borderHelp-light;
   }
 
   @media @dark {
     background-color: @bgHelp-dark;
+    border-color: @borderHelp-dark;
   }
 
   & p {
@@ -87,7 +91,12 @@ a {
   }
 }
 
+#txtParam {
+  width: 100%;
+}
+
 #sideParams {
+  width: 100%;
   text-align: center;
   margin-left: 12px;
 }
