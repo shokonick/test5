@@ -54,42 +54,53 @@ if (
   AND isset($_POST['mainColor'])
 ) {
 
-  if (strlen($_POST['txt']) >= 1 AND strlen($_POST['txt']) <= 4096)
+  if (strlen($_POST['txt']) >= 1 AND strlen($_POST['txt']) <= 4096) {
     $params['txt'] = $_POST['txt'];
-  else
+  } else {
+    http_response_code(400);
     exit("Wrong value for txt");
+  }
 
-  if ($_POST['redundancy'] === "low" OR $_POST['redundancy'] === "medium" OR $_POST['redundancy'] === "quartile" OR $_POST['redundancy'] === "high")
+  if ($_POST['redundancy'] === "low" OR $_POST['redundancy'] === "medium" OR $_POST['redundancy'] === "quartile" OR $_POST['redundancy'] === "high") {
     $params['redundancy'] = $_POST['redundancy'];
-  else
+  } else {
+    http_response_code(400);
     exit("Wrong value for redundancy");
+  }
 
-  if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 1024)
+  if (is_numeric($_POST['margin']) AND $_POST['margin'] >= 0 AND $_POST['margin'] <= 1024) {
     $params['margin'] = $_POST['margin'];
-  else if (empty($_POST['margin']))
+  } else if (empty($_POST['margin'])) {
     $params['margin'] = NULL;
-  else
+  } else {
+    http_response_code(400);
     exit("Wrong value for margin");
+  }
 
-  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 4096)
+  if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 4096) {
     $params['size'] = $_POST['size'];
-  else if (empty($_POST['size']))
+  } else if (empty($_POST['size'])) {
     $params['size'] = NULL;
-  else
+  } else {
+    http_response_code(400);
     exit("Wrong value for size");
+  }
 
-  if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['bgColor']))
+  if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['bgColor'])) {
     $params['bgColor'] = substr($_POST['bgColor'], -6);
-  else
+  } else {
+    http_response_code(400);
     exit("Wrong value for bgColor");
+  }
 
-  if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['mainColor']))
+  if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['mainColor'])) {
     $params['mainColor'] = substr($_POST['mainColor'], -6);
-  else
+  } else {
+    http_response_code(400);
     exit("Wrong value for mainColor");
+  }
 
   $validFormSubmitted = true;
-
 }
 
 ?>
