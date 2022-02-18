@@ -10,8 +10,6 @@ Une instance de LibreQR est disponible sur <https://qr.antopie.org>.
 
 ## Fonctionnement
 
-Un [WebManifest](https://developer.mozilla.org/docs/Web/Manifest) est également inclus, ce qui permet de mieux l'intégrer au système via Fennec (Firefox Android) ou Chromium.
-
 Les codes QR générés sont placés dans le dossier temp/, nommés avec le nombre de caractères aléatoires indiqué dans config.inc.php (32 par défaut), puis supprimés après le temps indiqué dans config.inc.php (2 jours par défaut).
 
 Voir `config.inc.php` pour plus de paramètres.
