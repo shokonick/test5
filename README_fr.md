@@ -8,12 +8,6 @@ Une interface Web en PHP pour générer des codes QR.
 
 Une instance de LibreQR est disponible sur <https://qr.antopie.org>.
 
-## Fonctionnement
-
-Les codes QR générés sont placés dans le dossier temp/, nommés avec le nombre de caractères aléatoires indiqué dans config.inc.php (32 par défaut), puis supprimés après le temps indiqué dans config.inc.php (2 jours par défaut).
-
-Voir `config.inc.php` pour plus de paramètres.
-
 ## Installation
 
 ### Générique
