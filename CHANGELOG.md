@@ -19,7 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
-* Remove Ubuntu font (use system font)
+* Ubuntu font (use system font instead)
+* OpenSearch plugin (because LibreQR is not a search engine)
 
 ## 1.3.0 - 2020-11-03
 

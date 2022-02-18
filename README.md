@@ -10,9 +10,6 @@ A LibreQR instance is available at <https://qr.antopie.org>.
 
 ## How it works
 
-LibreQR includes an [OpenSearch](https://developer.mozilla.org/docs/Web/OpenSearch) plugin, which allows to add it as a search engine in Firefox and to save settings.
-You can thus generate a QR code directly from your search bar with the LibreQR's settings used at the time of adding as search engine.
-
 A [WebManifest](https://developer.mozilla.org/docs/Web/Manifest) is also included, which allows better system integration using  Fennec (Firefox Android) ou Chromium.
 
 QR codes generated are located in the temp/ directory, named with the number of random characters set in config.inc.php (32 by default), and then deleted after the time set in config.inc.php (2 days by default).
