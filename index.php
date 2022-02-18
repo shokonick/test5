@@ -2,7 +2,37 @@
 
 use CodeItNow\BarcodeBundle\Utils\QrCode;
 
-require "inc.php";
+require "config.inc.php";
+
+define("LIBREQR_VERSION", "2.0.0dev");
+
+// Defines the locale to be used
+if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+  $clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+  $clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
+  $clientLocales = explode(',', $clientLocales);
+  $availableLocales = array('en', 'fr', 'oc', 'template');
+  foreach ($clientLocales as $clientLocale) {
+    if (in_array($clientLocale, $availableLocales)) {
+      $locale = $clientLocale;
+      break;
+    }
+  }
+} else {
+  $locale = DEFAULT_LOCALE;
+}
+require "locales/" . $locale . ".php";
+
+// Defines the root URL
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
+  $protocol = "https";
+else
+  $protocol = "http";
+$rootPath = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$rootPath = preg_replace('#\?.*$#', '', $rootPath);
+$rootPath = preg_replace('#(manifest|opensearch|index).php$#i', '', $rootPath);
+
+require "themes/" . THEME . "/theme.php"; // Load the theme
 
 $params = array(
   "txt" => "",
@@ -78,7 +108,7 @@ if (
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
 
-    $colorScheme['theme'] = $theme;
+    $colorScheme['theme'] = THEME;
 
     $options = array('cache_dir' => 'css/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
@@ -86,7 +116,7 @@ if (
     <link rel="stylesheet" media="screen" href="css/<?= $cssFileName ?>">
     <?php
     foreach($themeDimensionsIcons as $dimFav) { // Set all icons dimensions
-        echo '    <link rel="icon" type="image/png" href="themes/' . $theme . '/icons/' . $dimFav . '.png" sizes="' . $dimFav . 'x' . $dimFav . '">' . "\n";
+        echo '    <link rel="icon" type="image/png" href="themes/' . THEME . '/icons/' . $dimFav . '.png" sizes="' . $dimFav . 'x' . $dimFav . '">' . "\n";
     }
     ?>
   </head>
@@ -254,9 +284,9 @@ if (
             <?= $loc['metaText_qr'] ?>
           </section>
 
-          <?php if ($customTextEnabled) { ?>
+          <?php if (CUSTOM_TEXT_ENABLED) { ?>
             <section class="metaText">
-              <?= $customText ?>
+              <?= CUSTOM_TEXT ?>
             </section>
           <?php } ?>
 
