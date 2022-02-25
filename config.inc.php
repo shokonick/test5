@@ -3,7 +3,7 @@
 // LIBREQR SETTINGS
 
 // Theme's directory name
-define("THEME", "contrast");
+define("THEME", "libreqr");
 
 // Language used if those requested by the user are not available
 define("DEFAULT_LOCALE", "en");
