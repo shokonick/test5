@@ -114,7 +114,7 @@ if (
     <meta name="color-scheme" content="dark light">
     <meta name="application-name" content="LibreQR">
     <meta name="referrer" content="no-referrer">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; manifest-src 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; form-action 'self';">
     <?php
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
