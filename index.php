@@ -23,17 +23,6 @@ if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 }
 require "locales/" . $locale . ".php";
 
-// Defines the root URL
-if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
-  $protocol = "https";
-else
-  $protocol = "http";
-$rootPath = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-$rootPath = preg_replace('#\?.*$#', '', $rootPath);
-$rootPath = preg_replace('#(manifest|opensearch|index).php$#i', '', $rootPath);
-
-require "themes/" . THEME . "/theme.php"; // Load the theme
-
 $params = array(
   "txt" => "",
   "redundancy" => DEFAULT_REDUNDANCY,
@@ -116,10 +105,11 @@ if (
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self'; form-action 'self';">
     <?php
+    require "themes/" . THEME . "/theme.php";
+    $colorScheme['theme'] = THEME;
+
     require_once "less.php/lib/Less/Autoloader.php";
     Less_Autoloader::register();
-
-    $colorScheme['theme'] = THEME;
 
     $options = array('cache_dir' => 'css/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
