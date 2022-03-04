@@ -27,6 +27,14 @@ chown -R www-data:www-data /var/www/libreqr/css
 chmod -R 600 /var/www/libreqr/css
 ```
 
+#### Security hardening
+
+Your HTTP server can reply the following headers:
+```
+Content-Security-Policy: default-src 'none'; img-src 'self' data:; style-src 'self'; frame-ancestors 'none'; form-action 'self';
+Referrer-Policy: no-referrer
+```
+
 ### YunoHost
 
 There is [a package](https://code.antopie.org/miraty/qr_ynh/) for [YunoHost](https://yunohost.org/).
@@ -41,26 +49,9 @@ sudo yunohost app install qr
 
 ## Themes
 
-### Change theme
+Themes are located in `themes/*`, the default theme is in `themes/libreqr/`.
 
-In config.inc.php, set $theme to the wanted theme.
-
-By default, 3 themes are offered:
-
-* dark, the default dark theme. Used here: <https://qr.antopie.org>
-* light, the light theme.
-* parinux, a blue theme, made for [Bastet](https://bastet.parinux.org), the [Parinux](https://parinux.org)'s CHATON. Used here: <https://codeqr.parinux.org>
-
-### Make a theme
-
-* Copy themes/dark to themes/[new theme's name]
-* Fill theme.php according to CSS colors you want
-* Change the source.png image according to your theme
-* To automatically generate favicons with the rights sizes, use `php themes/resize.php [theme's name]`
-
-This last step will need [ImageMagick](https://imagemagick.org) and [pngquant](https://pngquant.org) to be installed.
-
-```apt install imagemagick pngquant```
+You can customize your LibreQR instance look by changing the colors in `theme.php`, the logo in `logo.less` or the icons in `icons/<size>.png` (then list the sizes in `theme.php`).
 
 ## Contribute
 
