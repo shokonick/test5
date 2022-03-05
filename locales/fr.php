@@ -1,6 +1,6 @@
 <?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
 $loc = array(
-  'subtitle' => "Générateur de codes QR",
+  'subtitle' => "Générer des codes QR",
   'description' => "Générer des codes QR librement. Choix du contenu, de la taille, des couleurs…",
 
   'label_content' => "Texte à encoder",
@@ -38,6 +38,4 @@ $loc = array(
     <a href='https://fr.wikipedia.org/wiki/Code_QR' hreflang='fr' rel='help external noreferrer'>Code QR sur Wikipédia</a>.
   ",
   'metaText_legal' => "LibreQR " . LIBREQR_VERSION . " est un logiciel libre dont le <a href='https://code.antopie.org/miraty/libreqr/' rel='external noreferrer'>code source</a> est disponible selon les termes de l'<abbr title='GNU Affero General Public License version 3 ou toute version ultérieure'><a href='LICENSE.html' hreflang='en' rel='license'>AGPLv3</a>+</abbr>.",
-
-  'opensearch_description' => "Générez des codes QR depuis votre barre de recherche ou d'adresse",
 );
