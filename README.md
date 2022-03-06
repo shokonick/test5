@@ -1,4 +1,4 @@
-# ![](themes/dark/icons/32.png) LibreQR
+# ![](themes/libreqr/icons/32.png) LibreQR
 
 [Lire ceci en français](README_fr.md)
 

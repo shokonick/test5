@@ -35,7 +35,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  width: 814px;
+  max-width: 812px;
   height: 100%;
 
   margin: 0px;
@@ -103,28 +103,22 @@ code {
   }
 }
 
-#txtParam {
-  width: 100%;
-}
-
 #sideParams {
   width: 100%;
   text-align: center;
-  margin-left: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  & .param {
+    max-width: 270px;
+    box-sizing: border-box;
+  }
 }
 
 summary {
   margin-left: 20px;
   cursor: help;
-
-  #sideParams & {
-    text-align: center;
-  }
-}
-
-#firstWrapper {
-  display: flex;
-  flex-direction: row;
 }
 
 #qrCode {
@@ -200,7 +194,7 @@ header {
 }
 
 #titles {
-  margin-left: 20px;
+  margin-left: 2%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -224,7 +218,11 @@ h2 {
   flex-direction: row;
 }
 
-#showOnlyQR, #downloadQR {
+#downloadQR {
+  margin-top: 20px;
+}
+
+#showOnlyQR {
   margin-top: 30px;
 }
 
@@ -232,12 +230,6 @@ h2 {
   padding: 4px;
   margin-left: 0px;
   margin-right: 0px;
-}
-
-.inputColorContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
 ::selection {
@@ -260,7 +252,8 @@ label[for=txt] summary {
 #colors {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   text-align: center;
 
   & .param {
@@ -268,7 +261,7 @@ label[for=txt] summary {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
   }
 }
 
@@ -296,15 +289,18 @@ label[for=txt] summary {
 }
 
 footer {
-  font-size: 14px;
+  font-size: 16px;
   margin-top: auto;
+  padding-top: 10px;
   text-align: left;
+}
+
+small {
+  font-size: 14px;
 }
 
 #info {
   font-size: 16px;
-  bottom: 20px;
-  right: 20px;
   margin: 0px;
 
   & h3 {
@@ -411,9 +407,14 @@ input[type=color] {
   }
 }
 
+#txtParam {
+  display: flex;
+  flex-direction: column;
+}
+
 #txt {
   padding: 10px;
-  width: 500px;
+  width: auto;
   scrollbar-width: auto;
 
   @media @light {
@@ -449,36 +450,6 @@ input[type=submit] {
   @media @dark {
     color: @textareaPlaceholder-dark;
   }
-}
-
-/* Media queries */
-
-@media (max-width: 850px) {
-
-  body {
-    width: auto;
-  }
-
-  #firstWrapper {
-    flex-direction: column;
-  }
-
-  #txt {
-    width: 92%;
-  }
-
-}
-
-@media (max-width: 500px) { // Mobile version
-
-  #colors {
-    flex-direction: column;
-  }
-
-  #txt {
-    width: 85%;
-  }
-
 }
 
 a[download]::before {

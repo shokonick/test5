@@ -135,67 +135,63 @@ if (
 
     <form method="post" action="./#output">
 
-      <div id="firstWrapper">
+      <div class="param" id="txtParam">
+        <details>
+          <summary><label for="txt"><?= $loc['label_content'] ?></label></summary>
+          <div class="helpText">
+            <?= $loc['help_content'] ?>
+          </div>
+        </details>
+        <textarea rows="3" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt"><?= htmlspecialchars($params['txt']) ?></textarea>
+      </div>
 
-        <div class="param" id="txtParam">
+      <div id="sideParams">
+
+        <div class="param">
           <details>
-            <summary><label for="txt"><?= $loc['label_content'] ?></label></summary>
-            <div class="helpText">
-              <?= $loc['help_content'] ?>
-            </div>
+            <summary><label for="redundancy"><?= $loc['label_redundancy'] ?></label></summary>
+            <p class="helpText">
+              <?= $loc['help_redundancy'] ?>
+            </p>
           </details>
-          <textarea rows="8" required="" id="txt" placeholder="<?= $loc['placeholder'] ?>" name="txt"><?= htmlspecialchars($params['txt']) ?></textarea>
+          <select id="redundancy" name="redundancy">
+            <option <?php if ($params['redundancy'] === "low") echo 'selected="" '; ?>value="low">L - 7%</option>
+            <option <?php if ($params['redundancy'] === "medium") echo 'selected="" '; ?>value="medium">M - 15%</option>
+            <option <?php if ($params['redundancy'] === "quartile") echo 'selected="" '; ?>value="quartile">Q - 25%</option>
+            <option <?php if ($params['redundancy'] === "high") echo 'selected="" '; ?>value="high">H - 30%</option>
+          </select>
         </div>
 
-        <div id="sideParams">
+        <div class="param">
+          <details>
+            <summary><label for="margin"><?= $loc['label_margin'] ?></label></summary>
+            <p class="helpText">
+              <?= $loc['help_margin'] ?>
+            </p>
+          </details>
+          <input type="number" list="margins" id="margin" placeholder="<?= $loc['placeholder_pixels'] ?>" name="margin" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
+          <datalist id="margins">
+            <option value="16">
+            <option value="32">
+            <option value="64">
+            <option value="128">
+          </datalist>
+        </div>
 
-          <div class="param">
-            <details>
-              <summary><label for="redundancy"><?= $loc['label_redundancy'] ?></label></summary>
-              <p class="helpText">
-                <?= $loc['help_redundancy'] ?>
-              </p>
-            </details>
-            <select id="redundancy" name="redundancy">
-              <option <?php if ($params['redundancy'] === "low") echo 'selected="" '; ?>value="low">L - 7%</option>
-              <option <?php if ($params['redundancy'] === "medium") echo 'selected="" '; ?>value="medium">M - 15%</option>
-              <option <?php if ($params['redundancy'] === "quartile") echo 'selected="" '; ?>value="quartile">Q - 25%</option>
-              <option <?php if ($params['redundancy'] === "high") echo 'selected="" '; ?>value="high">H - 30%</option>
-            </select>
-          </div>
-
-          <div class="param">
-            <details>
-              <summary><label for="margin"><?= $loc['label_margin'] ?></label></summary>
-              <p class="helpText">
-                <?= $loc['help_margin'] ?>
-              </p>
-            </details>
-            <input type="number" list="margins" id="margin" placeholder="<?= $loc['placeholder_pixels'] ?>" name="margin" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
-            <datalist id="margins">
-              <option value="16">
-              <option value="32">
-              <option value="64">
-              <option value="128">
-            </datalist>
-          </div>
-
-          <div class="param">
-            <details>
-              <summary><label for="size"><?= $loc['label_size'] ?></label></summary>
-              <p class="helpText">
-                <?= $loc['help_size'] ?>
-              </p>
-            </details>
-            <input type="number" list="sizes" id="size" placeholder="<?= $loc['placeholder_pixels'] ?>" name="size" min="1" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
-            <datalist id="sizes">
-              <option value="128">
-              <option value="256">
-              <option value="512">
-              <option value="1024">
-            </datalist>
-          </div>
-
+        <div class="param">
+          <details>
+            <summary><label for="size"><?= $loc['label_size'] ?></label></summary>
+            <p class="helpText">
+              <?= $loc['help_size'] ?>
+            </p>
+          </details>
+          <input type="number" list="sizes" id="size" placeholder="<?= $loc['placeholder_pixels'] ?>" name="size" min="1" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
+          <datalist id="sizes">
+            <option value="128">
+            <option value="256">
+            <option value="512">
+            <option value="1024">
+          </datalist>
         </div>
 
       </div>
@@ -204,16 +200,12 @@ if (
 
         <div class="param">
           <label for="bgColor"><?= $loc['label_bgColor'] ?></label>
-          <div class="inputColorContainer">
-            <input type="color" name="bgColor" id="bgColor" value="#<?= htmlspecialchars($params['bgColor']) ?>">
-          </div>
+          <input type="color" name="bgColor" id="bgColor" value="#<?= htmlspecialchars($params['bgColor']) ?>">
         </div>
 
         <div class="param">
           <label for="mainColor"><?= $loc['label_mainColor'] ?></label>
-          <div class="inputColorContainer">
-            <input type="color" name="mainColor" id="mainColor" value="#<?= htmlspecialchars($params['mainColor']) ?>">
-          </div>
+          <input type="color" name="mainColor" id="mainColor" value="#<?= htmlspecialchars($params['mainColor']) ?>">
         </div>
       </div>
 
@@ -290,7 +282,7 @@ if (
         <?php } ?>
 
         <section class="metaText">
-          <?= $loc['metaText_legal'] ?>
+          <small><?= $loc['metaText_legal'] ?></small>
         </section>
 
       </footer>

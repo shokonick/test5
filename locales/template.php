@@ -29,6 +29,4 @@ $loc = array(
 
   'metaText_qr' => "metaText_qr",
   'metaText_legal' => "metaText_legal",
-
-  'opensearch_description' => "opensearch_description",
 );
