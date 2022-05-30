@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6832804dc0ad475cfe3976075eec51ae81fb6723',
+        'reference' => '147a25c93f60c0ff38343291c7a7819bdce7cfc4',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6832804dc0ad475cfe3976075eec51ae81fb6723',
+            'reference' => '147a25c93f60c0ff38343291c7a7819bdce7cfc4',
             'dev_requirement' => false,
         ),
         'bacon/bacon-qr-code' => array(

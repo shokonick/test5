@@ -1,6 +1,6 @@
 {
-    "require": {
-        "endroid/qr-code": "^4.4",
-        "wikimedia/less.php": "^3.1"
-    }
+	"require": {
+		"endroid/qr-code": "^4.4",
+		"wikimedia/less.php": "^3.1"
+	}
 }
