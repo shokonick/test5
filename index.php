@@ -1,8 +1,14 @@
 <?php // This file is part of LibreQR, which is distributed under the GNU AGPLv3+ license
 
-use CodeItNow\BarcodeBundle\Utils\QrCode;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelMedium;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelQuartile;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Color\Color;
 
 require "config.inc.php";
+require "vendor/autoload.php";
 
 define("LIBREQR_VERSION", "2.0.0dev");
 
@@ -107,9 +113,6 @@ if (
     <?php
     require "themes/" . THEME . "/theme.php";
     $colorScheme['theme'] = THEME;
-
-    require_once "less.php/lib/Less/Autoloader.php";
-    Less_Autoloader::register();
 
     $options = array('cache_dir' => 'css/', 'compress' => true);
     $cssFileName = Less_Cache::Get(array("style.less" => ""), $options, $colorScheme);
@@ -225,23 +228,37 @@ if (
         'b' => hexdec(substr($params['bgColor'],4,2)),
       );
 
-      require "barcode-generator/Utils/QrCode.php";
-      $qrCode = new QrCode();
+      $qrCode = Builder::create()
+        ->data($params['txt']);
       if (!is_null($params['margin']))
-        $qrCode->setPadding($params['margin']);
+        $qrCode->margin($params['margin']);
+      if (!is_null($params['size']))
+        $qrCode->size($params['size']);
+
+      if ($params['redundancy'] === "high")
+        $qrCode->errorCorrectionLevel(new ErrorCorrectionLevelHigh());
+      else if ($params['redundancy'] === "quartile")
+        $qrCode->errorCorrectionLevel(new ErrorCorrectionLevelQuartile());
+      else if ($params['redundancy'] === "medium")
+        $qrCode->errorCorrectionLevel(new ErrorCorrectionLevelMedium());
+      else if ($params['redundancy'] === "low")
+        $qrCode->errorCorrectionLevel(new ErrorCorrectionLevelLow());
+
       $qrCode
-        ->setText($params['txt'])
-        ->setSize($params['size'])
-        ->setErrorCorrection($params['redundancy'])
-        ->setForegroundColor(array(
-          'r' => hexdec(substr($params['mainColor'],0,2)),
-          'g' => hexdec(substr($params['mainColor'],2,2)),
-          'b' => hexdec(substr($params['mainColor'],4,2)),
+        ->backgroundColor(new Color(
+          $rgbBgColor['r'],
+          $rgbBgColor['g'],
+          $rgbBgColor['b']
         ))
-        ->setBackgroundColor($rgbBgColor)
-        ->setImageType(QrCode::IMAGE_TYPE_PNG);
-      $dataUri = $qrCode->getDataUri();
-      $qrSize = $qrCode->getSize() + 2 * $qrCode->getPadding();
+        ->foregroundColor(new Color(
+          hexdec(substr($params['mainColor'],0,2)),
+          hexdec(substr($params['mainColor'],2,2)),
+          hexdec(substr($params['mainColor'],4,2))
+        ));
+
+      $result = $qrCode->build();
+
+      $dataUri = $result->getDataUri();
 
       ?>
 

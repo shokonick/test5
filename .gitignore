@@ -1,3 +1,4 @@
-.directory
-css/*
-!css/.gitkeep
+/.directory
+/css/*
+!/css/.gitkeep
+/composer.lock

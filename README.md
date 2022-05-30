@@ -1,6 +1,4 @@
-# ![](themes/libreqr/icons/32.png) LibreQR
-
-[Lire ceci en français](README_fr.md)
+# LibreQR
 
 A PHP Web interface for generating QR codes.
 
@@ -14,18 +12,9 @@ A LibreQR instance is available at <https://qr.antopie.org>.
 
 Just place this source code in a Web server with PHP.
 
-`wget https://code.antopie.org/miraty/libreqr/archive/1.3.0.zip`
-
-GD extension is required.
-
-`apt install php7.3-gd`
+PHP extensions GD and iconv are required.
 
 LibreQR need writing rights on the `css/` directory.
-
-```
-chown -R www-data:www-data /var/www/libreqr/css
-chmod -R 600 /var/www/libreqr/css
-```
 
 #### Security hardening
 
@@ -61,16 +50,9 @@ If you want to report a bug, you can open an issue at <https://code.antopie.org/
 
 If you want to contact me, for instance to report a bug or ask me a question about installing or using LibreQR, you can get my contact details on <https://miraty.antopie.org>.
 
-## Libraries
-
-This source code includes:
-
-* [CodeItNow Barcode & QrCode Generator](https://github.com/codeitnowin/barcode-generator) to generate QR codes
-* [Less.php](https://github.com/wikimedia/less.php) to compile [Less](http://lesscss.org)
-
 ## License
 
-[AGPLv3+](https://code.antopie.org/miraty/libreqr/src/branch/main/LICENSE)
+LibreQR is published under [AGPLv3+](https://code.antopie.org/miraty/libreqr/src/branch/main/LICENSE). Librairies located in the `vendor` subdirectory use their own licenses.
 
 LibreQR is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
