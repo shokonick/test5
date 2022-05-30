@@ -13,19 +13,19 @@ require "vendor/autoload.php";
 define("LIBREQR_VERSION", "2.0.0dev");
 
 // Defines the locale to be used
+$locale = DEFAULT_LOCALE;
 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 	$clientLocales = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 	$clientLocales = preg_replace("#[A-Z0-9]|q=|;|-|\.#", "", $clientLocales);
 	$clientLocales = explode(',', $clientLocales);
-	$availableLocales = array('en', 'fr', 'oc', 'template');
+	foreach (array_diff(scandir("locales"), array('..', '.')) as $key => $localeFile)
+		$availableLocales[$key] = basename($localeFile, ".php");
 	foreach ($clientLocales as $clientLocale) {
 		if (in_array($clientLocale, $availableLocales)) {
 			$locale = $clientLocale;
 			break;
 		}
 	}
-} else {
-	$locale = DEFAULT_LOCALE;
 }
 require "locales/" . $locale . ".php";
 

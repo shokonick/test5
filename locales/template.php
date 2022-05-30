@@ -11,6 +11,7 @@ $loc = array(
 	'label_mainColor' => "label_mainColor",
 
 	'placeholder' => "placeholder",
+	'placeholder_pixels' => "placeholder_pixels",
 
 	'value_default' => "value_default",
 
