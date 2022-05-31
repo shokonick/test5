@@ -8,7 +8,7 @@ $loc = array(
 	'label_margin' => "Taille de la marge",
 	'label_size' => "Taille de l'image",
 	'label_bgColor' => "Couleur de fond",
-	'label_mainColor' => "Couleur de premier plan",
+	'label_fgColor' => "Couleur de premier plan",
 
 	'placeholder' => "Entrez le texte à encoder dans le code QR",
 	'placeholder_pixels' => "automatique",

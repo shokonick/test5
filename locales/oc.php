@@ -8,7 +8,7 @@ $loc = array(
 	'label_margin' => "Talha del marge",
 	'label_size' => "Talha de l’imatge",
 	'label_bgColor' => "Color de fons",
-	'label_mainColor' => "Color del primièr plan",
+	'label_fgColor' => "Color del primièr plan",
 
 	'placeholder' => "Dintratz lo tèxt de codar en còdi QR",
 	'placeholder_pixels' => "auto",

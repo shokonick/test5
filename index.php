@@ -35,7 +35,7 @@ $params = array(
 	"margin" => DEFAULT_MARGIN,
 	"size" => DEFAULT_SIZE,
 	"bgColor" => DEFAULT_BGCOLOR,
-	"mainColor" => DEFAULT_MAINCOLOR,
+	"fgColor" => DEFAULT_FGCOLOR,
 );
 
 $validFormSubmitted = false;
@@ -46,7 +46,7 @@ if (
 	AND isset($_POST['margin'])
 	AND isset($_POST['size'])
 	AND isset($_POST['bgColor'])
-	AND isset($_POST['mainColor'])
+	AND isset($_POST['fgColor'])
 ) {
 
 	if (strlen($_POST['txt']) >= 1 AND strlen($_POST['txt']) <= 4096) {
@@ -88,11 +88,11 @@ if (
 		exit("Wrong value for bgColor");
 	}
 
-	if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['mainColor'])) {
-		$params['mainColor'] = substr($_POST['mainColor'], -6);
+	if (preg_match("/^#[abcdefABCDEF0-9]{6}$/", $_POST['fgColor'])) {
+		$params['fgColor'] = substr($_POST['fgColor'], -6);
 	} else {
 		http_response_code(400);
-		exit("Wrong value for mainColor");
+		exit("Wrong value for fgColor");
 	}
 
 	$validFormSubmitted = true;
@@ -192,8 +192,8 @@ foreach($themeDimensionsIcons as $dimFav) // Set all icons dimensions
 					<input type="color" name="bgColor" id="bgColor" value="#<?= htmlspecialchars($params['bgColor']) ?>">
 				</div>
 				<div class="param">
-					<label for="mainColor"><?= $loc['label_mainColor'] ?></label>
-					<input type="color" name="mainColor" id="mainColor" value="#<?= htmlspecialchars($params['mainColor']) ?>">
+					<label for="fgColor"><?= $loc['label_fgColor'] ?></label>
+					<input type="color" name="fgColor" id="fgColor" value="#<?= htmlspecialchars($params['fgColor']) ?>">
 				</div>
 			</div>
 
@@ -236,9 +236,9 @@ if ($validFormSubmitted) {
 			$rgbBgColor['b']
 		))
 		->foregroundColor(new Color(
-			hexdec(substr($params['mainColor'],0,2)),
-			hexdec(substr($params['mainColor'],2,2)),
-			hexdec(substr($params['mainColor'],4,2))
+			hexdec(substr($params['fgColor'],0,2)),
+			hexdec(substr($params['fgColor'],2,2)),
+			hexdec(substr($params['fgColor'],4,2))
 		));
 
 	$result = $qrCode->build();

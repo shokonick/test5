@@ -17,4 +17,4 @@ define("DEFAULT_REDUNDANCY", "high");
 define("DEFAULT_MARGIN", 20);
 define("DEFAULT_SIZE", 300);
 define("DEFAULT_BGCOLOR", "FFFFFF");
-define("DEFAULT_MAINCOLOR", "000000");
+define("DEFAULT_FGCOLOR", "000000");

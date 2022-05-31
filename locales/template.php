@@ -8,7 +8,7 @@ $loc = array(
 	'label_margin' => "label_margin",
 	'label_size' => "label_size",
 	'label_bgColor' => "label_bgColor",
-	'label_mainColor' => "label_mainColor",
+	'label_fgColor' => "label_fgColor",
 
 	'placeholder' => "placeholder",
 	'placeholder_pixels' => "placeholder_pixels",
