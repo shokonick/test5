@@ -14,7 +14,7 @@ define("CUSTOM_TEXT", "This LibreQR instance is hosted by <a href='https://foo.e
 
 // Default values
 define("DEFAULT_REDUNDANCY", "high");
-define("DEFAULT_MARGIN", NULL);
-define("DEFAULT_SIZE", NULL);
+define("DEFAULT_MARGIN", 20);
+define("DEFAULT_SIZE", 300);
 define("DEFAULT_BGCOLOR", "FFFFFF");
 define("DEFAULT_MAINCOLOR", "000000");

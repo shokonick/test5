@@ -171,13 +171,7 @@ foreach($themeDimensionsIcons as $dimFav) // Set all icons dimensions
 							<?= $loc['help_margin'] ?>
 						</p>
 					</details>
-					<input type="number" list="margins" id="margin" placeholder="<?= $loc['placeholder_pixels'] ?>" name="margin" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
-					<datalist id="margins">
-						<option value="16">
-						<option value="32">
-						<option value="64">
-						<option value="128">
-					</datalist>
+					<input type="number" id="margin" placeholder="<?= $loc['placeholder_pixels'] ?>" name="margin" required="" min="0" max="1024" value="<?= htmlspecialchars($params['margin']) ?>">
 				</div>
 
 				<div class="param">
@@ -187,13 +181,7 @@ foreach($themeDimensionsIcons as $dimFav) // Set all icons dimensions
 							<?= $loc['help_size'] ?>
 						</p>
 					</details>
-					<input type="number" list="sizes" id="size" placeholder="<?= $loc['placeholder_pixels'] ?>" name="size" min="1" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
-					<datalist id="sizes">
-						<option value="128">
-						<option value="256">
-						<option value="512">
-						<option value="1024">
-					</datalist>
+					<input type="number" id="size" placeholder="<?= $loc['placeholder_pixels'] ?>" name="size" required="" min="1" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
 				</div>
 
 			</div>
@@ -256,6 +244,8 @@ if ($validFormSubmitted) {
 	$result = $qrCode->build();
 
 	$dataUri = $result->getDataUri();
+
+	$qrSize = $params['size'] + 2 * $params['margin'];
 
 ?>
 
