@@ -11,7 +11,6 @@ $loc = array(
 	'label_fgColor' => "Color del primièr plan",
 
 	'placeholder' => "Dintratz lo tèxt de codar en còdi QR",
-	'placeholder_pixels' => "auto",
 
 	'help_content' => "
 <p>Podètz pas que codar lo tèxt que volètz.</p>

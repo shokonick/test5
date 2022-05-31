@@ -11,7 +11,6 @@ $loc = array(
 	'label_fgColor' => "Couleur de premier plan",
 
 	'placeholder' => "Entrez le texte à encoder dans le code QR",
-	'placeholder_pixels' => "automatique",
 
 	'help_content' => "
 <p>Vous pouvez encoder ce que vous voulez sous forme de texte.</p>
