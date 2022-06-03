@@ -10,19 +10,21 @@ A LibreQR instance is available at <https://qr.antopie.org>.
 
 ### Generic
 
-Just place this source code in a Web server with PHP.
-
-PHP extensions GD and iconv are required.
-
-LibreQR need writing rights on the `css/` directory.
+Just place this source code in a Web server with PHP7.4+, extensions `gd`, `mbstring` and `iconv`, and writing rights on the `css/` directory.
 
 #### Security hardening
+
+##### HTTP headers
 
 Your HTTP server can reply the following headers:
 ```
 Content-Security-Policy: default-src 'none'; img-src 'self' data:; style-src 'self'; frame-ancestors 'none'; form-action 'self';
 Referrer-Policy: no-referrer
 ```
+
+##### PHP-FPM chroot
+
+LibreQR can be chrooted using PHP-FPM.
 
 ### YunoHost
 
@@ -44,11 +46,15 @@ You can customize your LibreQR instance look by changing the colors in `theme.ph
 
 ## Contribute
 
-If you want to report a bug, you can open an issue at <https://code.antopie.org/miraty/libreqr/issues> after creating an account (prefered method) or contact me in another way.
+The public forge is <https://code.antopie.org/miraty/libreqr>. You can open issues and pull requests there.
+
+### Translations
+
+You can add your translations in `locales/<language-code>.php`.
 
 ## Contact
 
-If you want to contact me, for instance to report a bug or ask me a question about installing or using LibreQR, you can get my contact details on <https://miraty.antopie.org>.
+You can get my contact details on <https://miraty.antopie.org/>, feel free to use them if you want more informations about using or contributing to LibreQR.
 
 ## License
 
