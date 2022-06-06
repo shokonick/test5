@@ -29,4 +29,6 @@ $loc = array(
 
 	'metaText_qr' => "metaText_qr",
 	'metaText_legal' => "metaText_legal",
+
+	'error_generation' => "error_generation",
 );

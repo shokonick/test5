@@ -241,7 +241,14 @@ if ($validFormSubmitted) {
 			hexdec(substr($params['fgColor'],4,2))
 		));
 
-	$result = $qrCode->build();
+	try {
+		$result = $qrCode->build();
+	} catch (Exception $ex) {
+		http_response_code(500);
+		echo "<p><strong>" . $loc['error_generation'] . "</strong></p></body></html>";
+		error_log("LibreQR encountered an error while generating a QR code: " . $ex);
+		exit();
+	}
 
 	$dataUri = $result->getDataUri();
 

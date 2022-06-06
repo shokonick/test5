@@ -37,4 +37,6 @@ $loc = array(
 		<a lang='ca' href='https://ca.wikipedia.org/wiki/Codi_QR' hreflang='ca' rel='help external noreferrer'>Còdi QR a la Wikipèdia</a>.
 	",
 	'metaText_legal' => "LibreQR " . LIBREQR_VERSION . " es un logicial liure que son <a href='https://code.antopie.org/miraty/libreqr/' rel='external noreferrer'>còdi font</a> es disponible jols tèrmes de la licéncia <abbr title='GNU Affero General Public License version 3 or any later version'><a href='LICENSE.html' hreflang='en' rel='license'>AGPLv3</a>+</abbr>.",
+
+	'error_generation' => "An error occurred while generating the QR code. Try with different parameters.",
 );
