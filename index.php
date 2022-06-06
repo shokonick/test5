@@ -38,7 +38,7 @@ $params = array(
 	"fgColor" => DEFAULT_FGCOLOR,
 );
 
-$validFormSubmitted = false;
+$qrCodeAvailable = NULL;
 
 if (
 	isset($_POST['txt'])
@@ -48,6 +48,8 @@ if (
 	AND isset($_POST['bgColor'])
 	AND isset($_POST['fgColor'])
 ) {
+
+	$qrCodeAvailable = true;
 
 	if (strlen($_POST['txt']) >= 1 AND strlen($_POST['txt']) <= 4096) {
 		$params['txt'] = $_POST['txt'];
@@ -96,6 +98,48 @@ if (
 	}
 
 	$validFormSubmitted = true;
+
+	$rgbBgColor = array(
+		'r' => hexdec(substr($params['bgColor'],0,2)),
+		'g' => hexdec(substr($params['bgColor'],2,2)),
+		'b' => hexdec(substr($params['bgColor'],4,2)),
+	);
+
+	$qrCode = Builder::create()
+	->data($params['txt']);
+	if (!is_null($params['margin']))
+		$qrCode->margin($params['margin']);
+	if (!is_null($params['size']))
+		$qrCode->size($params['size']);
+
+	if ($params['redundancy'] === "high")
+		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelHigh());
+	else if ($params['redundancy'] === "quartile")
+		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelQuartile());
+	else if ($params['redundancy'] === "medium")
+		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelMedium());
+	else if ($params['redundancy'] === "low")
+		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelLow());
+
+	$qrCode
+	->backgroundColor(new Color(
+		$rgbBgColor['r'],
+		$rgbBgColor['g'],
+		$rgbBgColor['b']
+	))
+	->foregroundColor(new Color(
+		hexdec(substr($params['fgColor'],0,2)),
+		hexdec(substr($params['fgColor'],2,2)),
+		hexdec(substr($params['fgColor'],4,2))
+	));
+
+	try {
+		$result = $qrCode->build();
+	} catch (Exception $ex) {
+		http_response_code(500);
+		$qrCodeAvailable = false;
+		error_log("LibreQR encountered an error while generating a QR code: " . $ex);
+	}
 }
 
 ?>
@@ -205,64 +249,20 @@ foreach($themeDimensionsIcons as $dimFav) // Set all icons dimensions
 
 <?php
 
-if ($validFormSubmitted) {
-
-	$rgbBgColor = array(
-		'r' => hexdec(substr($params['bgColor'],0,2)),
-		'g' => hexdec(substr($params['bgColor'],2,2)),
-		'b' => hexdec(substr($params['bgColor'],4,2)),
-	);
-
-	$qrCode = Builder::create()
-		->data($params['txt']);
-	if (!is_null($params['margin']))
-		$qrCode->margin($params['margin']);
-	if (!is_null($params['size']))
-		$qrCode->size($params['size']);
-
-	if ($params['redundancy'] === "high")
-		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelHigh());
-	else if ($params['redundancy'] === "quartile")
-		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelQuartile());
-	else if ($params['redundancy'] === "medium")
-		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelMedium());
-	else if ($params['redundancy'] === "low")
-		$qrCode->errorCorrectionLevel(new ErrorCorrectionLevelLow());
-
-	$qrCode
-		->backgroundColor(new Color(
-			$rgbBgColor['r'],
-			$rgbBgColor['g'],
-			$rgbBgColor['b']
-		))
-		->foregroundColor(new Color(
-			hexdec(substr($params['fgColor'],0,2)),
-			hexdec(substr($params['fgColor'],2,2)),
-			hexdec(substr($params['fgColor'],4,2))
-		));
-
-	try {
-		$result = $qrCode->build();
-	} catch (Exception $ex) {
-		http_response_code(500);
-		echo "<p><strong>" . $loc['error_generation'] . "</strong></p></body></html>";
-		error_log("LibreQR encountered an error while generating a QR code: " . $ex);
-		exit();
-	}
-
+if ($qrCodeAvailable) {
 	$dataUri = $result->getDataUri();
 
 	$qrSize = $params['size'] + 2 * $params['margin'];
 
 ?>
 
-			<section id="output">
-				<div class="centered" id="downloadQR">
-					<a href="<?= $dataUri ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
-				</div>
+		<section id="output">
+			<div class="centered" id="downloadQR">
+				<a href="<?= $dataUri ?>" class="button" download="<?= htmlspecialchars($params['txt']); ?>.png"><?= $loc['button_download'] ?></a>
+			</div>
 
-				<div class="centered" id="showOnlyQR">
-					<a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $dataUri ?>"><img width="<?= $qrSize ?>" height="<?= $qrSize ?>" alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode"<?php
+			<div class="centered" id="showOnlyQR">
+				<a title="<?= $loc['title_showOnlyQR'] ?>" href="<?= $dataUri ?>"><img width="<?= $qrSize ?>" height="<?= $qrSize ?>" alt='<?= $loc['alt_QR_before'] ?><?= htmlspecialchars($params['txt']); ?><?= $loc['alt_QR_after'] ?>' id="qrCode"<?php
 
 	// Compute the difference between the QR code and theme background colors
 	$diffLight = abs($rgbBgColor['r']-hexdec(substr($colorScheme['bg-light'],-6,2))) + abs($rgbBgColor['g']-hexdec(substr($colorScheme['bg-light'],-4,2))) + abs($rgbBgColor['b']-hexdec(substr($colorScheme['bg-light'],-2,2)));
@@ -275,10 +275,14 @@ if ($validFormSubmitted) {
 	if ($diffDark < $contrastThreshold)
 		echo " class='needDarkContrast'";
 	?> src="<?= $dataUri ?>"></a>
-				</div>
-			</section>
+			</div>
+		</section>
 
-<?php } ?>
+<?php
+} else if ($qrCodeAvailable === false) {
+	echo "		<p><strong>" . $loc['error_generation'] . "</strong></p></body></html>";
+}
+?>
 
 		<footer>
 
