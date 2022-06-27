@@ -74,7 +74,7 @@ if (
 		exit("Wrong value for margin");
 	}
 
-	if (is_numeric($_POST['size']) AND $_POST['size'] >= 1 AND $_POST['size'] <= 4096) {
+	if (is_numeric($_POST['size']) AND $_POST['size'] >= 21 AND $_POST['size'] <= 4096) {
 		$params['size'] = $_POST['size'];
 	} else if (empty($_POST['size'])) {
 		$params['size'] = NULL;
@@ -225,7 +225,7 @@ foreach($themeDimensionsIcons as $dimFav) // Set all icons dimensions
 							<?= $loc['help_size'] ?>
 						</p>
 					</details>
-					<input type="number" id="size" placeholder="<?= DEFAULT_SIZE ?>" name="size" required="" min="1" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
+					<input type="number" id="size" placeholder="<?= DEFAULT_SIZE ?>" name="size" required="" min="21" max="4096" value="<?= htmlspecialchars($params['size']) ?>">
 				</div>
 
 			</div>
