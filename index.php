@@ -10,7 +10,7 @@ use Endroid\QrCode\Color\Color;
 require "config.inc.php";
 require "vendor/autoload.php";
 
-define("LIBREQR_VERSION", "2.0.0");
+define("LIBREQR_VERSION", "2.0.1dev");
 
 // Defines the locale to be used
 $locale = DEFAULT_LOCALE;

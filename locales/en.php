@@ -14,7 +14,7 @@ $loc = array(
 
 	'help_content' => "
 <p>You can encode whatever text you want.</p>
-<p>Software which decodes these QR codes could suggest to open them with dedicated software, depending on their <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes' hreflang='en' rel='help external noreferrer'>URI scheme</a>.</p>
+<p>Software decoding these QR codes could suggest to open them with dedicated software, depending on their <a href='https://en.wikipedia.org/wiki/List_of_URI_schemes' hreflang='en' rel='help external noreferrer'>URI scheme</a>.</p>
 <p>For instance, to open a webpage: <code>https://www.example/</code></p>
 <p>To send an email: <code>mailto:contact@email.example</code></p>
 <p>To share geographic coordinates: <code>geo:48.867564,2.364057</code></p>
@@ -33,10 +33,10 @@ $loc = array(
 
 	'metaText_qr' => "
 		<h3>What's a QR code?</h3>
-		A QR code is a 2 dimensional barcode in which text is written in binary. It can be decoded with a device equipped with a photo sensor and an adequate software.
+		A QR code is a 2 dimensional barcode in which text is written in binary. It can be decoded with a device equipped with a photo sensor and adequate software.
 		<a href='https://en.wikipedia.org/wiki/QR_code' hreflang='en' rel='help external noreferrer'>QR code on Wikipedia</a>.
 	",
-	'metaText_legal' => "LibreQR " . LIBREQR_VERSION . " is a free software whose <a href='https://code.antopie.org/miraty/libreqr/' rel='external noreferrer'>source code</a> is available under the terms of the <abbr title='GNU Affero General Public License version 3 or any later version'><a href='LICENSE.html' hreflang='en' rel='license'>AGPLv3</a>+</abbr>.",
+	'metaText_legal' => "LibreQR " . LIBREQR_VERSION . " is free software whose <a href='https://code.antopie.org/miraty/libreqr/' rel='external noreferrer'>source code</a> is available under the terms of the <abbr title='GNU Affero General Public License version 3 or any later version'><a href='LICENSE.html' hreflang='en' rel='license'>AGPLv3</a>+</abbr>.",
 
 	'error_generation' => "An error occurred while generating the QR code. Try with different parameters.",
 );
