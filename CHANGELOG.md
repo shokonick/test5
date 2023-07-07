@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Indonesian localization
 * Basque localization
 
+### Changed
+
+* Update dependencies
+
 ## 2.0.0 - 2022-06-07
 
 ### Added
@@ -24,7 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * Output generated QR code with `data:` URI
 * Change the QR code generation library
 * Use less.php instead of lesserphp
-* Use the prefers-color-scheme CSS feature to let the client choose its prefered theme (dark/light)
+* Use the prefers-color-scheme CSS feature to let the client choose its preferred theme (dark/light)
 
 ### Removed
 

@@ -10,7 +10,7 @@ A LibreQR instance is available at <https://qr.antopie.org>.
 
 ### Generic
 
-Just place this source code in a Web server with PHP7.4+, extensions `gd`, `mbstring` and `iconv`, and writing rights on the `css/` directory.
+Just place this source code in a Web server with PHP8.0+, extensions `gd`, `mbstring` and `iconv`, and writing rights on the `css/` directory.
 
 #### Security hardening
 
