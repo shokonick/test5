@@ -32,8 +32,7 @@ There is [a package](https://code.antopie.org/miraty/qr_ynh/) for [YunoHost](htt
 
 For historical reasons, LibreQR is technically named `qr` in YunoHost.
 
-You can install it from the WebAdmin or with this command :
-
+You can install it from the WebAdmin or with this command:
 ```
 sudo yunohost app install qr
 ```
